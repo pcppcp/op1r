@@ -3,6 +3,18 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-16 12:45 — op1r 36
+
+Output `42748a37992148e1e9c2b35d5f235818df568d6089a4522c9cc332e9c8b2ea2d` (all plugins)
+
+### Changed
+- **drum+ is a plugin file** (`drumplus`, selectable in the web patcher, installed / removed without a firmware update).
+  Without it drum+ kits play as normal kits and keep their drum+ settings, which come back with the plugin. Install
+  the whole firmware (with the plugins), not only `OP1_vdk.ldr`, or drum+ is missing.
+- The hidden **Lander** game (synth + drum + tape + mixer) is removed: its screen and physics world are no longer
+  built at start-up, about 190 KB more free memory and a slightly shorter start-up.
+- Boot screen version: `op1r 36`.
+
 ## 2026-10-16 12:00 — op1r 35
 
 Output `478934c300c14f0941c4eaeecc9caad33e5e4b8938ff90450edb69d0b448da8b` (all plugins)

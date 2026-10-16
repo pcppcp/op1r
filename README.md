@@ -141,10 +141,13 @@ with:
   from the host (any MIDI tool that can send SysEx; `F0 00 20 76 00 01 00 F7` switches it off)
 - **firmware update over USB MIDI SysEx**: `tools/op1push.py` (op1r-src) or the web patcher stage changed files
   while the OP-1 runs; the OP-1 then asks (T1 restart and apply, T2 cancel). te-boot is never written
-- **synths, effects and sequencers as plugin files**: loaded at boot from `plugins/`, installed / removed one by one
-  (web patcher or `op1push.py`) without a firmware update; a plugin that locks the OP-1 at boot is skipped on the next
-  boot. Euclid, dots, oracle and peal are sequencer plugins: without the file a sound that uses one loads with the
-  pattern sequencer, and its saved data comes back when the plugin is installed again
+- **synths, effects, sequencers and drum+ as plugin files**: loaded at boot from `plugins/`, installed / removed one
+  by one (web patcher or `op1push.py`) without a firmware update; a plugin that locks the OP-1 at boot is skipped on
+  the next boot. Euclid, dots, oracle and peal are sequencer plugins: without the file a sound that uses one loads with
+  the pattern sequencer. drum+ (`drumplus`) is a drum plugin: without it drum+ kits play as normal kits. In both cases
+  the saved data comes back when the plugin is installed again
+- the hidden **Lander** game is gone (synth + drum + tape + mixer does nothing): frees about 190 KB of memory and
+  shortens the start-up
 
 ## Screens
 
@@ -211,7 +214,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `478934c300c14f0941c4eaeecc9caad33e5e4b8938ff90450edb69d0b448da8b` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `42748a37992148e1e9c2b35d5f235818df568d6089a4522c9cc332e9c8b2ea2d` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
