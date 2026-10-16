@@ -3,6 +3,16 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-16 16:30 — op1r 37
+
+Output `b3f7bfc8ce5e8f489a396c2e35368c4dc385056746b06a319526735f8deb1ee6` (all plugins)
+
+### Changed
+- **clouds** uses less CPU: about 17 % fewer cycles per block on the OP-1 (350 000 → 290 000), same sound
+  (bit-identical output). The diffuser, reverb and gain multiplies no longer go through 64-bit arithmetic.
+  Only the plugin file changed: with op1r 34 or newer, reinstalling `clouds` from the web patcher is enough.
+- Boot screen version: `op1r 37`.
+
 ## 2026-10-16 12:45 — op1r 36
 
 Output `42748a37992148e1e9c2b35d5f235818df568d6089a4522c9cc332e9c8b2ea2d` (all plugins)

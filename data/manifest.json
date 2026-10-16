@@ -13,7 +13,7 @@
   {
    "path": "OP1_vdk.ldr",
    "orig_sha256": "f79d299f6f9019c998013a4176223a6a1bc999a2d8c54451346861f6ea455c74",
-   "result_sha256": "3dc74d4efbff8d0c76ee18e47f37fa7cadd8345af756ac578730e9fecb78c718",
+   "result_sha256": "1997a76e5183bc7876c8088a6c973c62e709f3e1e31c82bb7654f7bdc5a06a47",
    "ops": [
     {
      "op": "replace",
@@ -36,8 +36,8 @@
     {
      "op": "replace",
      "offset": 313970,
-     "old": "522e2030303234",
-     "new": "206f7031722033"
+     "old": "522e203030323436",
+     "new": "206f703172203337"
     },
     {
      "op": "replace",
@@ -742,8 +742,8 @@
    "kind": "fx",
    "author": "pcppcp",
    "file": "clouds.op1p",
-   "size": 47521,
-   "sha256": "ba8872cf5843b5fb15411e78e5191e8f8da7abad78c4a5b226fe9eaa2abe6209"
+   "size": 45341,
+   "sha256": "3752d686f7c7c37559309ef9a04de516ba3f31f9c29c5b4dbd143bb1f1eef2ba"
   },
   {
    "name": "in a room",
@@ -821,9 +821,9 @@
  "plugin_dir_template": "content",
  "plugin_file_template": "content/op1_factory.db",
  "result": {
-  "tar_sha256": "158d0f16cc3a4c43050abe5dfcd5586de99c4a726a9ffe8e79df469a8ef5f708",
-  "sha256": "42748a37992148e1e9c2b35d5f235818df568d6089a4522c9cc332e9c8b2ea2d",
-  "size": 12943565,
-  "ident": "op1r 36"
+  "tar_sha256": "23092600c46a82ce13cdbc15b16b39e512bda87e900d3dab09b4ef54ac6c12b1",
+  "sha256": "b3f7bfc8ce5e8f489a396c2e35368c4dc385056746b06a319526735f8deb1ee6",
+  "size": 12942615,
+  "ident": "op1r 37"
  }
 }
