@@ -75,7 +75,7 @@ def plugin_info(data):
     for _ in range(n_imp):
         p = data.index(b'\0', p) + 1
     meta = dict(l.split('=', 1) for l in data[p:off + ln].decode().splitlines() if '=' in l)
-    return name.split(b'\0')[0].decode(), ('synth', 'fx', 'seq', 'drum')[kind], meta
+    return name.split(b'\0')[0].decode(), ('synth', 'fx', 'seq', 'drum', 'sampler')[kind], meta
 
 
 def ldr_ident(ldr):
@@ -156,7 +156,7 @@ def main():
                            'Built with synth_sdk/make_firmware.py; see docs/.'],
            'original': {'name': os.path.basename(a.original), 'sha256': P.sha256(op1)},
            'patched_files': patched, 'added_files': added,
-           'plugins': sorted(plugins, key=lambda p: (('synth', 'fx', 'seq', 'drum').index(p['kind']), p['file'])),
+           'plugins': sorted(plugins, key=lambda p: (('synth', 'fx', 'seq', 'drum', 'sampler').index(p['kind']), p['file'])),
            'plugin_dir_template': 'content', 'plugin_file_template': 'content/op1_factory.db',
            'result': {'tar_sha256': '', 'sha256': ''}}
 
