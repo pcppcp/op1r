@@ -67,7 +67,7 @@ function addRow(p) {
 }
 function render() {
   const t = $('plugins'); t.textContent = '';
-  const order = (r) => (r.kind === 'synth' ? 0 : r.kind === 'fx' ? 1 : r.kind === 'seq' ? 2 : 3) + r.name;
+  const order = (r) => (r.kind === 'synth' ? 0 : r.kind === 'fx' ? 1 : r.kind === 'seq' ? 2 : r.kind === 'drum' ? 3 : 4) + r.name;
   for (const r of [...rows.values()].sort((a, b) => order(a).localeCompare(order(b)))) {
     const tr = document.createElement('tr'), c = document.createElement('input');
     c.type = 'checkbox'; c.checked = r.checked; c.onchange = () => { r.checked = c.checked; };
@@ -93,7 +93,7 @@ function pluginInfo(d) {                    // { name, kind, author } from a .op
   if (off + 76 > d.length || off + len > at || v.getUint32(off, true) !== 0x5031504F) return null;
   const nm = d.subarray(off + 16, off + 32), str = (b) => new TextDecoder().decode(b);
   const info = { name: str(nm.subarray(0, nm.indexOf(0) < 0 ? 16 : nm.indexOf(0))),
-                 kind: ['synth', 'fx', 'seq'][v.getUint32(off + 12, true)] || '?', author: '' };
+                 kind: ['synth', 'fx', 'seq', 'drum'][v.getUint32(off + 12, true)] || '?', author: '' };
   let p = off + 76 + v.getUint32(off + 32, true) + 16 * v.getUint32(off + 68, true);   // after image + relocations
   for (let i = v.getUint32(off + 72, true); i > 0 && p < off + len; i--) { const z = d.indexOf(0, p); if (z < 0) return info; p = z + 1; }
   for (const l of str(d.subarray(Math.min(p, off + len), off + len)).split('\n'))

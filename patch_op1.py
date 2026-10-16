@@ -194,7 +194,7 @@ def main():
         print(f'output : sha256 {man["result"]["sha256"]}')
         print(f'patched: ' + ', '.join(f['path'] for f in man['patched_files']))
         print(f'added  : ' + ', '.join(f['path'] for f in man['added_files']))
-        for k in ('synth', 'fx', 'seq'):
+        for k in ('synth', 'fx', 'seq', 'drum'):
             ns = [p['name'] for p in man.get('plugins', []) if p['kind'] == k]
             print(f'{k + " plugins":15s}: ' + ', '.join(ns) + '  (choose with --plugins)')
         if not a.firmware and not a.info:
