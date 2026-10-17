@@ -135,7 +135,7 @@ with:
 - **aether**: a tilt theremin. The key sets the note; tilting the OP-1 forward / back bends the pitch, raising the
   right side fades the volume out, shaking adds vibrato (the angle at the key press is "home"). Blue pitch range,
   green timbre, white vibrato, red volume tilt; presses: dead zone, tilt for the full range, vibrato rate. Its
-  screen (graphics by Rackes) is a satellite dish that turns with the tilt (dials and sliders show the knobs and page-2 values)
+  screen (graphics by DAN76/Rackes) is a satellite dish that turns with the tilt (dials and sliders show the knobs and page-2 values)
 - **oracle** (geomantic shield chart as a 16-step chord / drum pattern) and **peal** (English change ringing)
   sequencers, for synth and drums
 - **MIDI sync** (tempo sync = MIDI in): on MIDI START the stock pattern sequencer, dots and euclid restart so their
