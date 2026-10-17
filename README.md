@@ -244,6 +244,17 @@ Original firmware files (`*.op1`, `*.ldr`, unpacked trees) are git-ignored and m
 
 See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
 
+## Credits
+
+- **pcppcp**: op1r, the synth SDK and most plugins
+- **ultralazr**: the plugins arc, mixtur, palme, in a room, oracle and peal, the stroke font of their screens, the
+  MIDI sequencer idea; the Oblique Strategies cards ([ultralazr/op1-oblique-strategies](https://github.com/ultralazr/op1-oblique-strategies), Martin Mairinger)
+- **Lewis-Clayton**: the randomiser tool plugin
+- **DAN76**: the reverb's Kali screen; **DAN76/Rackes**: the aether satellite-dish screen
+- **Emilie Gillet** (Mutable Instruments): Clouds and the Elements reverb, ported to fixed point (MIT License)
+- **op1hacks**: [op1repacker](https://github.com/op1hacks/op1repacker) (iter lab graphics, LZMA settings; MIT License)
+- **Brian Eno and Peter Schmidt**: the Oblique Strategies card texts
+
 ## Support
 
 [Buy some tokens for the Clanker](https://ko-fi.com/pcppcp)
