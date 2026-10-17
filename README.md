@@ -159,7 +159,7 @@ with:
 - **randomiser** (`randomiser` tool plugin, by Lewis-Clayton): on a synth page **Shift + drop** makes a random
   variation of the current sound (engine knobs, envelope, FX type and settings, LFO type and settings; the engine
   stays), **Shift + lift** steps back, Shift + drop again steps forward; the original and the 6 newest variations
-  are kept per synth slot. A small panel shows the step
+  are kept per synth slot. A panel shows `random` (forward) or `modnar` (back)
 - the hidden **Lander** game is gone (synth + drum + tape + mixer does nothing): frees about 190 KB of memory and
   shortens the start-up
 
@@ -181,6 +181,11 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 |---|---|
 | ![quad LFO](docs/images/lfo_quad.png) **quad** LFO | ![euclid](docs/images/seq_euclid.png) **euclid** sequencer |
 | ![dots](docs/images/seq_dots.png) **dots** sequencer (record mode: notes, lock triggers as hollow squares, a note with an FX lock) | |
+
+| sampler+ | |
+|---|---|
+| ![sampler+ T1](docs/images/sampler_plus_t1.png) **sampler+** T1: region, loop with crossfade / ping-pong, playing voices, pitch envelope, drive | ![sampler+ T2](docs/images/sampler_plus_t2.png) T2: envelope and filter |
+| ![sampler+ browser](docs/images/sampler_plus_browser.png) T1 white press: sample browser | ![randomiser](docs/images/tool_randomiser.png) **randomiser** panel (Shift + drop; Shift + lift shows `modnar`) |
 
 | Resource monitor | Sample editor |
 |---|---|
