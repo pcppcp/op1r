@@ -10,7 +10,7 @@ Output `321a962df935d98292be1c48638f88b76f9b661f2ea0d55e1a1e61edbc009766` (all p
 ### Changed
 - **randomiser**: no click when the sound changes: the instrument fades out for a few ms, the new sound is set while
   silent, then it fades back in (drop / lift now run from the main loop).
-- **aether** has a new screen: a satellite dish that turns with the tilt (front / back = up / down, side = around);
+- **aether** has a new screen (graphics by Rackes): a satellite dish that turns with the tilt (front / back = up / down, side = around);
   dials and sliders show the knobs and page-2 values (the inactive page dimmed), green arcs = timbre (shaking while a
   note plays), the dotted signals follow the note's envelope, stars follow the knobs.
 - **in a room**: no click at the loop boundary (a new generation's level ramps in; synced loops restart without a
