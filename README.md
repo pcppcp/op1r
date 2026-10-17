@@ -67,7 +67,8 @@ with:
   last (exact to the sample; pressing a key selects and shows its pad). T1 `fit` trims the pad's silence, Shift + T3
   `auto` cuts the kit into pads (first 24 hits, or 1–24 equal slices; preview, blue sets the sensitivity (`hits 1`…`hits 7`) or the number of slices (equal),
   Shift + left undoes).
-  Cut zeroes, drop overwrites. A red line shows the play position (also in the synth editor)
+  Cut zeroes, drop overwrites. A red line shows the play position (also in the synth editor). Tapping **synth** or
+  **drum** alone closes the editor and goes to that mode (synth: its T1 page)
 - **count-in**: with the tape stopped, hold **REC** and press **metronome**: 4 / 8 / 16 metronome clicks, then
   recording starts on the next beat and runs until STOP (REC can be released). STOP or REC + metronome again cancels.
   Audible even with the metronome level at 0. The number of beats is set on the settings page: clock / card + **T3**
@@ -80,7 +81,9 @@ with:
   Mairinger; the card texts are Eno / Schmidt's and not covered by that licence)
 - **resource monitor**: on the clock screen (**Shift + help**) press **T1** to switch to a page with CPU load,
   audio processing load (both with a peak marker), RAM and disk usage and the MIDI in / out buffer fill; T1 again
-  goes back to the clock
+  goes back to the clock. The audio bar is split into instruments (green), envelopes (blue), custom FX (white) and
+  the rest (grey); the blue knob steps through detail pages (audio split, synth / sampler / drum voices, plugins,
+  disk)
 - **USB track outs**: the OP-1 shows up as a 6-channel USB audio input (24 bit, 44.1 kHz): main L/R on channels
   1–2, tape tracks 1–4 on channels 3–6 (pre-fader, following tape speed and reverse). Clock screen + **T2**: the blue
   knob switches between **MASTER** (track channels silent, saves 5–7 % CPU; default) and **MASTER + TRACKS**; the
@@ -141,11 +144,22 @@ with:
   from the host (any MIDI tool that can send SysEx; `F0 00 20 76 00 01 00 F7` switches it off)
 - **firmware update over USB MIDI SysEx**: `tools/op1push.py` (op1r-src) or the web patcher stage changed files
   while the OP-1 runs; the OP-1 then asks (T1 restart and apply, T2 cancel). te-boot is never written
-- **synths, effects, sequencers and drum+ as plugin files**: loaded at boot from `plugins/`, installed / removed one
+- **synths, effects, sequencers, drum+, sampler+ and tools as plugin files**: loaded at boot from `plugins/`, installed / removed one
   by one (web patcher or `op1push.py`) without a firmware update; a plugin that locks the OP-1 at boot is skipped on
   the next boot. Euclid, dots, oracle and peal are sequencer plugins: without the file a sound that uses one loads with
   the pattern sequencer. drum+ (`drumplus`) is a drum plugin: without it drum+ kits play as normal kits. In both cases
   the saved data comes back when the plugin is installed again
+- **sampler+** (`samplerplus` plugin, by pcppcp): a synth type next to the stock sampler (Shift + T1, `sampler+`),
+  the stock sampler's sound and presets plus loop crossfade, ping-pong, loop in release, pitch envelope, drive,
+  random start, velocity → start, reverse, tempo sync (the region or loop lasts 1/4 … 8 bars, repitched) and a
+  sample browser (T1 white press, the sampler presets). T2 is an envelope page as on drum+: attack / decay /
+  sustain / release with curve and hold, filter (type, cutoff, resonance, envelope and velocity amount). The region
+  is still edited in the sample editor (synth + scissors). Without the plugin a sampler+ sound plays as the stock
+  sampler and keeps its settings
+- **randomiser** (`randomiser` tool plugin, by Lewis-Clayton): on a synth page **Shift + drop** makes a random
+  variation of the current sound (engine knobs, envelope, FX type and settings, LFO type and settings; the engine
+  stays), **Shift + lift** steps back, Shift + drop again steps forward; the original and the 6 newest variations
+  are kept per synth slot. A small panel shows the step
 - the hidden **Lander** game is gone (synth + drum + tape + mixer does nothing): frees about 190 KB of memory and
   shortens the start-up
 
@@ -214,7 +228,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `b3f7bfc8ce5e8f489a396c2e35368c4dc385056746b06a319526735f8deb1ee6` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `cb53d987fc09e1954cc01eeac3cb7a3f07bbd38968d9367f0dc83552dd2babd0` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**

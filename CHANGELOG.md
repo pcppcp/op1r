@@ -3,6 +3,28 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-17 19:15 — op1r 38
+
+Output `cb53d987fc09e1954cc01eeac3cb7a3f07bbd38968d9367f0dc83552dd2babd0` (all plugins)
+
+### Added
+- **sampler+** (`samplerplus` plugin, by pcppcp): new synth type `sampler+` (Shift + T1). The stock sampler's
+  sound and presets plus loop crossfade, ping-pong, loop in release, pitch envelope, drive, random start,
+  velocity → start, reverse, tempo sync (region / loop = 1/4 … 8 bars, repitched), a sample browser (T1 white press)
+  and an envelope + filter page on T2 (as drum+). Uses the stock sampler's render where it can (6 voices with
+  ping-pong and crossfade ≈ 23 % audio time on the OP-1). Without the plugin the sound plays as the stock sampler.
+- **randomiser** (`randomiser`, by Lewis-Clayton), the first **tool plugin**: Shift + drop on a synth page makes a
+  random variation of the sound (knobs, envelope, FX, LFO; engine kept), Shift + lift goes back, Shift + drop
+  forward again; original + 6 variations per slot.
+- Plugin kind `tool` in the patcher and the web patcher.
+
+### Changed
+- **Resource monitor**: the audio bar shows instruments / envelopes / custom FX / rest; the blue knob steps through
+  detail pages (audio split, voices, plugins, disk).
+- **Sample editor**: tapping synth or drum alone closes it and goes to that mode.
+- **MIDI recorder**: the track separator lines run along the whole tape and stay continuous while scrolling.
+- Boot screen version: `op1r 38`.
+
 ## 2026-10-16 16:30 — op1r 37
 
 Output `b3f7bfc8ce5e8f489a396c2e35368c4dc385056746b06a319526735f8deb1ee6` (all plugins)
