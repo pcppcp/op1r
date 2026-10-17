@@ -3,6 +3,22 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-18 01:00 — op1r 40
+
+Output `7a2cf1950e70429b8442c9f286024d1553b4b9752b057c829d7a888f82fa8c87` (all plugins)
+
+### Added
+- **in a room**: crossfade at the loop boundary (white page 2, off .. 93 ms): the loop's end runs into its start
+  instead of fading both ends to silence.
+
+### Changed
+- Less audio load per voice: the sampler+ envelope hook is skipped unless a sampler slot is current (op1r 38 ran it
+  for every voice of every engine).
+- **reverb**: no internal clipping with loud input and a long time (more headroom, soft limit at the output); dials in
+  knob order TIME / TONE / DIFFUSION.
+- **in a room**: the first sample of a capture is no longer half level.
+- Boot screen version: `op1r 40`.
+
 ## 2026-10-17 23:00 — op1r 39
 
 Output `321a962df935d98292be1c48638f88b76f9b661f2ea0d55e1a1e61edbc009766` (all plugins)
