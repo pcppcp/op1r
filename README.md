@@ -134,7 +134,8 @@ with:
   *I am sitting in a room* as a looping FX)
 - **aether**: a tilt theremin. The key sets the note; tilting the OP-1 forward / back bends the pitch, raising the
   right side fades the volume out, shaking adds vibrato (the angle at the key press is "home"). Blue pitch range,
-  green timbre, white vibrato, red volume tilt; presses: dead zone, tilt for the full range, vibrato rate
+  green timbre, white vibrato, red volume tilt; presses: dead zone, tilt for the full range, vibrato rate. Its
+  screen is a satellite dish that turns with the tilt (dials and sliders show the knobs and page-2 values)
 - **oracle** (geomantic shield chart as a 16-step chord / drum pattern) and **peal** (English change ringing)
   sequencers, for synth and drums
 - **MIDI sync** (tempo sync = MIDI in): on MIDI START the stock pattern sequencer, dots and euclid restart so their
@@ -171,6 +172,7 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 |---|---|
 | ![supersaw](docs/images/synth_supersaw.png) **supersaw** | ![fmbell](docs/images/synth_fmbell.png) **fmbell** |
 | ![granular](docs/images/synth_granular.png) **granular** | ![iter lab](docs/images/synth_iterlab.png) **iter** (lab screen) |
+| ![aether](docs/images/synth_aether.png) **aether**: the dish turns with the tilt, waves = FORM | |
 
 | Effects | |
 |---|---|
@@ -233,7 +235,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `cb53d987fc09e1954cc01eeac3cb7a3f07bbd38968d9367f0dc83552dd2babd0` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `321a962df935d98292be1c48638f88b76f9b661f2ea0d55e1a1e61edbc009766` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**

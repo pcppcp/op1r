@@ -3,6 +3,28 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-17 23:00 — op1r 39
+
+Output `321a962df935d98292be1c48638f88b76f9b661f2ea0d55e1a1e61edbc009766` (all plugins)
+
+### Changed
+- **randomiser**: no click when the sound changes: the instrument fades out for a few ms, the new sound is set while
+  silent, then it fades back in (drop / lift now run from the main loop).
+- **aether** has a new screen: a satellite dish that turns with the tilt (front / back = up / down, side = around);
+  dials and sliders show the knobs and page-2 values (the inactive page dimmed), green arcs = timbre (shaking while a
+  note plays), the dotted signals follow the note's envelope, stars follow the knobs.
+- **in a room**: no click at the loop boundary (a new generation's level ramps in; synced loops restart without a
+  repeated sample).
+- **reverb**: screen file 76 KB → 34 KB (skulls and fire recoloured instead of stored 5 times); their brightness now
+  follows the knobs smoothly.
+- Boot screen version: `op1r 39`.
+
+### Plugin API
+- `OP1_VOICE_ENV`: the stock envelope (T2) of the voice being rendered, for timbre modulation inside `render`.
+- `op1_inst_fade()`: fade the instrument out / in around a sound change (tool plugins, main loop).
+- `op1_node_line_rgba()` / `op1_node_fill_rgba()`: recolour an SVG node at runtime.
+- Plugin kind `tool` in the patcher and the web patcher.
+
 ## 2026-10-17 19:15 — op1r 38
 
 Output `cb53d987fc09e1954cc01eeac3cb7a3f07bbd38968d9367f0dc83552dd2babd0` (all plugins)
