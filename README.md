@@ -132,7 +132,9 @@ with:
     cut the slot (Shift: whole pattern), all saved
 - more synth engines: **mixtur** (subharmonic organ after Oskar Sala's Mixtur-Trautonium), **arc** (Duddell's
   singing arc); more FX: **palme** (Ondes Martenot Palme / Métallique diffuseur), **in a room** (Alvin Lucier's
-  *I am sitting in a room* as a looping FX)
+  *I am sitting in a room* as a looping FX), **steve** (Steve Reich's phase process: capture a loop, 2–4 copies drift
+  apart as in *It's Gonna Rain* / *Come Out* or move one unit at a time and lock as in *Piano Phase*; one rabbit per
+  copy on the screen; stereo on the master, A left, B right)
 - **aether**: a tilt theremin. The key sets the note; tilting the OP-1 forward / back bends the pitch, raising the
   right side fades the volume out, shaking adds vibrato (the angle at the key press is "home"). Blue pitch range,
   green timbre, white vibrato, red volume tilt; presses: dead zone, tilt for the full range, vibrato rate. Its
@@ -182,7 +184,7 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 | Effects | |
 |---|---|
 | ![tape](docs/images/fx_tape.png) **tape** echo | ![clouds](docs/images/fx_clouds.png) **clouds** |
-| ![reverb](docs/images/fx_reverb.png) **reverb** | |
+| ![reverb](docs/images/fx_reverb.png) **reverb** | ![steve](docs/images/fx_steve.png) **steve**: four copies drifting apart, one rabbit each |
 
 | LFO | Sequencer |
 |---|---|
@@ -240,7 +242,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `36c9b3a6ed5527da54a4ea6443e821f79673d380d0358b67c3cbcffa3c50915b` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `253b55c4f6b83e1ccd7abdac2c9d37360c700c145306e0af06db3d1c57553cdc` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**

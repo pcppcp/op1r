@@ -3,6 +3,27 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-19 16:40 — op1r 42
+
+Output `253b55c4f6b83e1ccd7abdac2c9d37360c700c145306e0af06db3d1c57553cdc` (all plugins)
+
+### Added
+- **steve** (FX plugin): Steve Reich's phase process. White press captures a loop of what the FX hears (synced lengths
+  start on the next beat); 2–4 copies play it and drift apart (*It's Gonna Rain*, *Come Out*: blue = drift, −2 … +2 %)
+  or move one unit at a time and lock (*Piano Phase*: blue page 2 = transition speed, green page 2 = loops held per
+  unit). Green = loop length (free or 1/4 beat … 2 bars), white = copies, red = mix, red press = freeze, Shift + white
+  press = back to unison. On the master it plays in stereo: A left, B right (use headphones). The screen shows one
+  rabbit per copy hopping along at its playhead. Loops: 2 s as synth / drum FX, 8 s on the master.
+
+### Changed
+- Boot screen version: `op1r 42`.
+
+### Plugin API
+- FX: optional `render_stereo` (plugin.json `"stereo": true`): the master position gets the mix's own left / right.
+- Plugins may now use up to 2 MB each (4 MB together) of static memory.
+- `op1_dbg()`: debug prints for op1emu (empty on the OP-1).
+- The FX plugin files of this version need op1r 42 (`steve`; the others load on older versions too).
+
 ## 2026-10-19 13:30 — op1r 41
 
 Output `36c9b3a6ed5527da54a4ea6443e821f79673d380d0358b67c3cbcffa3c50915b` (all plugins)
