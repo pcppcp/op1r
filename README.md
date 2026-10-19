@@ -11,7 +11,8 @@ with:
 
 - custom synth engines with their own screens: **supersaw** (chainsaw), **fmbell** (bell), **granular**; they follow note velocity
   - **granular** plays the slot's sample: press **input** on a granular slot for "keyboard to sample" and record
-    straight into it (the slot stays granular); **red press** = page 2, sample gain (0–4×)
+    straight into it (the slot stays granular); **white press** = sample browser (the sampler presets, as on
+    sampler+; the slot stays granular); **red press** = page 2, sample gain (0–4×); values shown in ms / s / ×
 - animated **lab screen for the stock iter synth**: gauges follow the knobs; bubbles, flame, falling dashes, voice
   dots and a note display react to the knobs and to what you play (graphic: `iter-lab.svg` from
   [op1repacker](https://github.com/op1hacks/op1repacker), MIT License, © 2016 op1hacks)
@@ -138,6 +139,10 @@ with:
   screen (graphics by DAN76/Rackes) is a satellite dish that turns with the tilt (dials and sliders show the knobs and page-2 values)
 - **oracle** (geomantic shield chart as a 16-step chord / drum pattern) and **peal** (English change ringing)
   sequencers, for synth and drums
+- **chord** mode (`chord` sequencer plugin): one key plays a chord, on every screen while the sequencer is on.
+  Blue chord type (fixed) or stacked from a key and scale (press), green voicing (close, inversions, drop 2, spread;
+  press adds the bass note), white strum (off … 1/8 beat; press: up / down / random), red key and scale. In drum
+  mode the chord's notes play as pads
 - **MIDI sync** (tempo sync = MIDI in): on MIDI START the stock pattern sequencer, dots and euclid restart so their
   first step falls on the master's downbeat, also right after a pause; notes then follow the external clock within
   about 1 ms
@@ -182,7 +187,7 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 | LFO | Sequencer |
 |---|---|
 | ![quad LFO](docs/images/lfo_quad.png) **quad** LFO | ![euclid](docs/images/seq_euclid.png) **euclid** sequencer |
-| ![dots](docs/images/seq_dots.png) **dots** sequencer (record mode: notes, lock triggers as hollow squares, a note with an FX lock) | |
+| ![dots](docs/images/seq_dots.png) **dots** sequencer (record mode: notes, lock triggers as hollow squares, a note with an FX lock) | ![chord](docs/images/seq_chord.png) **chord** mode: the chord's notes on the keyboard, the key played in white (OP-1 font on the device) |
 
 | sampler+ | |
 |---|---|
@@ -235,7 +240,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `7a2cf1950e70429b8442c9f286024d1553b4b9752b057c829d7a888f82fa8c87` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `36c9b3a6ed5527da54a4ea6443e821f79673d380d0358b67c3cbcffa3c50915b` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**

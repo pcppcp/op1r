@@ -3,6 +3,31 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-19 13:30 — op1r 41
+
+Output `36c9b3a6ed5527da54a4ea6443e821f79673d380d0358b67c3cbcffa3c50915b` (all plugins)
+
+### Added
+- **chord** mode (sequencer plugin `chord`): one key plays a chord, on every screen while the sequencer is on.
+  Chord type (fixed) or chords stacked from a key and scale, voicings (close, inversions, drop 2, spread, bass note),
+  strum (off … 1/8 beat, up / down / random), drum mode plays the chord's notes as pads. Chord names say `min`
+  (`Dmin7`): the OP-1 font has capitals only.
+- **granular**: sample browser on white press (the sampler presets, as sampler+): the loaded sample goes into the slot,
+  the slot stays granular.
+
+### Changed
+- **granular**: values instead of dials (position in s, size and spray in ms, density and page-2 gain in ×), `file`
+  above the white bar; the grains of a finished note no longer stay on screen.
+- **sampler+**: its sample browser is now part of the firmware (one browser for sampler+ and granular). The sampler+
+  plugin of this version needs op1r 41.
+- Boot screen version: `op1r 41`.
+
+### Plugin API
+- `OP1_PRESS_BROWSE`: a synth engine's press opens the sample browser (engines that play the slot's sample).
+- `op1_key_played()`: a key a sequencer plugin consumed, for the MIDI recorder's input I.
+- The sample browser functions `sb_*` (sampler plugins).
+- Line / fill styles are per SVG element (`op1_node_line_rgba`): recolour every element of a shape.
+
 ## 2026-10-18 01:00 — op1r 40
 
 Output `7a2cf1950e70429b8442c9f286024d1553b4b9752b057c829d7a888f82fa8c87` (all plugins)
