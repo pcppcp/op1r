@@ -23,7 +23,7 @@ NOT COVERED by this license
 - Oblique Strategies card texts: by Brian Eno and Peter Schmidt (list from
   https://github.com/ultralazr/op1-oblique-strategies). Not ours and not licensed by us.
 
-THIRD-PARTY CODE (MIT License, compatible with the GPL; their notices are kept)
+THIRD-PARTY CODE (MIT or GPL-3.0, compatible with op1r's GPL-3.0-or-later; their notices are kept)
 - Fixed-point ports of Mutable Instruments Clouds and the Elements reverb: original code (c) 2014 Emilie Gillet,
   MIT License.
 - grids (sequencer plugin): a port of Mutable Instruments Grids' pattern generator and drum map, original code
