@@ -13,7 +13,7 @@
   {
    "path": "OP1_vdk.ldr",
    "orig_sha256": "f79d299f6f9019c998013a4176223a6a1bc999a2d8c54451346861f6ea455c74",
-   "result_sha256": "c8c4861648ed85eba936ab6a4a80809b8025d6db21a95c72117cdbe99b984937",
+   "result_sha256": "756a3381f51c9fd8c0e5c020b4c685a36f01a9d499fa9f5ec528827e35b0f224",
    "ops": [
     {
      "op": "replace",
@@ -37,7 +37,7 @@
      "op": "replace",
      "offset": 313970,
      "old": "522e203030323436",
-     "new": "206f703172203432"
+     "new": "206f703172203433"
     },
     {
      "op": "replace",
@@ -730,6 +730,14 @@
    "sha256": "28363fb6f05ad8e5cabe803a58e3509368e13a46d0401120233d207189557084"
   },
   {
+   "name": "brassophone",
+   "kind": "synth",
+   "author": "nvmsocool",
+   "file": "brassophone.op1p",
+   "size": 50049,
+   "sha256": "f7070de718cb4e97c07dd775b3bf158e3f567bfac5acc254089fff3a68bfa60b"
+  },
+  {
    "name": "fmbell",
    "kind": "synth",
    "author": "pcppcp",
@@ -766,8 +774,8 @@
    "kind": "fx",
    "author": "pcppcp",
    "file": "clouds.op1p",
-   "size": 45345,
-   "sha256": "aa5142853c1e1df7a67833397da934a040696a11d4a1c8f70d49e9a5db4341a5"
+   "size": 46617,
+   "sha256": "4cc6128eec0b5aad465d24b827ad7db1e2e85ef32621a879e82d6e60d70d9919"
   },
   {
    "name": "in a room",
@@ -834,6 +842,14 @@
    "sha256": "ea37f2c3564bbe6f367ee73545c9e64034b5acc947808b064e7c4415327f1b83"
   },
   {
+   "name": "grids",
+   "kind": "seq",
+   "author": "pcppcp",
+   "file": "grids.op1p",
+   "size": 14665,
+   "sha256": "f05d0af8802453a555acec74a8e2e87fd29ad4913ffbd0dcd27a4aa970da0b85"
+  },
+  {
    "name": "oracle",
    "kind": "seq",
    "author": "ultralazr",
@@ -877,9 +893,9 @@
  "plugin_dir_template": "content",
  "plugin_file_template": "content/op1_factory.db",
  "result": {
-  "tar_sha256": "5025f3cf4b06aec88a753c25fb080176f96ec249fb233d2bf9c22638cf9c3085",
-  "sha256": "253b55c4f6b83e1ccd7abdac2c9d37360c700c145306e0af06db3d1c57553cdc",
-  "size": 12976473,
-  "ident": "op1r 42"
+  "tar_sha256": "c04cefac37cb7c9c46bbeef280020fbc57ee941e8b93968cbc475a121dff6745",
+  "sha256": "8094f780801a06c80bf89a61aefd15de79fb266c766a1d02f6ed2e911691f0d3",
+  "size": 13002423,
+  "ident": "op1r 43"
  }
 }

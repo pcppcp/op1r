@@ -145,6 +145,12 @@ with:
   Blue chord type (fixed) or stacked from a key and scale (press), green voicing (close, inversions, drop 2, spread;
   press adds the bass note), white strum (off … 1/8 beat; press: up / down / random), red key and scale. In drum
   mode the chord's notes play as pads
+- **grids** (`grids` sequencer plugin): a port of Mutable Instruments Grids (Emilie Gillet): drum patterns from a
+  map of real grooves. Blue / green move through the map (X / Y), white sets the fill of the selected part (press:
+  next part, BD → SD → HH), red adds chaos (press: play / stop); Shift: swing, 1/16 or 1/32 steps, the part's pad
+  or note, accent amount. Drum mode plays pads; synth mode plays the held keys (or three stored notes)
+- **brassophone** (synth plugin, by nvmsocool): brass from a phase-warped sine whose timbre and pitch follow the
+  envelope, with vibrato that fades in on held notes; a Dr. Seuss-style horn screen whose parts move with the knobs
 - **MIDI sync** (tempo sync = MIDI in): on MIDI START the stock pattern sequencer, dots and euclid restart so their
   first step falls on the master's downbeat, also right after a pause; notes then follow the external clock within
   about 1 ms
@@ -179,7 +185,7 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 |---|---|
 | ![supersaw](docs/images/synth_supersaw.png) **supersaw** | ![fmbell](docs/images/synth_fmbell.png) **fmbell** |
 | ![granular](docs/images/synth_granular.png) **granular** | ![iter lab](docs/images/synth_iterlab.png) **iter** (lab screen) |
-| ![aether](docs/images/synth_aether.png) **aether**: the dish turns with the tilt, waves = FORM | |
+| ![aether](docs/images/synth_aether.png) **aether**: the dish turns with the tilt, waves = FORM | ![brassophone](docs/images/synth_brassophone.png) **brassophone** (by nvmsocool): mutes, slide, balloon and spinner follow the knobs |
 
 | Effects | |
 |---|---|
@@ -190,6 +196,7 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 |---|---|
 | ![quad LFO](docs/images/lfo_quad.png) **quad** LFO | ![euclid](docs/images/seq_euclid.png) **euclid** sequencer |
 | ![dots](docs/images/seq_dots.png) **dots** sequencer (record mode: notes, lock triggers as hollow squares, a note with an FX lock) | ![chord](docs/images/seq_chord.png) **chord** mode: the chord's notes on the keyboard, the key played in white (OP-1 font on the device) |
+| ![grids](docs/images/seq_grids.png) **grids**: the map (left, X / Y cross-hair) and this bar's pattern per part | |
 
 | sampler+ | |
 |---|---|
@@ -242,7 +249,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `253b55c4f6b83e1ccd7abdac2c9d37360c700c145306e0af06db3d1c57553cdc` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `8094f780801a06c80bf89a61aefd15de79fb266c766a1d02f6ed2e911691f0d3` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
@@ -257,8 +264,11 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
 - **ultralazr**: the plugins arc, mixtur, palme, in a room, oracle and peal, the stroke font of their screens, the
   MIDI sequencer idea; the Oblique Strategies cards ([ultralazr/op1-oblique-strategies](https://github.com/ultralazr/op1-oblique-strategies), Martin Mairinger)
 - **Lewis-Clayton**: the randomiser tool plugin
+- **nvmsocool**: the brassophone synth plugin
+- **Hundekraft**: the sample-exact clouds optimisation (op1r 43)
 - **DAN76**: the reverb's Kali screen; **DAN76/Rackes**: the aether satellite-dish screen
-- **Emilie Gillet** (Mutable Instruments): Clouds and the Elements reverb, ported to fixed point (MIT License)
+- **Emilie Gillet** (Mutable Instruments): Clouds and the Elements reverb, ported to fixed point (MIT License);
+  Grids, its pattern generator and drum map ported (GPL-3.0)
 - **op1hacks**: [op1repacker](https://github.com/op1hacks/op1repacker) (iter lab graphics, LZMA settings; MIT License)
 - **Brian Eno and Peter Schmidt**: the Oblique Strategies card texts
 

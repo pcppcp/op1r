@@ -3,6 +3,24 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-20 11:30 — op1r 43
+
+Output `8094f780801a06c80bf89a61aefd15de79fb266c766a1d02f6ed2e911691f0d3` (all plugins)
+
+### Added
+- **grids** (sequencer plugin): a port of Mutable Instruments Grids (Emilie Gillet), bit-exact with the module's
+  pattern generator. X / Y move through a map of drum grooves, white = fill of the selected part (press: next part),
+  red = chaos (press: play / stop); Shift: swing, 1/16 or 1/32 steps, pad / note, accent amount. Drum mode plays
+  pads, synth mode the held keys (or three stored notes). Stopped until red press.
+- **brassophone** (synth plugin, by **nvmsocool**): brass from a phase-warped sine; blue / green set the timbre's
+  start and envelope sweep, white / red the vibrato that fades in on held notes; the envelope also bends the pitch.
+  Animated horn screen.
+
+### Changed
+- **clouds**: up to 20 % less DSP work for the same output, sample for sample (by **Hundekraft**: grain envelope
+  and read fused, grain set-up per block, cheaper diffuser and reverb).
+- Boot screen version: `op1r 43`.
+
 ## 2026-10-19 16:40 — op1r 42
 
 Output `253b55c4f6b83e1ccd7abdac2c9d37360c700c145306e0af06db3d1c57553cdc` (all plugins)

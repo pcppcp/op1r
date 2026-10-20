@@ -26,6 +26,8 @@ NOT COVERED by this license
 THIRD-PARTY CODE (MIT License, compatible with the GPL; their notices are kept)
 - Fixed-point ports of Mutable Instruments Clouds and the Elements reverb: original code (c) 2014 Emilie Gillet,
   MIT License.
+- grids (sequencer plugin): a port of Mutable Instruments Grids' pattern generator and drum map, original code
+  (c) 2011 Emilie Gillet, GPL-3.0 (AVR code of pichenettes/eurorack).
 - iter-lab.svg and the LZMA settings of op1repacker: (c) 2016 op1hacks, MIT License
   (https://github.com/op1hacks/op1repacker).
 - svgfont.py and the Oblique Strategies idea: (c) 2026 Martin Mairinger, MIT License
