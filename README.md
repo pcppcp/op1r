@@ -151,6 +151,20 @@ with:
   or note, accent amount. Drum mode plays pads; synth mode plays the held keys (or three stored notes)
 - **brassophone** (synth plugin, by nvmsocool): brass from a phase-warped sine whose timbre and pitch follow the
   envelope, with vibrato that fades in on held notes; a Dr. Seuss-style horn screen whose parts move with the knobs
+- **dddd** (synth plugin): harsh noise. Paraphonic: the first key sets the pitch, further keys add to it. Blue
+  source, green feedback, white destroy, red hands; a limiter keeps it from clipping. Wasp screen
+- **FX2 routing** (Shift + mixer, **T2**; T1 = the stock overview): blue chooses what the master FX processes,
+  **master** (stock), **instrument** (only the live synth / drum: the rest of the mix stays dry) or **aux** (the
+  tape tracks' sends); green chooses where it goes, **stereo master** (not recorded) or **mono tape** (recorded on
+  the selected track; in aux mode that track's own send is muted). With aux on, mixer T1 shows a send knob under
+  each pan knob and smaller volume numbers: **press an encoder** to switch that track between aux (default) and
+  pan, **Shift + turn** sets the selected one. Sends follow the track's volume and mute. Works with the FX plugins
+  on the master (stock master FX keep processing the whole mix); no extra CPU while the source is master
+- **scale mode** (clock screen + **T4**): blue root, green scale (major, minor, the church modes, harmonic / melodic
+  minor, pentatonics, blues), white mode: **snap** (a key outside the scale plays the scale note below), **white
+  keys** (the scale's degrees on the white keys, C = root), **mute** (keys outside the scale are silent). Applies
+  to the keyboard and the stock sequencers in synth mode, MIDI out included; not in drum mode, and off while euclid,
+  dots, chord, grids or another sequencer plugin is selected (their keys stay their controls)
 - **MIDI sync** (tempo sync = MIDI in): on MIDI START the stock pattern sequencer, dots and euclid restart so their
   first step falls on the master's downbeat, also right after a pause; notes then follow the external clock within
   about 1 ms
@@ -167,7 +181,9 @@ with:
   the stock sampler's sound and presets plus loop crossfade, ping-pong, loop in release, pitch envelope, drive,
   random start, velocity → start, reverse, tempo sync (the region or loop lasts 1/4 … 8 bars, repitched) and a
   sample browser (T1 white press, the sampler presets). T2 is an envelope page as on drum+: attack / decay /
-  sustain / release with curve and hold, filter (type, cutoff, resonance, envelope and velocity amount). The region
+  sustain / release with curve and hold, filter (type, cutoff, resonance, envelope and velocity amount). Shift + T2
+  is the play mode page: blue play mode, green portamento, Shift + white / red cutoff / resonance (press: envelope /
+  velocity → cutoff). The region
   is still edited in the sample editor (synth + scissors). Without the plugin a sampler+ sound plays as the stock
   sampler and keeps its settings
 - **randomiser** (`randomiser` tool plugin, by Lewis-Clayton): on a synth page **Shift + drop** makes a random
@@ -186,6 +202,7 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 | ![supersaw](docs/images/synth_supersaw.png) **supersaw** | ![fmbell](docs/images/synth_fmbell.png) **fmbell** |
 | ![granular](docs/images/synth_granular.png) **granular** | ![iter lab](docs/images/synth_iterlab.png) **iter** (lab screen) |
 | ![aether](docs/images/synth_aether.png) **aether**: the dish turns with the tilt, waves = FORM | ![brassophone](docs/images/synth_brassophone.png) **brassophone** (by nvmsocool): mutes, slide, balloon and spinner follow the knobs |
+| ![dddd](docs/images/synth_dddd.png) **dddd**: the wasp | |
 
 | Effects | |
 |---|---|
@@ -197,6 +214,10 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 | ![quad LFO](docs/images/lfo_quad.png) **quad** LFO | ![euclid](docs/images/seq_euclid.png) **euclid** sequencer |
 | ![dots](docs/images/seq_dots.png) **dots** sequencer (record mode: notes, lock triggers as hollow squares, a note with an FX lock) | ![chord](docs/images/seq_chord.png) **chord** mode: the chord's notes on the keyboard, the key played in white (OP-1 font on the device) |
 | ![grids](docs/images/seq_grids.png) **grids**: the map (left, X / Y cross-hair) and this bar's pattern per part | |
+
+| Pages | |
+|---|---|
+| ![FX2](docs/images/fx2_route.png) **FX2 routing** (Shift + mixer, T2) | ![scale](docs/images/scale.png) **scale mode** (clock, T4) |
 
 | sampler+ | |
 |---|---|
@@ -249,7 +270,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `8094f780801a06c80bf89a61aefd15de79fb266c766a1d02f6ed2e911691f0d3` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `737e8a8402f72916db7f765f12c44266bd4e912e172fc7e01ecfaf8804022826` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**

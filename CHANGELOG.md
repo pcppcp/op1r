@@ -3,6 +3,29 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-21 16:00 — op1r 44
+
+Output `737e8a8402f72916db7f765f12c44266bd4e912e172fc7e01ecfaf8804022826` (all plugins)
+
+### Added
+- **dddd** (synth plugin): harsh noise, paraphonic (first key = pitch, more keys add), source / feedback / destroy /
+  hands, limiter, wasp screen.
+- **FX2 routing** (Shift + mixer, T2): the master FX processes the master (stock), the **instrument** only or an
+  **aux** bus fed by per-track sends; output **stereo master** or **mono tape** (recorded on the selected track, its
+  own send muted in aux mode). The track VU meter shows the recorded signal. Mixer T1 with aux: a send knob under
+  each pan knob, encoder press switches the track between aux (default) and pan, Shift + turn sets it; only the
+  selected controls light up with Shift. Plugin FX on the master; no extra CPU with source master.
+- **scale mode** (clock, T4): root, 12 scales, snap / white keys / mute, for the keyboard and the stock sequencers
+  in synth mode (MIDI out included); off in drum mode and while a sequencer plugin (euclid, dots, chord, grids …) is
+  selected.
+- **sampler+**: Shift + T2 play mode page (play mode, portamento, cutoff / resonance, envelope / velocity → cutoff).
+
+### Plugin API
+- Synth: coarse knobs (plugin.json `"coarse": [k]`): the knob turns in 8 steps.
+
+### Changed
+- Boot screen version: `op1r 44`.
+
 ## 2026-10-20 11:30 — op1r 43
 
 Output `8094f780801a06c80bf89a61aefd15de79fb266c766a1d02f6ed2e911691f0d3` (all plugins)
