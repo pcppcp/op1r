@@ -3,6 +3,24 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-22 13:30 — op1r 45
+
+Output `144c8f0ae8d39ac1f175f48323ea4796e16ad3743c0ec1c8afcfeea5b84a229a` (all plugins)
+
+### Fixed
+- **USB disk mode** ends again when the computer ejects the disk (rescan / sync / restart after copying files):
+  the MIDI automation used the same internal key event as the eject (by **Hundekraft**).
+- **grids**: the keys are taken only on the grids page, elsewhere they play as usual (by **Hundekraft**); a key held
+  while the octave changes no longer stays in the notes.
+- **dddd**: releasing the lowest key while others are held hands the wall on at once instead of fading out with
+  the release for about a second (by **Hundekraft**).
+- **scale mode**: no more stuck notes when keys and the arpeggio / endless sequencer play at the same time; MIDI
+  sequencer tracks with output S play back correctly in *white keys* mode.
+- Scale, FX2 and settings pages save once when you go on, not on every knob step (less flash writing).
+
+### Changed
+- Boot screen version: `op1r 45`.
+
 ## 2026-10-21 16:00 — op1r 44
 
 Output `737e8a8402f72916db7f765f12c44266bd4e912e172fc7e01ecfaf8804022826` (all plugins)
