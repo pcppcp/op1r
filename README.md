@@ -148,7 +148,7 @@ with:
 - **grids** (`grids` sequencer plugin): a port of Mutable Instruments Grids (Emilie Gillet): drum patterns from a
   map of real grooves. Blue / green move through the map (X / Y), white sets the fill of the selected part (press:
   next part, BD → SD → HH), red adds chaos (press: play / stop); Shift: swing, 1/16 or 1/32 steps, the part's pad
-  or note, accent amount. Drum mode plays pads; synth mode plays the held keys (or three stored notes)
+  or note, accent amount. Drum mode plays pads; synth mode plays the keys held on the grids page (or three stored notes); elsewhere the keys play as usual
 - **brassophone** (synth plugin, by nvmsocool): brass from a phase-warped sine whose timbre and pitch follow the
   envelope, with vibrato that fades in on held notes; a Dr. Seuss-style horn screen whose parts move with the knobs
 - **dddd** (synth plugin): harsh noise. Paraphonic: the first key sets the pitch, further keys add to it. Blue
