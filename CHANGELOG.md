@@ -3,6 +3,22 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-26 20:45 — op1r 46
+
+Output `f11c291d0e17e587a0a1b7e6c36e134a580305c64ce6688dc34bc563b038ace3` (all plugins)
+
+### Added
+- **nostromo** (FX plugin, by **Lewis-Clayton**): a Dattorro plate reverb as room, plate or hall, with the Chase
+  Bliss CXM 1978's controls: mid decay and bass (two RT60s, 0.34 … 10 s), treble decay, pre-delay (0 … 500 ms), mix;
+  page 2: clock (HIFI 44.1 kHz / STD 22.05 kHz with Lexicon 224-style 12-bit converters / LOFI sample and hold at
+  22 … 2.8 kHz) and 27 programs (type × diffusion × tank mod). Its screen draws the impulse response, with the
+  Nostromo from Alien riding the tail.
+
+### Changed
+- Fewer flash writes: knob changes on a sound are saved once, 1.5 s after the last turn or on a key press, instead
+  of on every step; the plugin map is no longer rewritten at every boot.
+- Boot screen version: `op1r 46`.
+
 ## 2026-10-22 13:30 — op1r 45
 
 Output `144c8f0ae8d39ac1f175f48323ea4796e16ad3743c0ec1c8afcfeea5b84a229a` (all plugins)

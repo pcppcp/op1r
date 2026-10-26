@@ -28,6 +28,9 @@ THIRD-PARTY CODE (MIT or GPL-3.0, compatible with op1r's GPL-3.0-or-later; their
   MIT License.
 - grids (sequencer plugin): a port of Mutable Instruments Grids' pattern generator and drum map, original code
   (c) 2011 Emilie Gillet, GPL-3.0 (AVR code of pichenettes/eurorack).
+- nostromo (FX plugin): the plate tank's topology, coefficients and output taps after the Synthstrom Deluge's
+  "Digital" reverb (src/deluge/dsp/reverb/digital.hpp), (c) 2024 Katherine Whitlock, GPL-3.0, itself after
+  J. Dattorro, "Effect Design, Part 1" (1997); fixed-point helpers from the Elements reverb port.
 - iter-lab.svg and the LZMA settings of op1repacker: (c) 2016 op1hacks, MIT License
   (https://github.com/op1hacks/op1repacker).
 - svgfont.py and the Oblique Strategies idea: (c) 2026 Martin Mairinger, MIT License

@@ -25,6 +25,9 @@ with:
   - **reverb**: lush plate/hall reverb, a port of the Mutable Instruments Elements reverb (time, tone, diffusion,
     mix); its own screen (Kali: graphics by DAN76): blue shows 1–6 arms, green fades in the fire (tone), white brightens the skulls,
     red lights the mix scale
+  - **nostromo**: Dattorro plate reverb as room / plate / hall with the Chase Bliss CXM 1978's controls (mid decay,
+    bass, treble, pre-delay, mix; HIFI / STD / LOFI clock with Lexicon 224-style 12-bit converters; 27 programs of
+    type × diffusion × tank mod); its screen draws the impulse response with the Nostromo from Alien riding the tail
 - **quad** LFO: four LFOs in one slot, one row each: live output, frequency, amount, target and type
   - blue frequency (0.05–20 Hz) or tempo division, green amount (±100 %), white target (synth / drum engine knob,
     envelope A D S R, FX knob, or another LFO's frequency / amount / phase offset (F / A / O), shown as a
@@ -208,6 +211,7 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 |---|---|
 | ![tape](docs/images/fx_tape.png) **tape** echo | ![clouds](docs/images/fx_clouds.png) **clouds** |
 | ![reverb](docs/images/fx_reverb.png) **reverb** | ![steve](docs/images/fx_steve.png) **steve**: four copies drifting apart, one rabbit each |
+| ![nostromo](docs/images/fx_nostromo.png) **nostromo**: the impulse response, the ship where the tail falls silent | |
 
 | LFO | Sequencer |
 |---|---|
@@ -270,7 +274,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `144c8f0ae8d39ac1f175f48323ea4796e16ad3743c0ec1c8afcfeea5b84a229a` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `f11c291d0e17e587a0a1b7e6c36e134a580305c64ce6688dc34bc563b038ace3` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
@@ -284,12 +288,13 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
 - **pcppcp**: op1r, the synth SDK and most plugins
 - **ultralazr**: the plugins arc, mixtur, palme, in a room, oracle and peal, the stroke font of their screens, the
   MIDI sequencer idea; the Oblique Strategies cards ([ultralazr/op1-oblique-strategies](https://github.com/ultralazr/op1-oblique-strategies), Martin Mairinger)
-- **Lewis-Clayton**: the randomiser tool plugin
+- **Lewis-Clayton**: the randomiser tool plugin, the nostromo reverb
 - **nvmsocool**: the brassophone synth plugin
 - **Hundekraft**: the sample-exact clouds optimisation (op1r 43)
 - **DAN76**: the reverb's Kali screen; **DAN76/Rackes**: the aether satellite-dish screen
 - **Emilie Gillet** (Mutable Instruments): Clouds and the Elements reverb, ported to fixed point (MIT License);
   Grids, its pattern generator and drum map ported (GPL-3.0)
+- **Katherine Whitlock** (Synthstrom Deluge): the "Digital" reverb after Dattorro, nostromo's reference (GPL-3.0)
 - **op1hacks**: [op1repacker](https://github.com/op1hacks/op1repacker) (iter lab graphics, LZMA settings; MIT License)
 - **Brian Eno and Peter Schmidt**: the Oblique Strategies card texts
 
