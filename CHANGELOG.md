@@ -3,6 +3,23 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-29 12:20 — op1r 47
+
+Output `68626bf78b8d04139c3cc411f88ffa5911eda713c227b01a99989f7d51e31c9a` (all plugins)
+
+### Added
+- **vapora** (synth plugin, by **AiAAAA**): six-voice PADsynth pads with two detuned playback heads per voice and
+  14 characters. Blue morph (press: character), green thickness (press: interval), white brightness, red motion
+  (press: speed). Its screen is an ocean under a starry sky with seven suns; notes ripple the water, Shift shows
+  the values. 15 factory presets are in op1r-src (`synth_sdk/plugins/vapora/presets`).
+
+### Changed
+- Less CPU for several plugins, with the same sound sample for sample (by **Hundekraft**): hand-written Blackfin
+  code for **nostromo**, **granular**, **brassophone**, **arc**, **mixtur** and parts of **clouds**; a faster
+  **reverb** loop; **dddd** and **granular** built with stronger optimisation. Starting **reverb** and **clouds** on a
+  slot costs less.
+- Boot screen version: `op1r 47`.
+
 ## 2026-10-26 20:45 — op1r 46
 
 Output `f11c291d0e17e587a0a1b7e6c36e134a580305c64ce6688dc34bc563b038ace3` (all plugins)

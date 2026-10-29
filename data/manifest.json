@@ -13,7 +13,7 @@
   {
    "path": "OP1_vdk.ldr",
    "orig_sha256": "f79d299f6f9019c998013a4176223a6a1bc999a2d8c54451346861f6ea455c74",
-   "result_sha256": "a07161f4b24d319ffbee591393992f5b81d4c0b4215365cd8ca98e1a127ba1cd",
+   "result_sha256": "a3aef3352de40825c5e5c711ae52fd73bc2387f83f319c1f66635e8abf1cfeac",
    "ops": [
     {
      "op": "replace",
@@ -36,8 +36,8 @@
     {
      "op": "replace",
      "offset": 313970,
-     "old": "522e20303032",
-     "new": "206f70317220"
+     "old": "522e203030323436",
+     "new": "206f703172203437"
     },
     {
      "op": "replace",
@@ -738,24 +738,24 @@
    "kind": "synth",
    "author": "ultralazr",
    "file": "arc.op1p",
-   "size": 15001,
-   "sha256": "28363fb6f05ad8e5cabe803a58e3509368e13a46d0401120233d207189557084"
+   "size": 15829,
+   "sha256": "974b60ad81400b02e289e2f60ef8862c88ef0fea86d457c719664c1778f84c1b"
   },
   {
    "name": "brassophone",
    "kind": "synth",
    "author": "nvmsocool",
    "file": "brassophone.op1p",
-   "size": 50049,
-   "sha256": "f7070de718cb4e97c07dd775b3bf158e3f567bfac5acc254089fff3a68bfa60b"
+   "size": 50741,
+   "sha256": "cb1b94c77a888d3d32a877692073a02fdc901b814e00b8f1991eca535962a9f8"
   },
   {
    "name": "dddd",
    "kind": "synth",
    "author": "pcppcp",
    "file": "dddd.op1p",
-   "size": 13211,
-   "sha256": "778bcfddccae9f5dd1c2bb3837d762fc78dee53a7f07f8df5102f2c042b1172c"
+   "size": 13527,
+   "sha256": "59523840ab2516ce09d5d867c814d833e647282b0c9a232ed9de7f7b5efc2e78"
   },
   {
    "name": "fmbell",
@@ -770,16 +770,16 @@
    "kind": "synth",
    "author": "pcppcp",
    "file": "granular.op1p",
-   "size": 6555,
-   "sha256": "a9e9d5a59fba66bf7089f138d8b193b967470daa2b15d518c8eb63037eb1febf"
+   "size": 9675,
+   "sha256": "c495b08b4471d98d5c67abddc218c3fe458a49e54dca0ee86a1f99aeae8a06c6"
   },
   {
    "name": "mixtur",
    "kind": "synth",
    "author": "ultralazr",
    "file": "mixtur.op1p",
-   "size": 10949,
-   "sha256": "4cfe2d7e003807e2ff7adad30c5a65755379819a2fe259bc7526ed4e7cfb5c0d"
+   "size": 11633,
+   "sha256": "a06c4b6ee81581a854837cc41ef38baf9b7b624d6a3bd774d4c0fec1ceeeb587"
   },
   {
    "name": "supersaw",
@@ -790,12 +790,20 @@
    "sha256": "bb64eb64ffe5fd5cb4facf0a53d5bcb4045c791cd4775646f59ef56b8aca70f9"
   },
   {
+   "name": "vapora",
+   "kind": "synth",
+   "author": "AiAAAA",
+   "file": "vapora.op1p",
+   "size": 484153,
+   "sha256": "d4a6ab81a434a53cbf3be9edc36d7f6e5cb5467310d31466eb186e998d48bcd1"
+  },
+  {
    "name": "clouds",
    "kind": "fx",
    "author": "pcppcp",
    "file": "clouds.op1p",
-   "size": 46617,
-   "sha256": "4cc6128eec0b5aad465d24b827ad7db1e2e85ef32621a879e82d6e60d70d9919"
+   "size": 47745,
+   "sha256": "24276985620b447f864f1d961d35d4f973f23f71ab54df723c01594101ed69cb"
   },
   {
    "name": "in a room",
@@ -810,8 +818,8 @@
    "kind": "fx",
    "author": "Lewis-Clayton",
    "file": "nostromo.op1p",
-   "size": 84452,
-   "sha256": "2acc2a2a8609726b88fc323cef77450546af9c43ff93a91c02aa78283aa01ae0"
+   "size": 85272,
+   "sha256": "c548ebd720783530b0fc2e4037349be0e8530908aa674462ebfa68d362da1658"
   },
   {
    "name": "palme",
@@ -826,8 +834,8 @@
    "kind": "fx",
    "author": "pcppcp",
    "file": "reverb.op1p",
-   "size": 39981,
-   "sha256": "f19c54cc2cf8c7a4b04a8b026629b1409f17fd46ccf1fed427dc85e01fe963a9"
+   "size": 39345,
+   "sha256": "089d5b49bc1e6565c2d5d11e598f7a46f01648accd3d5477ef2ac8d763e54d65"
   },
   {
    "name": "steve",
@@ -921,9 +929,9 @@
  "plugin_dir_template": "content",
  "plugin_file_template": "content/op1_factory.db",
  "result": {
-  "tar_sha256": "e1e04faee1f46dddc47b65e0741b57a202df428b254b9db916aa1d9b958d17b9",
-  "sha256": "f11c291d0e17e587a0a1b7e6c36e134a580305c64ce6688dc34bc563b038ace3",
-  "size": 13035766,
-  "ident": "op1r 46"
+  "tar_sha256": "7cd9b79aba0e8d282773caa6388e4cded5bcef26155e0f122fb6ee981d300a53",
+  "sha256": "68626bf78b8d04139c3cc411f88ffa5911eda713c227b01a99989f7d51e31c9a",
+  "size": 13429361,
+  "ident": "op1r 47"
  }
 }

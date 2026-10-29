@@ -154,6 +154,10 @@ with:
   or note, accent amount. Drum mode plays pads; synth mode plays the keys held on the grids page (or three stored notes); elsewhere the keys play as usual
 - **brassophone** (synth plugin, by nvmsocool): brass from a phase-warped sine whose timbre and pitch follow the
   envelope, with vibrato that fades in on held notes; a Dr. Seuss-style horn screen whose parts move with the knobs
+- **vapora** (synth plugin, by AiAAAA): six-voice PADsynth pads, two detuned playback heads per voice. Blue morph
+  (press: 14 characters), green thickness (press: interval of the second head), white brightness, red motion (press:
+  speed). Its screen is an ocean under a sky with seven suns; notes ripple the water, Shift shows the values. 15
+  factory presets in [op1r-src](https://github.com/pcppcp/op1r-src) (`synth_sdk/plugins/vapora/presets`)
 - **dddd** (synth plugin): harsh noise. Paraphonic: the first key sets the pitch, further keys add to it. Blue
   source, green feedback, white destroy, red hands; a limiter keeps it from clipping. Wasp screen
 - **FX2 routing** (Shift + mixer, **T2**; T1 = the stock overview): blue chooses what the master FX processes,
@@ -205,7 +209,7 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 | ![supersaw](docs/images/synth_supersaw.png) **supersaw** | ![fmbell](docs/images/synth_fmbell.png) **fmbell** |
 | ![granular](docs/images/synth_granular.png) **granular** | ![iter lab](docs/images/synth_iterlab.png) **iter** (lab screen) |
 | ![aether](docs/images/synth_aether.png) **aether**: the dish turns with the tilt, waves = FORM | ![brassophone](docs/images/synth_brassophone.png) **brassophone** (by nvmsocool): mutes, slide, balloon and spinner follow the knobs |
-| ![dddd](docs/images/synth_dddd.png) **dddd**: the wasp | |
+| ![dddd](docs/images/synth_dddd.png) **dddd**: the wasp | ![vapora](docs/images/synth_vapora.png) **vapora** (by AiAAAA): the ocean and the stars follow the knobs, notes ripple the water |
 
 | Effects | |
 |---|---|
@@ -274,7 +278,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `f11c291d0e17e587a0a1b7e6c36e134a580305c64ce6688dc34bc563b038ace3` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `68626bf78b8d04139c3cc411f88ffa5911eda713c227b01a99989f7d51e31c9a` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
@@ -290,7 +294,9 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
   MIDI sequencer idea; the Oblique Strategies cards ([ultralazr/op1-oblique-strategies](https://github.com/ultralazr/op1-oblique-strategies), Martin Mairinger)
 - **Lewis-Clayton**: the randomiser tool plugin, the nostromo reverb
 - **nvmsocool**: the brassophone synth plugin
-- **Hundekraft**: the sample-exact clouds optimisation (op1r 43)
+- **Hundekraft**: the sample-exact clouds optimisation (op1r 43); the Blackfin kernels of clouds, nostromo,
+  granular, brassophone, arc and mixtur and the reverb speed-up (op1r 47)
+- **AiAAAA**: the vapora synth plugin
 - **DAN76**: the reverb's Kali screen; **DAN76/Rackes**: the aether satellite-dish screen
 - **Emilie Gillet** (Mutable Instruments): Clouds and the Elements reverb, ported to fixed point (MIT License);
   Grids, its pattern generator and drum map ported (GPL-3.0)
