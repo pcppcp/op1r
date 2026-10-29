@@ -76,6 +76,9 @@ with:
 - **count-in**: with the tape stopped, hold **REC** and press **metronome**: 4 / 8 / 16 metronome clicks, then
   recording starts on the next beat and runs until STOP (REC can be released). STOP or REC + metronome again cancels.
   Audible even with the metronome level at 0. The number of beats is set on the settings page: clock / card + **T3**
+- **keyboard velocity**: the OP-1's keys always play at full velocity; set another one on the settings page (clock /
+  card + **T3**, green **VELOCITY** 1–127, default 127). Only notes played on the keys change (also what MIDI out
+  sends and the MIDI recorder records); sequencers, arpeggio and received MIDI keep theirs
 - **metronome accent**: beat 1 of each 4/4 bar clicks an octave higher (bars follow the tape; after a count-in
   they start where the recording started)
 - **Oblique Strategies cards**: **Shift + help** shows a random card from Brian Eno and Peter Schmidt's *Oblique
@@ -131,6 +134,8 @@ with:
     step (`--` = off, the default, or 0–100 %); the knob returns to its own setting after the step's gate (TIE: at the
     slot's next trigger). **Press blue** while recording to put a **lock trigger** (no note, hollow square) on an
     empty step, again to remove it; a key on it adds a note
+  - **synth engine locks** (synth mode, by **Anthony Berg**): SY1–SY4 after FX4 lock knob 1–4 of the instrument's
+    synth engine the same way (sample start / end knobs are skipped); the info line shows `LK` on a lock trigger
   - mutes (**Shift + G A B C D E**, D# all), 4 patterns (**Shift + F G A B**), lift / drop / scissors copy / paste /
     cut the slot (Shift: whole pattern), all saved
 - more synth engines: **mixtur** (subharmonic organ after Oskar Sala's Mixtur-Trautonium), **arc** (Duddell's
@@ -158,6 +163,12 @@ with:
   (press: 14 characters), green thickness (press: interval of the second head), white brightness, red motion (press:
   speed). Its screen is an ocean under a sky with seven suns; notes ripple the water, Shift shows the values. 15
   factory presets in [op1r-src](https://github.com/pcppcp/op1r-src) (`synth_sdk/plugins/vapora/presets`)
+- **blot** (synth plugin): TB-303 style acid bass: saw to square into a resonant 4-pole ladder with a decaying filter
+  envelope and accent (velocity 100 and up: further, faster, louder; with the keys at full velocity, set a lower
+  keyboard velocity to choose). Blue cutoff, green resonance, white envelope mod, red decay; **Shift + turn**: blue
+  waveform, green accent amount, white drive. Slide: mono / legato play mode with portamento. Its screen is an acid
+  house smiley: blue eyes open with the cutoff, the green smile grins with the resonance, notes open the mouth, red
+  drips grow with the decay, an accent winks, drive makes the face wiggly; the values below (Shift: the second ones)
 - **dddd** (synth plugin): harsh noise. Paraphonic: the first key sets the pitch, further keys add to it. Blue
   source, green feedback, white destroy, red hands; a limiter keeps it from clipping. Wasp screen
 - **FX2 routing** (Shift + mixer, **T2**; T1 = the stock overview): blue chooses what the master FX processes,
@@ -210,6 +221,7 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 | ![granular](docs/images/synth_granular.png) **granular** | ![iter lab](docs/images/synth_iterlab.png) **iter** (lab screen) |
 | ![aether](docs/images/synth_aether.png) **aether**: the dish turns with the tilt, waves = FORM | ![brassophone](docs/images/synth_brassophone.png) **brassophone** (by nvmsocool): mutes, slide, balloon and spinner follow the knobs |
 | ![dddd](docs/images/synth_dddd.png) **dddd**: the wasp | ![vapora](docs/images/synth_vapora.png) **vapora** (by AiAAAA): the ocean and the stars follow the knobs, notes ripple the water |
+| ![blot](docs/images/synth_blot.png) **blot**: the acid smiley (eyes, grin, mouth, drips, wink = the knobs and the notes) | |
 
 | Effects | |
 |---|---|
@@ -278,7 +290,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `68626bf78b8d04139c3cc411f88ffa5911eda713c227b01a99989f7d51e31c9a` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `b5b45d27d3f4668597a667239b143f3a49c1418b6e093340ca7d7a013d2e35c8` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
@@ -297,6 +309,7 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
 - **Hundekraft**: the sample-exact clouds optimisation (op1r 43); the Blackfin kernels of clouds, nostromo,
   granular, brassophone, arc and mixtur and the reverb speed-up (op1r 47)
 - **AiAAAA**: the vapora synth plugin
+- **Anthony Berg**: the dots synth engine locks
 - **DAN76**: the reverb's Kali screen; **DAN76/Rackes**: the aether satellite-dish screen
 - **Emilie Gillet** (Mutable Instruments): Clouds and the Elements reverb, ported to fixed point (MIT License);
   Grids, its pattern generator and drum map ported (GPL-3.0)

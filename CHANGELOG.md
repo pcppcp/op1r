@@ -3,6 +3,24 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-29 21:36 — op1r 48
+
+Output `b5b45d27d3f4668597a667239b143f3a49c1418b6e093340ca7d7a013d2e35c8` (all plugins)
+
+### Added
+- **blot** (synth plugin): TB-303 style acid bass — saw to square into a resonant 4-pole ladder, decaying filter
+  envelope, accent (velocity 100 and up). Blue cutoff, green resonance, white envelope mod, red decay; Shift + turn:
+  waveform, accent amount, drive. Its screen is an acid house smiley whose eyes, grin, mouth and drips follow the
+  knobs and the notes, with the values below. Runs as hand-written Blackfin code.
+- **Keyboard velocity**: settings page (clock / card + T3), green VELOCITY 1–127. Notes played on the OP-1's keys
+  use it (also MIDI out and the MIDI recorder); default 127 as before.
+- **dots: synth engine locks** (by **Anthony Berg**): SY1–SY4 lock knob 1–4 of the synth engine per step, like the
+  FX locks (synth mode).
+- Plugin SDK: synth engines can put their second knob values on **Shift + turn** instead of a page.
+
+### Changed
+- Boot screen version: `op1r 48`.
+
 ## 2026-10-29 12:20 — op1r 47
 
 Output `68626bf78b8d04139c3cc411f88ffa5911eda713c227b01a99989f7d51e31c9a` (all plugins)
