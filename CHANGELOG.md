@@ -3,6 +3,21 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-10-30 16:27 — op1r 49
+
+Output `cd589fa7ae159ea0bccd6afc32182b70cda5138655ce7ba9a4189a55fa31c597` (all plugins)
+
+### Changed
+- **Tape recording no longer slows the OP-1 down.** While recording, the firmware saved the clip under the playhead
+  to flash on every main-loop pass (~80 times per second), so keys, sequencers and tape loading lagged. A clip that
+  was saved less than a second ago is now held back until recording moves on or stops; 6x fewer flash writes. Normal
+  power-off saves everything; a sudden power loss while recording can lose up to 1 s.
+- **Less idle CPU:** the file system's background cleanup ran about 250 times per second with nothing to do; now at
+  most 10 times per second.
+- **Resource monitor:** bottom line pages 5 and 6 (turn blue) show the stock audio stages: whole block, master EQ,
+  output stage, decimator, tape, and the other stage timers (5 = synth FX).
+- Boot screen version: `op1r 49`.
+
 ## 2026-10-29 21:36 — op1r 48
 
 Output `b5b45d27d3f4668597a667239b143f3a49c1418b6e093340ca7d7a013d2e35c8` (all plugins)
