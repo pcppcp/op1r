@@ -186,6 +186,11 @@ with:
 - **MIDI sync** (tempo sync = MIDI in): on MIDI START the stock pattern sequencer, dots and euclid restart so their
   first step falls on the master's downbeat, also right after a pause; notes then follow the external clock within
   about 1 ms
+- **pulse clock in**: follow an analog / modular clock on the input jack. Tempo page: green on a follow mode (SYNC, or
+  PO SYNC with the link), **Shift + white** = PPQ 1 / 2 / 4 / 24 / 48 (one step from MIDI goes to 4; MIDI = stock).
+  `PPQ 4` above the sync box and a dot per detected pulse; the first pulse starts the OP-1 like MIDI start, 2 beats
+  without pulses stop it; MIDI clock is ignored meanwhile. Use an attenuator for 5–10 V modular clocks.
+  `tools/pulse_clock.py` (op1r-src) sends test pulses from a computer's headphone output
 - hidden **OP-Z controller mode** in COM → CTRL, switched on by the SysEx `F0 00 20 76 00 01 03 F7`
   from the host (any MIDI tool that can send SysEx; `F0 00 20 76 00 01 00 F7` switches it off)
 - **firmware update over USB MIDI SysEx**: `tools/op1push.py` (op1r-src) or the web patcher stage changed files
@@ -290,7 +295,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `cd589fa7ae159ea0bccd6afc32182b70cda5138655ce7ba9a4189a55fa31c597` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `1c3f9a475cc76c37410a6749419ef35597fc34152597341aa79309dd2e486a59` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**

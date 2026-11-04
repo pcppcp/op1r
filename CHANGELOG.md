@@ -3,6 +3,23 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-04 17:24 — op1r 50
+
+Output `1c3f9a475cc76c37410a6749419ef35597fc34152597341aa79309dd2e486a59` (all plugins)
+
+### Added
+- **Pulse clock in**: the OP-1 follows an analog / modular clock on the input jack. Tempo page: green on a follow
+  mode (SYNC, or PO SYNC with the link), **Shift + white** selects PPQ 1 / 2 / 4 / 24 / 48 (one step from MIDI goes
+  to 4; MIDI = stock). `PPQ 4` is shown above the sync box with a dot per detected pulse. The first pulse starts the
+  OP-1 like MIDI start, 2 beats without pulses stop it, the tempo follows the pulses and sequencer steps are spread
+  evenly between them; MIDI clock is ignored meanwhile. Measured from a computer's headphone output at 4 PPQ: 120.000
+  bpm at 120, timing jitter about 0.5 ms. Use an attenuator for 5–10 V modular clocks.
+- `tools/pulse_clock.py` (op1r-src): test pulses at any tempo / PPQ from a computer's headphone output.
+
+### Changed
+- Tempo page: the PO graphic (PO SYNC while no clock arrives) is drawn at 80 % to make room for the PPQ line.
+- Boot screen version: `op1r 50`.
+
 ## 2026-10-30 16:27 — op1r 49
 
 Output `cd589fa7ae159ea0bccd6afc32182b70cda5138655ce7ba9a4189a55fa31c597` (all plugins)
