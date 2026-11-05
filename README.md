@@ -31,7 +31,8 @@ with:
 - **quad** LFO: four LFOs in one slot, one row each: live output, frequency, amount, target and type
   - blue frequency (0.05–20 Hz) or tempo division, green amount (±100 %), white target (synth / drum engine knob,
     envelope A D S R, FX knob, or another LFO's frequency / amount / phase offset (F / A / O), shown as a
-    symbol plus a dot in the knob / LFO colour; an LFO can't target itself), red type
+    symbol plus a dot in the knob / LFO colour; an LFO can't target itself; with a plugin engine / FX also their page 2
+    knobs blue / green / white, shown with two dots `:`, right after the page-1 knobs), red type
   - types: **VOIC** (per voice), **FREE** (free-running), **GATE** (restarts at note-on), **MONO** (restarts at every
     note-on, shared), **SHOT** (one cycle after note-on, then holds), **RAND** (new random value per note)
   - press an encoder to select LFO 1–4
@@ -99,15 +100,19 @@ with:
 - **tape markers**: on the tape screen, press **red** to set a marker at the cursor, **Shift + red** press removes the
   marker under the cursor, **Shift + red** turn jumps to the next / previous marker (wraps around; works while
   playing). Up to 32 markers, shown as green ticks above the tracks, saved
-- **MIDI CC control** (USB MIDI, on the OP-1's MIDI channel):
+- **MIDI CC control** (USB MIDI), two groups, each on its own channel: COM → OP-1 page, hold **Shift**: **green** KEYS
+  CH (default: the OP-1's channel), **white** PARAM CH (default off), **red** FEEDBACK on / off (the OP-1 sends the
+  same CCs when you press keys / turn knobs, so a controller or DAW follows)
   - keys: CC = key code + 5 as in the OP-1's own CTRL mode, value ≥ 64 press / < 64 release: 5 help, 6 metronome,
     7–10 synth/drum/tape/mixer, 11–14 T1–T4, 15–17 lift/drop/scissors, 21–25 and 50–52 the keys 1–8,
-    26 sequencer, 38/39/40 REC/PLAY/STOP, 41/42 left/right, 43 Shift, 48 mic/input, 49 COM
-  - encoders: CC 102–105 = blue/green/white/red, relative (1–63 up, 65–127 down); works on every screen
-  - mixer: CC 106–109 track 1–4 volume, 110–113 pan (64 = centre), 114–117 mute (≥ 64 = muted); CC 118 tape input
-    level
-  - **synth automation** (current synth slot, absolute 0–127, changes the sound like turning the knob): CC 53–56
-    engine knobs, 57–60 envelope A/D/S/R, 72–75 FX knobs (when the FX is on), 76–79 LFO knobs (when the LFO is on)
+    26 sequencer, 38/39/40 REC/PLAY/STOP, 41/42 left/right, 43 Shift, 48 mic/input, 49 COM; encoders CC 102–105 =
+    blue/green/white/red, relative (1–63 up, 65–127 down), on every screen
+  - params (absolute 0–127 over the knob's range, changes the sound like turning the knob; page 2 = plugin engine /
+    FX page 2 blue / green / white, LFO Shift knobs): 12–15 / 16–18 synth engine / page 2, 20–23 synth envelope
+    A D S R, 24–27 / 28–31 synth LFO / page 2, 33–36 drum engine of the target pad, 37 drum target pad (default the
+    last played), 40–43 / 44–46 synth FX / page 2, 48–51 / 52–54 drum FX / page 2, 56–59 / 60–63 drum LFO / page 2,
+    70–73 / 74–76 master FX / page 2, 78–81 drum envelope, 102–105 track 1–4 volume, 106–109 pan (64 = centre),
+    110–113 mute (≥ 64 muted), 114–117 aux FX send, 118 tape input level. FX / LFO switched off: ignored
 - **MIDI sequencer** (opt-in: clock screen + **T2**, green knob **MIDI SEQ ON**): **SEQ + TAPE** opens a 4-track MIDI
   recorder that runs with the tape (same position, play / stop, loop, markers). **T1–T4** select the track
   (Shift: mute), hold **REC** to record the selected track (Shift + REC latched); from stop, REC held or Shift + REC
@@ -176,8 +181,8 @@ with:
   tape tracks' sends); green chooses where it goes, **stereo master** (not recorded) or **mono tape** (recorded on
   the selected track; in aux mode that track's own send is muted). With aux on, mixer T1 shows a send knob under
   each pan knob and smaller volume numbers: **press an encoder** to switch that track between aux (default) and
-  pan, **Shift + turn** sets the selected one. Sends follow the track's volume and mute. Works with the FX plugins
-  on the master (stock master FX keep processing the whole mix); no extra CPU while the source is master
+  pan, **Shift + turn** sets the selected one. Sends follow the track's volume and mute. Works with every master FX
+  (stock and plugin); no extra CPU while the source is master
 - **scale mode** (clock screen + **T4**): blue root, green scale (major, minor, the church modes, harmonic / melodic
   minor, pentatonics, blues), white mode: **snap** (a key outside the scale plays the scale note below), **white
   keys** (the scale's degrees on the white keys, C = root), **mute** (keys outside the scale are silent). Applies
@@ -295,7 +300,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `1c3f9a475cc76c37410a6749419ef35597fc34152597341aa79309dd2e486a59` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `e801a5dad7fa8a0142efa558e8008a656fc1ddac979c6bb26b018503bbca5c5a` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**

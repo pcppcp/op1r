@@ -3,6 +3,26 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-05 12:32 — op1r 51
+
+Output `e801a5dad7fa8a0142efa558e8008a656fc1ddac979c6bb26b018503bbca5c5a` (all plugins)
+
+### Added
+- **MIDI CC control, reworked**: two groups on their own channels, set on COM → OP-1 with Shift held: green KEYS CH
+  (key and encoder CCs, default the OP-1's channel), white PARAM CH (sound / mixer parameters, default off), red
+  FEEDBACK (the OP-1 sends the same CCs when you press keys or turn knobs). New parameter map: synth and drum engine,
+  envelope, FX and LFO knobs including plugin page 2, the drum target pad, master FX, track volume / pan / mute, aux
+  FX sends and the tape input level (list in the README). The COM panel is wider to fit the three settings.
+- **quad LFO**: targets on the page 2 of plugin engines and FX (blue / green / white), shown with two dots `:`,
+  right after the page-1 knobs in the target list.
+- **FX2 routing for every master FX**: instrument / aux source and the mono tape output now also work with the stock
+  master FX (delay, grid, punch, phone, spring, nitro, cwo), not only with FX plugins.
+
+### Changed
+- MIDI CC numbers: the old synth CCs 53–60 / 72–79 and the mixer CCs 106–118 on the OP-1's channel are replaced by
+  the new map on PARAM CH (off by default: turn it on to use parameter CCs).
+- Boot screen version: `op1r 51`.
+
 ## 2026-11-04 17:24 — op1r 50
 
 Output `1c3f9a475cc76c37410a6749419ef35597fc34152597341aa79309dd2e486a59` (all plugins)
