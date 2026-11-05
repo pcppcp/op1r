@@ -148,6 +148,13 @@ with:
   *I am sitting in a room* as a looping FX), **steve** (Steve Reich's phase process: capture a loop, 2–4 copies drift
   apart as in *It's Gonna Rain* / *Come Out* or move one unit at a time and lock as in *Piano Phase*; one rabbit per
   copy on the screen; stereo on the master, A left, B right)
+- **ENTE** (FX plugin): sidechain compressor. Blue thresh, green ratio (up to inf = ducking), white release, red
+  **source** (one entry per click, wraps): self (a plain compressor), t1–t4 (a tape track, before the fader: a muted
+  "ghost kick" track still triggers), tape (all tracks), in (mic / line input), inst (master only: the live
+  instrument), beat 1/1 … 1/16t (pumps on the tempo, no audio needed). Press blue / green / white: attack, makeup,
+  hipass (sidechain high-pass). Stereo on the master with one linked gain; with the master FX source (Shift + mixer
+  T2) on instrument, a kick on t1 ducks only your live playing. Its screen is a rubber duck squeezed flat by the gain
+  reduction
 - **aether**: a tilt theremin. The key sets the note; tilting the OP-1 forward / back bends the pitch, raising the
   right side fades the volume out, shaking adds vibrato (the angle at the key press is "home"). Blue pitch range,
   green timbre, white vibrato, red volume tilt; presses: dead zone, tilt for the full range, vibrato rate. Its
@@ -168,8 +175,8 @@ with:
   (press: 14 characters), green thickness (press: interval of the second head), white brightness, red motion (press:
   speed). Its screen is an ocean under a sky with seven suns; notes ripple the water, Shift shows the values. 15
   factory presets in [op1r-src](https://github.com/pcppcp/op1r-src) (`synth_sdk/plugins/vapora/presets`)
-- **blot** (synth plugin): TB-303 style acid bass: saw to square into a resonant 4-pole ladder with a decaying filter
-  envelope and accent (velocity 100 and up: further, faster, louder; with the keys at full velocity, set a lower
+- **blot** (synth plugin): TB-303 style acid bass: saw to square into the TB-303 ladder of Open303 (by Serhii
+  Tonkoshkuryk) with a decaying filter envelope and accent (velocity 100 and up: further, faster, louder; with the keys at full velocity, set a lower
   keyboard velocity to choose). Blue cutoff, green resonance, white envelope mod, red decay; **Shift + turn**: blue
   waveform, green accent amount, white drive. Slide: mono / legato play mode with portamento. Its screen is an acid
   house smiley: blue eyes open with the cutoff, the green smile grins with the resonance, notes open the mouth, red
@@ -237,7 +244,7 @@ Rendered on the PC from the same screen code that runs on the OP-1 (host harness
 |---|---|
 | ![tape](docs/images/fx_tape.png) **tape** echo | ![clouds](docs/images/fx_clouds.png) **clouds** |
 | ![reverb](docs/images/fx_reverb.png) **reverb** | ![steve](docs/images/fx_steve.png) **steve**: four copies drifting apart, one rabbit each |
-| ![nostromo](docs/images/fx_nostromo.png) **nostromo**: the impulse response, the ship where the tail falls silent | |
+| ![nostromo](docs/images/fx_nostromo.png) **nostromo**: the impulse response, the ship where the tail falls silent | ![ENTE](docs/images/fx_ente.png) **ENTE**: the rubber duck, squeezed by the gain reduction |
 
 | LFO | Sequencer |
 |---|---|
@@ -300,7 +307,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `e801a5dad7fa8a0142efa558e8008a656fc1ddac979c6bb26b018503bbca5c5a` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `143f587ee27ebb151eea729166812a6084a88e08af9ed7560b0d45dfd0b70147` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
@@ -320,9 +327,11 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
   granular, brassophone, arc and mixtur and the reverb speed-up (op1r 47)
 - **AiAAAA**: the vapora synth plugin
 - **Anthony Berg**: the dots synth engine locks
+- **Serhii Tonkoshkuryk**: blot's TB-303 ladder (Open303 port)
 - **DAN76**: the reverb's Kali screen; **DAN76/Rackes**: the aether satellite-dish screen
 - **Emilie Gillet** (Mutable Instruments): Clouds and the Elements reverb, ported to fixed point (MIT License);
   Grids, its pattern generator and drum map ported (GPL-3.0)
+- **Robin Schmidt** (rs-met.com): Open303's TeeBeeFilter, blot's filter reference (MIT License)
 - **Katherine Whitlock** (Synthstrom Deluge): the "Digital" reverb after Dattorro, nostromo's reference (GPL-3.0)
 - **op1hacks**: [op1repacker](https://github.com/op1hacks/op1repacker) (iter lab graphics, LZMA settings; MIT License)
 - **Brian Eno and Peter Schmidt**: the Oblique Strategies card texts

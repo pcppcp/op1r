@@ -3,6 +3,25 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-05 14:42 — op1r 52
+
+Output `143f587ee27ebb151eea729166812a6084a88e08af9ed7560b0d45dfd0b70147` (all plugins)
+
+### Added
+- **ENTE** FX plugin: a sidechain compressor. Red picks the source (one entry per click, wraps): self, a tape track
+  t1–t4 (before the fader, so a muted "ghost kick" track still triggers), tape, the input, inst (master: the live
+  instrument) or beat 1/1 … 1/16t (pumps on the tempo, no audio needed). Blue thresh, green ratio, white release;
+  press for attack, makeup and a sidechain high-pass. Stereo on the master with one linked gain; works with the
+  master FX source routing. The screen is a rubber duck that gets squeezed flat.
+- Plugin SDK: `op1_sc_source()` gives plugins this block's tape tracks, tape mix, input or instrument bus; FX list
+  knobs (`OP1_PRESS_LIST(n)`: one entry per click, wrapping).
+
+### Changed
+- **blot**: the filter is now the TB-303 ladder of Open303 and the accent decay follows the decay knob (by Serhii
+  Tonkoshkuryk).
+- Coarse synth engine knobs (dddd's source) now change on every encoder click, not every second one.
+- Boot screen version: `op1r 52`.
+
 ## 2026-11-05 12:32 — op1r 51
 
 Output `e801a5dad7fa8a0142efa558e8008a656fc1ddac979c6bb26b018503bbca5c5a` (all plugins)
