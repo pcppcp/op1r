@@ -3,6 +3,21 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-06 12:19 — op1r 54
+
+Output `8e934d20d0739b75a4c1fa31658daed32929f5e13b3c6c5c8c5964166e2f221a` (all plugins)
+
+### Fixed
+- **Crashes when a sound is saved or its type changed while it is edited** (e.g. a sampler preset, then sampler+):
+  the background job that writes a sound out could be interrupted by edits to the same sound. op1r's edits now wait
+  for such a job, and sampler+ saves the sound before the screen updates. (After Hundekraft kennel 3.1.4.)
+- **More than 42 sampler presets no longer lock the OP-1 at boot**: the presets over the firmware's limit are
+  skipped (they stay on the device, untouched).
+- **Disk mode with many sampler presets** no longer stops with "missing source file" (a file handle per preset was
+  never closed).
+- Plugin SDK: `op1_patch_wait()` before changing a sound's JSON from a screen / knob handler.
+- Boot screen version: `op1r 54`.
+
 ## 2026-11-06 11:37 — op1r 53
 
 Output `e52bc73752cd87d6f323520eaae47238583fe372f6364e5f1b57bde5309a78ff` (all plugins)

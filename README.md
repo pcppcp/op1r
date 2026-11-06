@@ -317,7 +317,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `e52bc73752cd87d6f323520eaae47238583fe372f6364e5f1b57bde5309a78ff` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `8e934d20d0739b75a4c1fa31658daed32929f5e13b3c6c5c8c5964166e2f221a` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
@@ -333,7 +333,7 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
   MIDI sequencer idea; the Oblique Strategies cards ([ultralazr/op1-oblique-strategies](https://github.com/ultralazr/op1-oblique-strategies), Martin Mairinger)
 - **Lewis-Clayton**: the randomiser tool plugin, the nostromo reverb
 - **nvmsocool**: the brassophone synth plugin
-- **Hundekraft**: the sample-exact clouds optimisation (op1r 43); the Blackfin kernels of clouds, nostromo,
+- **Hundekraft**: the patch-job / sampler-preset fixes (op1r 54, from kennel 3.1.4); the sample-exact clouds optimisation (op1r 43); the Blackfin kernels of clouds, nostromo,
   granular, brassophone, arc and mixtur and the reverb speed-up (op1r 47)
 - **AiAAAA**: the vapora synth plugin
 - **Anthony Berg**: the dots synth engine locks, tape easy bounce
