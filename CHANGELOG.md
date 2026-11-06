@@ -3,6 +3,28 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-06 15:12 — op1r 56
+
+Output `4941bda1b196407776df52f9f1a694f2b8849ec6717574c619aa0ab2f38f3a6e` (all plugins)
+
+### Added (from Hundekraft kennel 3.1.4, thanks!)
+- **Synth engines:** juni (early-80s poly), pew (drawbar organ + rotary), elg (detuned saws), hollowsaint (haunted
+  hurdy-gurdy), wavetable, taffy (phase distortion), monolit (3 oscillators + ladder), mbira (thumb piano), eva
+  (space choir), sid (C64 SID 8580 voices, after cRSID).
+- **FX:** juni_chorus (ensemble chorus, stereo), father (ambience reverb, stereo), hail (granular, after Mutable
+  Instruments Beads), washer, snowglobe, stutter (beat-locked), sister (cathedral reverb).
+- Sounds made on Hundekraft with wavetable, taffy, pew, washer or snowglobe load with them.
+- Plugin SDK: kennel's L1 pool (`op1_l1_claim`, `op1_l1_claim_state`, `op1_l1_sine_quarter`; 8 KB for the synth
+  engine), `OP1_PRESS_PAGE_SEMI` (FX pitch page), `OP1_PRESS_PAGE_STEPS(n)` (engine page-2 selector),
+  `op1_preset_trim`, `op1_fx_stereo_t`.
+
+### Fixed
+- **Plugins beyond the 32nd file were silently not loaded.** Up to 96 now; any over the limit show as refused on
+  the resource monitor.
+
+### Changed
+- Boot screen version: `op1r 56`.
+
 ## 2026-11-06 14:16 — op1r 55
 
 Output `07f30a954c1e929cc8c5c05c83b24ffa032beaa34daa2335f6ab3561f4ec6b3c` (all plugins)
