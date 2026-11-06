@@ -3,6 +3,19 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-06 14:16 — op1r 55
+
+Output `07f30a954c1e929cc8c5c05c83b24ffa032beaa34daa2335f6ab3561f4ec6b3c` (all plugins)
+
+### Changed
+- **Engines and FX that use sine waves need much less CPU**: the firmware's sine table now sits in the OP-1's fast
+  internal memory (unused by op1r: it held the Lander game's sounds). fmbell with 6 voices: about 12 % -> 6 % of the
+  time; supersaw, aether, blot, brassophone, granular, tape, the quad LFO and others gain too. Sounds are unchanged
+  (the same table values).
+- Plugin SDK: `op1_sin(k)` (sin(2 pi k / 8192)) reads the fast copy; use it instead of `OP1_SINE_TABLE[...]` in audio
+  code. Plugins built with it need op1r 55.
+- Boot screen version: `op1r 55`.
+
 ## 2026-11-06 12:19 — op1r 54
 
 Output `8e934d20d0739b75a4c1fa31658daed32929f5e13b3c6c5c8c5964166e2f221a` (all plugins)
