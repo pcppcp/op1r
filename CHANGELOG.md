@@ -3,6 +3,33 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-06 11:37 — op1r 53
+
+Output `e52bc73752cd87d6f323520eaae47238583fe372f6364e5f1b57bde5309a78ff` (all plugins)
+
+### Added
+- **pond** LFO: four species competing for one pond (a chaotic Lotka–Volterra system), four outputs with their own
+  amount and target, a chaos knob from a gentle regular swing to irregular booms; the screen draws the system's trail
+  in the colours of the leading species.
+- **quad** LFO: **lorenz x / z** waveforms (the Lorenz attractor, smooth and never repeating) with a chaos setting
+  (R28 … R14, Shift + blue).
+- **tape** FX page 2: blue press **heads** (1, 2, 3, dotted, swing), green press **mix**; white turned past the
+  longest time **syncs** the echo to the tempo (1/16 … 1/2), the dial turns into a window with the division. Older
+  tape sounds play as before.
+- **Easy bounce** (by Anthony Berg): Shift + lift all tracks, then **Shift + drop** sums the four tracks onto the
+  selected track.
+- **Crash screen**: the error screen adds the op1r version, the stack pointer and the code addresses on the crashed
+  stack (plugins by name + offset), so a photo of it tells us where a crash happened.
+- Plugin SDK: `OP1_PRESS_EXTEND(n)` (a knob that steps a saved value past the top of its range),
+  `op1_knobs_shown()` / `op1_page2_live()` (page-2 values as the LFO modulates them).
+
+### Changed
+- Plugin screens show page-2 values moving with the quad LFO (dddd, ENTE, nostromo, in a room, …).
+- LFO targets in the pond / quad screens: `inst` / `fx` with a coloured dot (two dots = page 2); triplets in
+  lowercase (`1/4t`).
+- FX page-2 values no longer go below 1 (0 means "unset" in older sounds).
+- Boot screen version: `op1r 53`.
+
 ## 2026-11-05 14:42 — op1r 52
 
 Output `143f587ee27ebb151eea729166812a6084a88e08af9ed7560b0d45dfd0b70147` (all plugins)

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="320px" height="160px" viewBox="0 0 320 160">
+<!-- pond LFO (lfo/quadlfo.c, docs/64): the axes (species 1 - 3 across, 2 - 4 up); trail, bars and texts drawn by code -->
+<line fill="none" stroke="#6F7173" stroke-width="1" x1="165" y1="6" x2="165" y2="98"/>
+<line fill="none" stroke="#6F7173" stroke-width="1" x1="40" y1="52" x2="300" y2="52"/>
+</svg>

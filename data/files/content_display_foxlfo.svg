@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="320px" height="160px" viewBox="0 0 320 160">
+<!-- fox LFO (lfo/quadlfo.c, docs/63): the axes of the rabbits / foxes plane; trail, dots and texts are drawn by code -->
+<polyline fill="none" stroke="#6F7173" stroke-width="1" points="30,6 30,98 300,98"/>
+</svg>

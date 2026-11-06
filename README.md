@@ -16,10 +16,13 @@ with:
 - animated **lab screen for the stock iter synth**: gauges follow the knobs; bubbles, flame, falling dashes, voice
   dots and a note display react to the knobs and to what you play (graphic: `iter-lab.svg` from
   [op1repacker](https://github.com/op1hacks/op1repacker), MIT License, © 2016 op1hacks)
-- boot screen shows `op1r <version>` under the TE logo
+- boot screen shows `op1r <version>` under the TE logo; after a crash the error screen adds the op1r version and the
+  code addresses on the crashed stack (plugins by name): please include a photo of it in bug reports
 - custom FX with their own screens, usable on instruments **and as master FX** (mixer):
   - **tape**: vintage tape echo (time with tape-speed pitch bends, feedback up to self-oscillation, wow &
-    flutter, age)
+    flutter, age); press blue for **heads** (1, 2, 3 play heads, dotted, swing), press green for **mix** (dry / wet);
+    turn white past the longest time to **sync** the echo to the tempo (1/16 … 1/2, dotted, triplets: the white dial
+    becomes a window with the division), turn back down for free time
   - **clouds**: granular texture FX, a port of Mutable Instruments Clouds (position, size, pitch, density;
     encoder presses switch to a second page, red press freezes)
   - **reverb**: lush plate/hall reverb, a port of the Mutable Instruments Elements reverb (time, tone, diffusion,
@@ -37,7 +40,12 @@ with:
     note-on, shared), **SHOT** (one cycle after note-on, then holds), **RAND** (new random value per note)
   - press an encoder to select LFO 1–4
   - hold **Shift** for a table of all four LFOs: blue phase offset, green smoothing, white waveform (sine, triangle,
-    ramp up/down, square, sample & hold), red sync to the OP-1 tempo (4/1 … 1/32, triplets)
+    ramp up/down, square, sample & hold, **lorenz x / z**: the Lorenz attractor, smooth and never repeating; blue
+    then sets its chaos R28 … R14), red sync to the OP-1 tempo (4/1 … 1/32, triplets)
+- **pond** LFO: four species competing for one pond (a chaotic Lotka–Volterra system): four outputs, each with its
+  own amount and target (press an encoder to select species 1–4); blue speed, green chaos (a gentle regular swing at
+  0 %, irregular booms at 100 %), white amount, red target; Shift: blue free / sync, green retrigger at note-on. The
+  screen draws the system's trail, each dot in the colour of the species that led then, and four population bars
 - **euclid** sequencer, an extra sequencer next to the stock ones (pick it in the sequencer list), for synth and drums
   - 6 sequencer slots, each playing one note; **Shift + white** selects the slot, a note key on the euclid screen
     assigns its note, at the octave of that moment
@@ -97,6 +105,8 @@ with:
   knob switches between **MASTER** (track channels silent, saves 5–7 % CPU; default) and **MASTER + TRACKS**; the
   setting is saved. Tested on Linux and macOS (Windows untested: if the OP-1 still shows 2 channels, remove the old
   OP-1 device entry once)
+- **easy bounce** (by Anthony Berg): lift all four tracks between the loop points (Shift + lift), select a track,
+  **Shift + drop**: the four tracks are summed and dropped on that track at the playhead
 - **tape markers**: on the tape screen, press **red** to set a marker at the cursor, **Shift + red** press removes the
   marker under the cursor, **Shift + red** turn jumps to the next / previous marker (wraps around; works while
   playing). Up to 32 markers, shown as green ticks above the tracks, saved
@@ -307,7 +317,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `143f587ee27ebb151eea729166812a6084a88e08af9ed7560b0d45dfd0b70147` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `e52bc73752cd87d6f323520eaae47238583fe372f6364e5f1b57bde5309a78ff` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
@@ -326,7 +336,7 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
 - **Hundekraft**: the sample-exact clouds optimisation (op1r 43); the Blackfin kernels of clouds, nostromo,
   granular, brassophone, arc and mixtur and the reverb speed-up (op1r 47)
 - **AiAAAA**: the vapora synth plugin
-- **Anthony Berg**: the dots synth engine locks
+- **Anthony Berg**: the dots synth engine locks, tape easy bounce
 - **Serhii Tonkoshkuryk**: blot's TB-303 ladder (Open303 port)
 - **DAN76**: the reverb's Kali screen; **DAN76/Rackes**: the aether satellite-dish screen
 - **Emilie Gillet** (Mutable Instruments): Clouds and the Elements reverb, ported to fixed point (MIT License);
