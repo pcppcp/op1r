@@ -3,6 +3,34 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-08 14:04 — op1r 57
+
+Output `36247ce8c758b2b6863b91599694aadca242e7d6a78bf7d66632b2e04499a2bc` (all plugins)
+
+### Fixed
+- **Synth engines ran at twice their design speed** (thanks Hundekraft, issue 36): the OP-1 renders voices at
+  88.2 kHz, not 44.1 kHz, so envelopes, LFOs and decays ran 2x fast and filters sat an octave high. Fixed in
+  supersaw, fmbell, blot, mixtur, arc, granular, aether, brassophone, dddd, vapora, drum+, sampler+ and the 10
+  Hundekraft synths (updated to kennel 3.2.2). Checked on the OP-1. **Saved sounds with these engines sound
+  different** (slower envelopes and modulation, darker filters), as they were designed to.
+- **quad LFO** rates were 2x too fast on per-voice and tempo-synced LFOs; they now match the screen (a synced 1/4 at
+  120 BPM is 2 Hz). Smoothing no longer stops short of the target.
+- **Sequencers, drum mode:** sequenced drum pads played sharp (pad k k semitones up); they now play at the pad's own
+  pitch (euclid, dots, oracle, peal, grids, chord).
+- **Sequencers, USB MIDI:** a USB MIDI note was recorded / played an octave off when the synth octave was not 0
+  (dots, euclid, oracle, peal, grids, chord).
+- **ente:** the attack now ramps the gain reduction in, no click on every duck at slow attacks.
+- **FX2 aux:** with every send at 0, FX2 no longer processes the whole master.
+- **blot:** the first note after switching from another engine no longer clicks or sticks.
+- **Tombola:** balls no longer fall out of the hexagon after slow screen frames.
+- **sampler+:** the sample browser closes when T1 is left (T2 knobs no longer dead).
+- **Hollow Saint and juni** are built with their compiler flags (plugin.json "cflags"): Hollow Saint's CPU savings.
+- **stutter:** beat length from the beat clock.
+
+### Changed
+- The **fox** LFO is removed (it was not in the LFO list). Sounds saved with it load with a silent quad LFO.
+- Boot screen version: `op1r 57`.
+
 ## 2026-11-06 15:12 — op1r 56
 
 Output `4941bda1b196407776df52f9f1a694f2b8849ec6717574c619aa0ab2f38f3a6e` (all plugins)
