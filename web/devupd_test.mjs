@@ -1,10 +1,10 @@
 // node devupd_test.mjs: devupd.js framing against tools/op1push.py vectors + a push to a simulated OP-1
 import * as DU from './devupd.js';
 import assert from 'node:assert';
-// vectors from op1push.py: build(DATA, 300, bytes(range(200))[:12]), crc32(b'123456789')
+// vectors from tools/op1push.py: build(DATA, 300, bytes(i * 23 & 255 for i in range(12))).hex(), crc32(b'123456789')
 assert.equal(DU.crc32(new TextEncoder().encode('123456789')), 0xCBF43926);
 const v = DU.build(DU.DATA, 300, Uint8Array.from({ length: 12 }, (_, i) => i * 23));
-assert.equal(Buffer.from(v).toString('hex'), process.argv[2]);
+assert.equal(Buffer.from(v).toString('hex'), process.argv[2] || 'f00020767d032c024000172e455c730a1f21384f667df7');
 for (let n = 0; n < 40; n++) { const b = Uint8Array.from({ length: n }, (_, i) => (i * 97 + n) & 255); assert.deepEqual(DU.unpack7(Uint8Array.from(DU.pack7(b))), b); }
 assert(DU.userData('content/audio/drum/drum_1.raw') && DU.userData('content/tape.db') && !DU.userData('content/op1_factory.db') && !DU.userData('content/op1.dbx'));
 assert(DU.pathOk('content/display/a.svg') && DU.pathOk('OP1_vdk.ldr') && !DU.pathOk('te-boot.ldr') && !DU.pathOk('content/../x'));

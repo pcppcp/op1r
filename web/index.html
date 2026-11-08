@@ -5,51 +5,90 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>op1r – OP-1 custom firmware patcher</title>
 <style>
-  body { font: 16px/1.5 system-ui, sans-serif; background: #111; color: #eee; max-width: 720px; margin: 40px auto; padding: 0 16px; }
-  h1 { font-weight: 600; } h2 { font-weight: 600; font-size: 19px; margin-top: 32px; } a { color: #4D9EFF; }
-  #drop { border: 2px dashed #6F7173; border-radius: 12px; padding: 40px 16px; text-align: center; cursor: pointer; }
+  body { font: 15px/1.5 system-ui, sans-serif; background: #111; color: #eee; max-width: 1180px; margin: 32px auto; padding: 0 16px; }
+  h1 { font-weight: 600; margin: 0 0 4px; } h2 { font-weight: 600; font-size: 17px; margin: 0 0 10px; } a { color: #4D9EFF; }
+  p { margin: 8px 0; } code { font-size: 13px; }
+  .ok { color: #00ED95; } .err { color: #FF3A5D; } .warn { color: #FFD24D; } .dim { color: #8a8c8e; }
+  .intro { max-width: 780px; color: #ccc; }
+  .grid { display: grid; grid-template-columns: 260px minmax(0, 1fr) 260px; gap: 16px; align-items: start; margin-top: 20px; }
+  .panel { background: #1b1b1d; border: 1px solid #2a2a2d; border-radius: 12px; padding: 16px; }
+  .side { position: sticky; top: 16px; }
+  @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } .side { position: static; } .grid > .panel:nth-child(2) { order: 1; } }
+  #drop { border: 2px dashed #6F7173; border-radius: 10px; padding: 28px 12px; text-align: center; cursor: pointer; font-size: 14px; }
   #drop.over { border-color: #00ED95; }
-  #log { background: #000; padding: 12px; border-radius: 8px; white-space: pre-wrap; font: 13px/1.4 monospace; min-height: 4em; }
-  .ok { color: #00ED95; } .err { color: #FF3A5D; } .warn { color: #FFD24D; } .dim { color: #6F7173; }
-  table { border-collapse: collapse; } td { padding: 2px 14px 2px 0; }
-  button, .btn { display: inline-block; margin: 12px 8px 4px 0; padding: 10px 18px; background: #4D9EFF; color: #000; border-radius: 8px;
-    text-decoration: none; font-weight: 600; border: 0; font-size: 15px; cursor: pointer; }
-  button:disabled { opacity: .4; cursor: default; } .green { background: #00ED95; } .grey { background: #AEB1DC; }
+  #log { background: #000; padding: 12px; border-radius: 8px; white-space: pre-wrap; font: 13px/1.4 monospace; min-height: 4em; margin-top: 16px; }
+  button, .btn { display: block; width: 100%; box-sizing: border-box; margin: 8px 0 0; padding: 10px 14px; background: #4D9EFF; color: #000;
+    border-radius: 8px; text-decoration: none; font-weight: 600; border: 0; font-size: 14px; cursor: pointer; text-align: center; }
+  button:disabled { opacity: .35; cursor: default; } .green { background: #00ED95; } .grey { background: #AEB1DC; }
   #dl { display: none; }
+  /* device status */
+  .status { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #111; border-radius: 8px; }
+  .led { width: 10px; height: 10px; border-radius: 50%; background: #3a3b3d; flex: none; }
+  .led.on { background: #00ED95; box-shadow: 0 0 8px #00ED9580; } .led.busy { background: #FFD24D; }
+  #devstate { font-weight: 600; } #devinfo { font-size: 13px; margin-top: 8px; min-height: 1.5em; }
+  /* plugin table: fixed layout, every row the same height */
+  #plugins { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  #plugins th { text-align: left; font-weight: 500; font-size: 12px; color: #8a8c8e; text-transform: lowercase; padding: 0 8px 6px;
+    border-bottom: 1px solid #2a2a2d; }
+  #plugins td { height: 34px; padding: 0 8px; border-bottom: 1px solid #222225; white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis; vertical-align: middle; }
+  #plugins tr.row:hover td { background: #222226; }
+  #plugins tr.group td { height: 30px; font-size: 12px; color: #8a8c8e; text-transform: lowercase; padding-top: 10px; border-bottom: 1px solid #2a2a2d; }
+  #plugins .c-chk { width: 28px; } #plugins .c-ico { width: 28px; } #plugins .c-size { width: 72px; text-align: right; }
+  #plugins .c-auth { width: 26%; } #plugins .c-dev { width: 52px; text-align: center; }
+  #plugins td.c-dev .ico { margin: 0 auto; }
+  #plugins td.c-size { text-align: right; font-variant-numeric: tabular-nums; }
+  .ico { width: 18px; height: 18px; display: block; }
+  .legend { display: flex; gap: 16px; font-size: 12px; color: #8a8c8e; margin-top: 8px; min-height: 18px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .tag { font-size: 11px; color: #AEB1DC; border: 1px solid #44465a; border-radius: 4px; padding: 0 4px; margin-left: 6px; }
+  input[type=checkbox] { accent-color: #00ED95; width: 16px; height: 16px; margin: 0; vertical-align: middle; }
+  .own { font-size: 13px; margin-top: 12px; }
 </style>
 </head>
 <body>
 <h1>op1r – OP-1 custom firmware</h1>
-<p>Turns the original Teenage Engineering OP-1 firmware <b>R246</b> (<code>op1_246.op1</code>) into the op1r custom
-firmware, and manages the synth engines and effects on your OP-1. Everything runs in your browser: your firmware file
-is <b>not uploaded</b> anywhere.</p>
+<p class="intro">Turns the original Teenage Engineering OP-1 firmware <b>R246</b> (<code>op1_246.op1</code>) into the
+op1r custom firmware, and manages the synth engines and effects on your OP-1. Everything runs in your browser: your
+firmware file is <b>not uploaded</b> anywhere.</p>
 
-<h2>1. Synths and effects</h2>
-<p>Ticked ones are installed. Sounds that use a missing one play the stock iter / filter until it is back.</p>
-<table id="plugins"></table>
-<p class="dim">Own plugin files (<code>.op1p</code>, e.g. from <code>make_plugin.py</code>; installed over USB):
-<input id="own" type="file" accept=".op1p" multiple></p>
-<p class="warn">Warning: a plugin is program code that runs inside the OP-1 with full access. Only install plugin files
-from people you trust. A faulty or malicious plugin can crash or lock the OP-1, damage your sounds and tapes, or
-break the device.</p>
+<div class="grid">
+<div class="panel side">
+  <h2>Firmware file</h2>
+  <p class="dim">For the OP-1's bootloader update mode, or when the OP-1 runs stock / an older op1r: get the original
+  <code>op1_246.op1</code> from teenage.engineering and drop it here (about half a minute). Download the result or send
+  it over USB.</p>
+  <div id="drop">Drop <code>op1_246.op1</code> here<br>or click to choose<input id="file" type="file" accept=".op1" hidden></div>
+  <a id="dl" class="btn green" download="op1_246_op1r.op1">Download op1_246_op1r.op1</a>
+</div>
 
-<h2>2. Firmware file</h2>
-<p>For the OP-1's bootloader update mode, or when the OP-1 runs stock / an older op1r: get the original
-<code>op1_246.op1</code> from teenage.engineering, drop it below (takes about half a minute), then download the result
-or send it over USB (section 3).</p>
-<div id="drop">Drop <code>op1_246.op1</code> here, or click to choose<input id="file" type="file" accept=".op1" hidden></div>
-<a id="dl" class="btn green" download="op1_246_op1r.op1">Download op1_246_op1r.op1</a>
+<div class="panel">
+  <h2>Synths and effects</h2>
+  <p class="dim">Ticked ones are installed. Sounds that use a missing one play the stock iter / filter until it is back.</p>
+  <table id="plugins"></table>
+  <div id="legend" class="legend"></div>
+  <p class="own dim">Own plugin files (<code>.op1p</code>, e.g. from <code>make_plugin.py</code>; installed over USB):
+  <input id="own" type="file" accept=".op1p" multiple></p>
+  <p class="warn" style="font-size:13px">Warning: a plugin is program code that runs inside the OP-1 with full access. Only
+  install plugin files from people you trust. A faulty or malicious plugin can crash or lock the OP-1, damage your
+  sounds and tapes, or break the device.</p>
+</div>
 
-<h2>3. OP-1 on USB</h2>
-<p>An OP-1 running op1r updates over USB MIDI (SysEx) without the bootloader: only what differs is sent, then the
-OP-1 asks – <b>T1</b> restarts and applies, <b>T2</b> cancels. Needs a browser with Web MIDI (Chrome, Edge).</p>
-<button id="connect">Connect OP-1</button>
-<button id="engines" disabled>Update synths and effects</button>
-<button id="full" disabled>Update firmware + synths and effects</button>
-<p id="devinfo" class="dim"></p>
+<div class="panel side">
+  <h2>OP-1 on USB</h2>
+  <div class="status"><span id="led" class="led"></span><span id="devstate">not connected</span></div>
+  <p id="devinfo" class="dim"></p>
+  <button id="connect">Connect OP-1</button>
+  <button id="engines" disabled>Update synths and effects</button>
+  <button id="full" disabled>Update firmware + synths and effects</button>
+  <p class="dim" style="font-size:13px">An OP-1 running op1r updates over USB MIDI without the bootloader: only what
+  differs is sent, then the OP-1 asks – <b>T1</b> restarts and applies, <b>T2</b> cancels. Needs Web MIDI (Chrome,
+  Edge).</p>
+</div>
+</div>
 
 <pre id="log"></pre>
-<p>The original firmware can always be flashed back. Use at your own risk.
+<p class="dim">The original firmware can always be flashed back. Use at your own risk.
 <a href="https://github.com/pcppcp/op1r">Source, changelog and command-line patcher</a>.
 Like it? <a href="https://ko-fi.com/pcppcp">Buy me a coffee on Ko-fi</a>.</p>
 <script type="module">
@@ -65,24 +104,58 @@ function addRow(p) {
   rows.set(p.file, { ...p, checked: true });
   render();
 }
+// type icons (OP-1 colours, line style) and the on-device marks
+const KINDS = [['synth', 'synth engines', '#4D9EFF', '<path d="M2 9c2-6 4-6 5.5 0s3.5 6 5.5 0 3-4 3-4"/>'],
+  ['fx', 'effects', '#00ED95', '<circle cx="9" cy="9" r="6.5"/><path d="M9 9 13 5"/>'],
+  ['seq', 'sequencers', '#FFFFFF', '<path d="M3 4h2M8 4h2M13 4h2M3 9h2M13 9h2M8 14h2M3 14h2"/>'],
+  ['drum', 'drum kits', '#FF3A5D', '<circle cx="9" cy="9" r="6.5"/><circle cx="9" cy="9" r="2"/>'],
+  ['sampler', 'samplers', '#DFD9FF', '<path d="M3 9h0M5 6v6M7 3v12M9 7v4M11 5v8M13 8v2M15 6v6"/>'],
+  ['tool', 'tools', '#AEB1DC', '<rect x="3" y="3" width="12" height="12" rx="2"/><path d="M6 9h6"/>']];
+const KIND = Object.fromEntries(KINDS.map(([k, label, col, d], i) => [k, { i, label, col, d }]));
+const svg = (d, col, w = 1.8) => `<svg class="ico" viewBox="0 0 18 18" fill="none" stroke="${col}" stroke-width="${w}" stroke-linecap="butt">${d}</svg>`;
+const DEV = { on: ['#00ED95', '<circle cx="9" cy="9" r="6.5" fill="#00ED95" stroke="none"/><path d="M5.5 9.2 8 11.5 12.5 6.5" stroke="#000" stroke-width="2"/>', 'on the OP-1'],
+              other: ['#FFD24D', '<circle cx="9" cy="9" r="6.5"/><circle cx="9" cy="9" r="2.5" fill="#FFD24D" stroke="none"/>', 'other version'],
+              off: ['#6F7173', '<circle cx="9" cy="9" r="6.5"/>', 'not on the OP-1'] };
 function render() {
   const t = $('plugins'); t.textContent = '';
-  const order = (r) => (r.kind === 'synth' ? 0 : r.kind === 'fx' ? 1 : r.kind === 'seq' ? 2 : r.kind === 'drum' ? 3 : r.kind === 'sampler' ? 4 : r.kind === 'tool' ? 5 : 6) + r.name;
-  for (const r of [...rows.values()].sort((a, b) => order(a).localeCompare(order(b)))) {
-    const tr = document.createElement('tr'), c = document.createElement('input');
+  const head = document.createElement('tr');
+  for (const [c, x] of [['c-chk', ''], ['c-ico', ''], ['c-name', 'name'], ['c-auth', 'author'], ['c-size', 'size'], ['c-dev', installed ? 'op-1' : '']]) {
+    const th = document.createElement('th'); th.className = c; th.textContent = x; head.append(th);
+  }
+  t.append(head);
+  const k = (r) => (KIND[r.kind] ? KIND[r.kind].i : 9);
+  let group = null;
+  for (const r of [...rows.values()].sort((a, b) => k(a) - k(b) || a.name.localeCompare(b.name))) {
+    const kd = KIND[r.kind];
+    if (group !== k(r)) {                                           // a header row per type
+      group = k(r);
+      const g = document.createElement('tr'), td = document.createElement('td');
+      g.className = 'group'; td.colSpan = 6; td.textContent = kd ? kd.label : 'other'; g.append(td); t.append(g);
+    }
+    const tr = document.createElement('tr'); tr.className = 'row';
+    const cell = (cls) => { const td = document.createElement('td'); td.className = cls; tr.append(td); return td; };
+    const c = document.createElement('input');
     c.type = 'checkbox'; c.checked = r.checked; c.onchange = () => { r.checked = c.checked; };
-    const cell = (x, cls) => { const td = document.createElement('td'); td.textContent = x; if (cls) td.className = cls; tr.append(td); return td; };
-    const l = document.createElement('td'); l.append(c); tr.append(l);
-    cell(r.name); cell(r.author ? `(${r.author})` : '', 'dim'); cell(r.kind || '?', 'dim');
-    cell(r.size === undefined ? '' : `${(r.size / 1024).toFixed(1)} KB`, 'dim');
-    let st = '';
+    cell('c-chk').append(c);
+    const ic = cell('c-ico'); ic.title = r.kind || 'unknown'; ic.innerHTML = kd ? svg(kd.d, kd.col) : svg('<circle cx="9" cy="9" r="2"/>', '#6F7173');
+    const nm = cell('c-name'); nm.textContent = r.name; nm.title = r.file;
+    if (r.own) { const s = document.createElement('span'); s.className = 'tag'; s.textContent = 'own file'; nm.append(s); }
+    const au = cell('c-auth dim'); au.textContent = r.author || ''; au.title = r.author || '';
+    cell('c-size dim').textContent = r.size === undefined ? '' : `${(r.size / 1024).toFixed(1)} KB`;
+    const dv = cell('c-dev');
     if (installed) {
       const on = installed.find((i) => i.file === r.file);
-      st = !on ? 'not on the OP-1' : r.size === undefined || on.size === r.size ? 'on the OP-1' : 'on the OP-1, other version';
+      const st = !on ? 'off' : r.size === undefined || on.size === r.size ? 'on' : 'other';
+      const [col, d, label] = DEV[st];
+      dv.innerHTML = svg(d, col); dv.title = label;
     }
-    cell(st + (r.own ? (st ? ', ' : '') + 'own file' : ''), 'dim');
     t.append(tr);
   }
+  $('legend').innerHTML = installed ? Object.values(DEV).map(([col, d, label]) => `<span>${svg(d, col)}${label}</span>`).join('') : '';
+}
+function setDev(state, text) {                                      // the status panel: off / on / busy
+  $('led').className = 'led' + (state === 'on' ? ' on' : state === 'busy' ? ' busy' : '');
+  $('devstate').textContent = text;
 }
 const selected = () => [...rows.values()].filter((r) => r.checked);
 function pluginInfo(d) {                    // { name, kind, author } from a .op1p (trailer -> header -> metadata)
@@ -169,7 +242,8 @@ async function find(verbose) {
   if (!d) { if (verbose) log('no OP-1 with op1r found on USB MIDI (COM mode, op1r firmware?)', 'warn'); return; }
   dev = d;
   const rel = man && man.result.ident;
-  $('devinfo').textContent = `Connected: ${dev.ident || 'op1r'} (update protocol ${dev.proto})` +
+  setDev('on', dev.ident || 'op1r');
+  $('devinfo').textContent = `update protocol ${dev.proto}` +
     (rel && dev.ident && !dev.ident.startsWith(rel) ? ` – this page installs ${rel}` : '');
   log(`OP-1 found: ${dev.ident || 'op1r'} (update protocol ${dev.proto})`, 'ok');
   if (dev.proto >= 3) {
@@ -179,18 +253,19 @@ async function find(verbose) {
     }
     for (const r of rows.values()) r.checked = installed.some((i) => i.file === r.file);   // tick = on the OP-1
     render();
+    $('devinfo').textContent += ` · ${installed.length} plugins on the OP-1`;
     log(`${installed.length} synths / effects on the OP-1 (ticked); change the ticks and press "Update synths and effects".`);
     if (rel && dev.ident && !dev.ident.startsWith(rel))
-      log(`The OP-1 runs ${dev.ident}; for the ${rel} firmware build the firmware file (section 2) and update both.`, 'warn');
+      log(`The OP-1 runs ${dev.ident}; for the ${rel} firmware build the firmware file (left panel) and update both.`, 'warn');
   } else {
     installed = null; render();
-    log('This op1r cannot manage plugin files yet: build the firmware file (section 2) and press "Update firmware + ...".', 'warn');
+    log('This op1r cannot manage plugin files yet: build the firmware file (left panel) and press "Update firmware + ...".', 'warn');
   }
   buttons();
 }
 async function update(withFirmware) {
   if (busy || !dev) return;
-  busy = true; buttons();
+  busy = true; buttons(); setDev('busy', 'updating ...');
   let ok = false;
   try {
     const plug = [];
@@ -208,6 +283,7 @@ async function update(withFirmware) {
   } catch (e) { log('ERROR: ' + e.message, 'err'); }
   busy = false;
   dev.link.close(); dev = null; installed = null; buttons(); render();
+  setDev('off', ok ? 'restarting' : 'not connected');
   $('devinfo').textContent = ok ? 'The OP-1 restarts; connect again afterwards.' : '';
 }
 $('connect').onclick = connect;
