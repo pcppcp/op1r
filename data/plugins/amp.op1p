@@ -1,0 +1,450 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="160" viewBox="0 0 320 160">
+<path d="M130,18c20,-10.7,40,-10.7,60,0" fill="none" stroke="#785577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M126,18v-3h7" fill="none" stroke="#785577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M187,15h7v3" fill="none" stroke="#785577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M96,19h128c4,0,6,2,6,6v100c0,4,-2,6,-6,6h-128c-4,0,-6,-2,-6,-6v-100c0,-4,2,-6,6,-6z" fill="#000000" stroke="#785577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M95,23h130v32h-130z" fill="#22292e"/>
+<path d="M100,133h10v4h-10z" fill="#785577"/>
+<path d="M210,133h10v4h-10z" fill="#785577"/>
+<path d="M97,64h8v3h-8z" fill="#4c3e52"/>
+<path d="M111,64h8v3h-8z" fill="#4c3e52"/>
+<path d="M125,64h8v3h-8z" fill="#4c3e52"/>
+<path d="M139,64h8v3h-8z" fill="#4c3e52"/>
+<path d="M181,64h8v3h-8z" fill="#4c3e52"/>
+<path d="M195,64h8v3h-8z" fill="#4c3e52"/>
+<path d="M209,64h8v3h-8z" fill="#4c3e52"/>
+<path d="M100,72h8v3h-8z" fill="#4c3e52"/>
+<path d="M114,72h8v3h-8z" fill="#4c3e52"/>
+<path d="M128,72h8v3h-8z" fill="#4c3e52"/>
+<path d="M184,72h8v3h-8z" fill="#4c3e52"/>
+<path d="M198,72h8v3h-8z" fill="#4c3e52"/>
+<path d="M212,72h8v3h-8z" fill="#4c3e52"/>
+<path d="M97,80h8v3h-8z" fill="#4c3e52"/>
+<path d="M111,80h8v3h-8z" fill="#4c3e52"/>
+<path d="M125,80h8v3h-8z" fill="#4c3e52"/>
+<path d="M195,80h8v3h-8z" fill="#4c3e52"/>
+<path d="M209,80h8v3h-8z" fill="#4c3e52"/>
+<path d="M100,88h8v3h-8z" fill="#4c3e52"/>
+<path d="M114,88h8v3h-8z" fill="#4c3e52"/>
+<path d="M198,88h8v3h-8z" fill="#4c3e52"/>
+<path d="M212,88h8v3h-8z" fill="#4c3e52"/>
+<path d="M97,96h8v3h-8z" fill="#4c3e52"/>
+<path d="M111,96h8v3h-8z" fill="#4c3e52"/>
+<path d="M125,96h8v3h-8z" fill="#4c3e52"/>
+<path d="M195,96h8v3h-8z" fill="#4c3e52"/>
+<path d="M209,96h8v3h-8z" fill="#4c3e52"/>
+<path d="M100,104h8v3h-8z" fill="#4c3e52"/>
+<path d="M114,104h8v3h-8z" fill="#4c3e52"/>
+<path d="M128,104h8v3h-8z" fill="#4c3e52"/>
+<path d="M184,104h8v3h-8z" fill="#4c3e52"/>
+<path d="M198,104h8v3h-8z" fill="#4c3e52"/>
+<path d="M212,104h8v3h-8z" fill="#4c3e52"/>
+<path d="M97,112h8v3h-8z" fill="#4c3e52"/>
+<path d="M111,112h8v3h-8z" fill="#4c3e52"/>
+<path d="M125,112h8v3h-8z" fill="#4c3e52"/>
+<path d="M181,112h8v3h-8z" fill="#4c3e52"/>
+<path d="M195,112h8v3h-8z" fill="#4c3e52"/>
+<path d="M209,112h8v3h-8z" fill="#4c3e52"/>
+<g id="speaker">
+<path d="M153,64h8v3h-8z" fill="#ff5949"/>
+<path d="M167,64h8v3h-8z" fill="#ff5949"/>
+<path d="M142,72h8v3h-8z" fill="#ff5949"/>
+<path d="M156,72h8v3h-8z" fill="#ff5949"/>
+<path d="M170,72h8v3h-8z" fill="#ff5949"/>
+<path d="M139,80h8v3h-8z" fill="#ff5949"/>
+<path d="M153,80h8v3h-8z" fill="#ff5949"/>
+<path d="M167,80h8v3h-8z" fill="#ff5949"/>
+<path d="M181,80h8v3h-8z" fill="#ff5949"/>
+<path d="M128,88h8v3h-8z" fill="#ff5949"/>
+<path d="M142,88h8v3h-8z" fill="#ff5949"/>
+<path d="M156,88h8v3h-8z" fill="#ff5949"/>
+<path d="M170,88h8v3h-8z" fill="#ff5949"/>
+<path d="M184,88h8v3h-8z" fill="#ff5949"/>
+<path d="M139,96h8v3h-8z" fill="#ff5949"/>
+<path d="M153,96h8v3h-8z" fill="#ff5949"/>
+<path d="M167,96h8v3h-8z" fill="#ff5949"/>
+<path d="M181,96h8v3h-8z" fill="#ff5949"/>
+<path d="M142,104h8v3h-8z" fill="#ff5949"/>
+<path d="M156,104h8v3h-8z" fill="#ff5949"/>
+<path d="M170,104h8v3h-8z" fill="#ff5949"/>
+<path d="M139,112h8v3h-8z" fill="#ff5949"/>
+<path d="M153,112h8v3h-8z" fill="#ff5949"/>
+<path d="M167,112h8v3h-8z" fill="#ff5949"/>
+</g>
+<path d="M198.9,97.6l-2,-1.5l-5.5,0.2l-31.2,6.6l-21.6,7.7l-6.2,3.1l-0.7,2.4l1.5,1.3l24.9,-9.7l18,-4.6l22,-3.7z" fill="#000000"/>
+<path d="M149,82.4l-2.4,0.2l-7.3,7.5l-0.4,-3.3l-3.3,0.7l-10.3,23.1l0.4,2.4l3.3,-0.4l4.4,-9l4.2,4.4l3.5,-0.9l-0.4,-3.5l-3.5,-4l3.3,-2.2l5.7,-6.4l3.3,-5.5z" fill="#000000"/>
+<path d="M203.3,71l-2.4,-0.7l-3.3,2.2l-4.2,6.8l-2.4,7.9l-3.5,3.3l2.6,-4.6l-0.2,-2.2l-1.8,-1.3l-3.1,0.4l-3.1,2.4l-3.5,7l1.1,-4.8l-1.8,-2l-2.6,0.7l-1.8,1.8l-1.3,-1.1l-2,0.2l-4.8,6.4l0.2,-3.1l-2.2,-1.5l-4,2.6l-2,-1.1l-1.3,0.4l-4.6,6.2l-0.2,-4.2l-2.9,-0.9l-2.9,1.3l-3.1,4.2l-0.9,3.5l0.9,4l2.4,1.1l2.6,-0.4l4.8,-4.2l0.9,1.5h2l3.7,-5.1l2,3.1l2.9,-0.7l2.2,-2.2l0.9,1.3h2.4l4,-5.7l0.4,3.5l2.6,0.7l4.4,-2.4l2,0.9l3.5,-0.4l4.8,-3.5l3.5,2.6l5.1,-1.5l3.1,-2.4l-0.4,-2.6h-2.2l-3.5,2.2l-1.5,-1.5l8.1,-12.1l0.9,-2.9z" fill="#000000"/>
+<path d="M198,97.8l-1.1,-0.9h-3.3l-7.9,1.1l-15.4,3.1l-10.1,2.6l-9,2.9l-11.9,4.6l-6.2,3.1l-0.4,1.5l0.7,0.7l11.4,-5.1l16.5,-5.5l18.3,-4.4l18,-2.9z" fill="#f4ead8"/>
+<path d="M148.3,83.1l-1.1,0.2l-10.3,10.6l-0.4,-0.2l2.2,-5.3l-0.4,-0.9h-1.1l-0.9,0.7l-10.1,22.7l0.2,1.5l0.9,0.2l1.5,-1.3l4.2,-9.5l4.8,5.3l1.5,0.2l1.1,-0.9l-0.4,-2.2l-4.4,-5.1l4.2,-2.4l4.4,-4.6l4.4,-6.8l0.2,-1.5z" fill="#f4ead8"/>
+<path d="M202.6,71.6l-0.9,-0.4l-1.5,0.2l-2,1.8l-4,6.4l-1.5,4l-0.9,4.2l-5.3,4.6l-1.8,0.9l-1.8,-0.7l5.5,-5.3l0.7,-2.9l-1.1,-1.1l-2.4,0.2l-1.5,0.9l-2.2,2.4l-1.3,3.1l-0.2,2l-3.3,2.2l-0.4,-0.9l2,-5.5l-0.9,-1.3l-2,0.4l-3.3,3.5l-0.4,-0.2l0.4,-2l-1.8,-0.4l-5.1,6.8l-2.6,2.6l-0.2,-1.1l1.8,-4l-0.2,-2l-2,-0.2l-3.7,4l-0.4,-0.2l0.2,-2l-1.8,-0.2l-6.4,8.4l-2.9,2.4l-2,0.4l-0.4,-0.9l4.2,-3.5l1.5,-2.6l-0.2,-2.2l-0.9,-0.7h-1.3l-2.2,1.1l-2.9,3.7l-0.9,3.5l0.7,3.1l1.8,0.9h1.3l2.6,-1.3l5.9,-7.5l0.4,0.4l-1.8,5.1l0.4,0.4l1.1,-0.2l3.5,-5.5l2.9,-3.3l0.4,0.4l-1.8,4.6l0.9,1.8l2.2,-0.4l5.7,-6.8l-1.8,4.8l0.4,1.1h1.1l4.2,-6.2l2.6,-2.9l0.4,0.7l-1.8,4.4v1.3l0.9,0.9l2.4,-0.4l3.5,-2.4l1.8,1.3l2.9,-0.2l2.6,-1.5l3.3,-3.3l1.1,2.6l2,1.1l2,-0.2l2.4,-1.1l3.1,-2.4l-0.4,-1.3h-0.9l-4,2.4h-1.5l-0.9,-1.1l-0.2,-1.5l0.2,-1.1l3.5,-4l3.5,-5.3l1.8,-4.6z" fill="#f4ead8"/>
+<path d="M148.5,94.7v1.8l-3.5,3.5l-0.2,-1.1l1.1,-2.4l1.5,-1.5z" fill="#000000"/>
+<path d="M186.8,85v2l-3.5,3.1l-0.2,-1.1l2,-3.1z" fill="#000000"/>
+<path d="M200.4,74l0.4,0.9l-1.8,4l-3.5,4.6l0.4,-2.6l1.8,-3.7z" fill="#000000"/>
+<circle cx="112" cy="43" r="7" fill="#698eff" stroke="#000000" stroke-width="1.5"/>
+<g id="dial0">
+<path d="M112,43v-5" fill="none" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<circle cx="143" cy="43" r="7" fill="#00ed95" stroke="#000000" stroke-width="1.5"/>
+<g id="dial1">
+<path d="M143,43v-5" fill="none" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<circle cx="174" cy="43" r="7" fill="#f5f5f5" stroke="#000000" stroke-width="1.5"/>
+<g id="dial2">
+<path d="M174,43v-5" fill="none" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<circle cx="205" cy="43" r="7" fill="#ff5949" stroke="#000000" stroke-width="1.5"/>
+<g id="dial3">
+<path d="M205,43v-5" fill="none" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path d="M90,40h-12v6h12z" fill="#ff5949"/>
+<path d="M78,40h-4v6h4z" fill="#785577"/>
+<path d="M74,40h-12c-2,0,-3,1,-3,3c0,2,1,3,3,3h12z" fill="#785577"/>
+<g id="input_wave">
+<path d="M12,58v-1" fill="none" stroke="#ff5949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18,57v-3" fill="none" stroke="#ff5949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24,56v-6" fill="none" stroke="#ff5949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30,54v-9" fill="none" stroke="#ff5949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M36,52v-12" fill="none" stroke="#ff5949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42,50v-13" fill="none" stroke="#ff5949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M48,47v-8" fill="none" stroke="#ff5949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M54,44v-2" fill="none" stroke="#ff5949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M54,43h5" fill="none" stroke="#ff5949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<!-- voice ui (gen_ui.py) -->
+<g id="box_n">
+<path d="M14,62H70C74,62,76,64,76,68V118C76,122,74,124,70,124H14C10,124,8,122,8,118V68C8,64,10,62,14,62z" fill="none" stroke="#a0a6ae" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="box_h">
+<path d="M14.5,62.5H69.5C73.5,62.5,75.5,64.5,75.5,68.5V117.5C75.5,121.5,73.5,123.5,69.5,123.5H14.5C10.5,123.5,8.5,121.5,8.5,117.5V68.5C8.5,64.5,10.5,62.5,14.5,62.5z" fill="none" stroke="#698eff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42,65.2L38.4,70.6H45.6z" fill="#698eff"/>
+<path d="M42,121.4L38.4,116H45.6z" fill="#698eff"/>
+</g>
+<g id="icon0">
+<path d="M27.2,80H56.8C57.6,80,58,80.4,58,81.2V107.8C58,108.6,57.6,109,56.8,109H27.2C26.4,109,26,108.6,26,107.8V81.2C26,80.4,26.4,80,27.2,80z" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M37,76.5H47C47.667,76.5,48,76.833,48,77.5V79C48,79.667,47.667,80,47,80H37C36.333,80,36,79.667,36,79V77.5C36,76.833,36.333,76.5,37,76.5z" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26,86.5H58" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="31" cy="83.3" r="1.3" fill="none" stroke="#698eff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="37" cy="83.3" r="1.3" fill="none" stroke="#698eff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="43" cy="83.3" r="1.3" fill="none" stroke="#698eff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="49" cy="83.3" r="1.3" fill="none" stroke="#698eff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="42" cy="98.5" r="8.2" fill="none" stroke="#698eff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="42" cy="98.5" r="1.8" fill="none" stroke="#698eff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M29,109v2M55,109v2" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="icon1">
+<path d="M30.2,75H53.8C54.6,75,55,75.4,55,76.2V83.8C55,84.6,54.6,85,53.8,85H30.2C29.4,85,29,84.6,29,83.8V76.2C29,75.4,29.4,75,30.2,75z" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.2,87H56.8C57.6,87,58,87.4,58,88.2V110.8C58,111.6,57.6,112,56.8,112H27.2C26.4,112,26,111.6,26,110.8V88.2C26,87.4,26.4,87,27.2,87z" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26,112v1.5M58,112v1.5" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="34" cy="80" r="1.1" fill="none" stroke="#f5f5f5" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="39" cy="80" r="1.1" fill="none" stroke="#f5f5f5" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="44" cy="80" r="1.1" fill="none" stroke="#f5f5f5" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="49.5" cy="80" r="1.1" fill="none" stroke="#f5f5f5" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.2,78.6h2v2.8h-2z" fill="none" stroke="#ff5949" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="34.5" cy="94" r="4.8" fill="none" stroke="#ff5949" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><circle cx="34.5" cy="94" r="1.3" fill="none" stroke="#ff5949" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="34.5" cy="105.5" r="4.8" fill="none" stroke="#ff5949" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><circle cx="34.5" cy="105.5" r="1.3" fill="none" stroke="#ff5949" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="49.5" cy="94" r="4.8" fill="none" stroke="#ff5949" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><circle cx="49.5" cy="94" r="1.3" fill="none" stroke="#ff5949" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="49.5" cy="105.5" r="4.8" fill="none" stroke="#ff5949" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><circle cx="49.5" cy="105.5" r="1.3" fill="none" stroke="#ff5949" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="icon2">
+<path d="M42,72.2l-3,3.7h2.6l-2,3.4" fill="none" stroke="#ff5949" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34,80H50C50.667,80,51,80.333,51,81V84.5C51,85.167,50.667,85.5,50,85.5H34C33.333,85.5,33,85.167,33,84.5V81C33,80.333,33.333,80,34,80z" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33,85.5v1.2M51,85.5v1.2" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34,87H50C50.667,87,51,87.333,51,88V98.5C51,99.167,50.667,99.5,50,99.5H34C33.333,99.5,33,99.167,33,98.5V88C33,87.333,33.333,87,34,87z" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34,100.5H50C50.667,100.5,51,100.833,51,101.5V112C51,112.667,50.667,113,50,113H34C33.333,113,33,112.667,33,112V101.5C33,100.833,33.333,100.5,34,100.5z" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="38" cy="90.5" r="2.4" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="90.5" r="0.6" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="38" cy="96" r="2.4" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="96" r="0.6" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="46" cy="90.5" r="2.4" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="90.5" r="0.6" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="46" cy="96" r="2.4" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="96" r="0.6" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="38" cy="104.0" r="2.4" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="104.0" r="0.6" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="38" cy="109.5" r="2.4" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="109.5" r="0.6" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="46" cy="104.0" r="2.4" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="104.0" r="0.6" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="46" cy="109.5" r="2.4" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="109.5" r="0.6" fill="none" stroke="#ff5949" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="36" cy="82.7" r="0.7" fill="none" stroke="#f5f5f5" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="39" cy="82.7" r="0.7" fill="none" stroke="#f5f5f5" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="42" cy="82.7" r="0.7" fill="none" stroke="#f5f5f5" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M48.5,81.7h1.6v2h-1.6z" fill="none" stroke="#ff5949" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="icon3">
+<path d="M24.4,77H59.6C60.533,77,61,77.467,61,78.4V110.6C61,111.533,60.533,112,59.6,112H24.4C23.467,112,23,111.533,23,110.6V78.4C23,77.467,23.467,77,24.4,77z" fill="none" stroke="#698eff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5,78.5h2v2h-2z" fill="none" stroke="#698eff" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M57.5,78.5h2v2h-2z" fill="none" stroke="#698eff" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5,107.5h2v2h-2z" fill="none" stroke="#698eff" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M57.5,107.5h2v2h-2z" fill="none" stroke="#698eff" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="33.5" cy="87.5" r="6.6" fill="none" stroke="#a4a6f0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="33.5" cy="87.5" r="1.5" fill="none" stroke="#a4a6f0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="33.5" cy="102" r="6.6" fill="none" stroke="#a4a6f0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="33.5" cy="102" r="1.5" fill="none" stroke="#a4a6f0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="50.5" cy="87.5" r="6.6" fill="none" stroke="#a4a6f0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50.5" cy="87.5" r="1.5" fill="none" stroke="#a4a6f0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="50.5" cy="102" r="6.6" fill="none" stroke="#a4a6f0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50.5" cy="102" r="1.5" fill="none" stroke="#a4a6f0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="icon4">
+<circle cx="42" cy="95" r="16.5" fill="none" stroke="#00ed95" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39,77.5h6v-2.2h-6z" fill="none" stroke="#00ed95" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30.9,89.2C29.539,90.621,29.571,92.872,30.973,94.254C32.374,95.635,34.626,95.635,36.027,94.254C37.429,92.872,37.461,90.621,36.1,89.2" fill="none" stroke="#ff5949" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.5,87v3.4" fill="none" stroke="#ff5949" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M47.9,89.2C46.539,90.621,46.571,92.872,47.973,94.254C49.374,95.635,51.626,95.635,53.027,94.254C54.429,92.872,54.461,90.621,53.1,89.2" fill="none" stroke="#ff5949" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M50.5,87v3.4" fill="none" stroke="#ff5949" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M45.6,105.6L42.0,107.7L38.4,105.6L38.4,101.4L42.0,99.3L45.6,101.4z" fill="none" stroke="#f5f5f5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="42" cy="103.5" r="1.6" fill="none" stroke="#f5f5f5" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
+  OP1P          amp             ¨7  (G  |2  ¤2   @   @                     	I  Å2#`—`"á€ ‚R2‚Æú(2Aá  á  P\jDâoÒD
+l²à 	’0 L22HŠZ\ `—… `à/   ã00@á   è	  áÔ6p±@á   áÜ6°±@á   áä6ð±@á   áì6n2Lá  ~2Ká£0²¥lá`9'má€µ  (00c } ’ùAá  áô60c Já  
+á\9Aá  “á 70c Já  
+áX9Aá  “á70c Já  
+áT9Má  DáonLá£“á@9‡a`áicá€µN0·æ adµæ µæ ô°0d (’0d80©a@Cî&mw'£   ãgKá  Má¦oá¬7tjÌ`=c&áÿáèå'á ÄL0YOP‘a ãåpT28A2l#l•\Q•	M©ZYæþÿP•Mši€CTXæÿÿäfl'£   ãJá£ è 
+áÈ´b Já£
+á´b 80@á   áÀ2°± á„p±@á   á70± á ð°"á 8!á H0 ã> ã# ."f0Ya^0„e±æ0 ‹e4²0
+`0 ã'Aá  á7 ã°å0  †#V2Šm`"á #á 
+ ua(‹ŠP˜q0 qP
+Œa õ
+2P˜ q0qPø á öP2&á‹FO†S á— XOJ0R!áèBá  áÀ2q±4¢!á ²±ñ°"á <‚Î Â4±  0 ãåJá  
+á!7` áG "á #á 
+ ta ‹ŠP˜i0 iP
+a(õ
+2P˜ i0iPø á öP22!áèq±Aá  á 7Fá  D1±áÈ2!á ñ°¶±"á <I00Má   ã©á¬7Oá  Eá  ]2tjáÐ2áÌ2D0Q` ã&2!áš áHÑkBÌ®9hÌŽY•"á„ Ë
+ \¨  !M0Ë@Tá á €”0SMÓP"á^ Ë¢ ±½  "MÐ@Há á ð`0PM P¤0aPB`0¢Pt*á 
+2±ñ°0r½00 ãQl¡iLClº áèp±@á   á(70±
+` á ð°ŠO!á `·½0 ãCJá  
+á-7`Xa"á #á 	 ua(APP˜ 	Œa ö0APP˜ ù áUHOR!áèq±Aá  á,71±
+`!á ¶±ñ°ŠO00 ãJá  
+áø\‘Já  
+á ]‘ v²&Já  
+áü\‘Já  
+á]‘ç` Ì Àõ±  ` *á r½2±ñ°000 ãÞl¢iTClG/O2V/` Ì Àô±  `Já  
+á¨7‘RMP!á 2“P!á dÄ@`Ä ‚ÆÀ"ád "2@C	dÑOá  Ká  Já  á¬2áÄ2
+áÀ2g2Ú„l$á| %á  -á   ¹å x™³½u½ºå ¢PRO2±ºå aP(PªPQOPOROò°000 ã‚lgåˆJá  
+á97`ha"á @#á `
+ ua(‹ŠA0APP˜ 
+Œa õ
+2A0APP˜ ø á àAP‚Æ	P)`yOMRAá  áÄ2±±!áxq±Aá  á87%á 1±õ°0‚á à0 ãJJá  
+á=7 áP !á 	 ta †QP˜ 	Šaö0†QP˜ ù á ø†Q‚Æ0P)`yOMR!á„q±Aá  á<7Eá  1±áÄ2!á º`µ±ñ°bO00 ãæmw'£  vn0ia^0…e±æ0 €C‹e5²Ð-v0t¢Fe0`C ã²±å(  áŸÿP@C0Rõ¡…Yaha°æ0 Ä(€0F0
+`ˆe ãÝ°å(  bV2Jm`"á @#á `
+ ua(‹ŠA0APP˜ 
+Œa õ
+2A0APP˜ ø á àAP‚Æ	P)`MyORAá  áÌ2±±6±!áx&á q±ö°0‚á à0 ã¨°å0  V2Šm`"á #á $
+ ua(‹ŠP˜q0 qP
+Œa õ
+2P˜ q0qPø á QJá  
+á17` áC "á #á 
+ ua(‹ŠA0APP˜ 
+Œa õ
+2A0APP˜ ø á øP0P‚ÆƒAP	M.`"á ‰CRO~O±QQPBá  áx2²±"á 4r±0P"á½ #á ØPJOó°2±0 ã; áèAá  4¢p±áÀ2 á ja±±4±ð°0ZO0 ã2!á P!á„q±Aá  á07Eá  1±áÄ2!á "á] µ±ñ°RO00 ãæmw'£ †H…0@N Cqbˆ…Já  
+á¨7‘ á ÎRMP!á 2“P!á dÄ@`Ä ‚ÆÀ&ád 1wtb2@C	dô±	2•^R•–BS¨M_i•qRÁ@AMQP"á„ žBË
+ j¨  ²RÐ@@MP"á^ Ã  M2Já  !M
+áÀ2²½‰^	2‚Æ(„’^‚Rý`B0eO‰^(M‚Æ)†(P’^ËR0±.`B0~OKM(MóP0PJM$á ð°ªPt±00 ã`ë- á *ác ä-g±æ( ¬. áa&á•HOFOœ,v0†e Ì À6²  0],` Ì Àö±  ®-‘aÄB‚ÎÀñ±  @O`¤-Ha`OÁ.tb á *ác ô±‰/ÅMá  gá¤7(‘€&o@á  !` áx9 ãó
+ æl'… Já  
+á]ä Päc(‘€åæl'… N0@á   áx9¡d ãÞJá  
+á ]‘ $Já  
+á]‘Já  
+áp9‘°ä €C±ä øNAO€OVIá  ±ä V	áø\“‘Já  
+áü\“!á(‘È@Aá  ámHP2 `æl“øc(“'… Iá  	á ]‘ 
+Iá  	á]ä‘ `æ äŸIá  	á ]‘ 
+Iá  	á]ä‘+ `æ‹/` áÈ@2`)“`ŠZ)á JZ“)áJZ‘Iá  	áp9“)áJZ‘0± á ð°@á  J0 áx9 ãÜ	e/	`Ú/  ã è Jáß1æ 
+á8N‘Já¢0æ 
+á‚0b 28`ÇU@á€ÿ'O áÄQ¬¬(22AªZ["Á	"P•pæ A0 dx0
+4H  Z"‚ÆHƒ"áÿQPf"B`JRú`	L"úcBá T¸JH@   ‘ F"‚ÆHƒ"áÿQPF"B`JRú`	8"úcBá T¸JH@Ç/  P¨pæ A0@dx0
+ˆ  ""‚ÆHƒ"áÿQP!"B`JRú`	"úcBá T¸JH@   ¨pæ A0`dx0
+È  ÿ‚ÆHƒ"áÿQP"B`JRú`	òúcBá T¸JH@   Ð¨pæ Já 
+á V™Jáß
+á8N‘9`T O2@á€ÿ áÄ2vCŠZR©²· `Ä pæ ~2Má  <`á`9mtO+á ,á ü%áÿ  +D{0T0Jáx•Ã xMPPiT2"á ô
+áèåP(T\A• 2`)M2³ò³\@•(MHá  ‡Cá ¬w³‚ÎÄ±²  x0Ê@Ç@ºRRM”R2æ P0ð²±³à@Ñ@PPMR0æ N0 á Háž0æ Ae0áX­`  á |ßaQgO<l²Já  
+á\9‘-Já  
+áô\!á R‘"á ²²2æ ’\B0@OxMP°³R2`ñ²1³q³R\ñ³1æ I0‚Æ€R(2N0Ae0ª\2ç Jáž
+áX­b °« $²«(`ÃM÷±Já  
+áX9R‘B `æP Já  
+áT9R‘B  KæP Já  
+á@9Q‘ÅA `ˆæP Q¬A `ˆæP ‘¬A `ˆæP Ñ¬A `ˆæP ­B `æP Já£1ä 0ä 
+áÈ´b Já£
+á´b (0@á   áT7°²@á   áX7ð²@á   á`70³@á   áh7n2Gá  Oá p³EmáØ2á œ+á„,á $á |O0(0±·±s½ô¼"á h0 ãÝ2Já 
+á Œ'dÏ[WíAõ­Já  
+áŒ4ª^P‘@™ ©P2
+l`"á #á 
+ wa8‹ŠA0APP˜ 
+a8õ
+2A0APP˜ ø á øAP‚Æ	PMá ¨RAá  áØ2±±!á„q±
+`!á ñ°0½0ŠO0 ã’@á   áÔ2°± á„p±@á   áp70±!áw  á€ð°"á 00YO ãzæm†lw'£ A÷¡ ˆæP Q¬A÷¡ ˆæP ‘¬A÷¡ ˆæP Ñ¬A÷¡ ˆæP ­B÷¡ ` æP Já£1ä 0ä 
+áÈ´b Já£
+á´b (0@á   áL71/`÷±á.Ñ¨¤€Î R¨  •€Î¢p²  1². `×- `. `õ- `•-€á ¬z/ áÿí- áÿŒ- áÿ. áÿÂ-ÀCJá  øN
+á ]“Já  
+á]‘d“Já   `
+áì\“Já  
+áð\“Já  
+áô\“Já  
+á }‚ÎÄÐ°  á €±Q±‘²Q³Aá  á  °P°“Ð±±²P²³Ð²³æ[ æW æO æP æ\ æX æQ æR æ] æY æS æT æ^ æZ æU æV æ_ æ` æa æb æc æg æh æd æe æj æi æf PæÖ    ãMá   è$ á }0æ- 2(¢2ä0 1æ. hJá  
+áð\ á @é®ì Ì @o£  2ç Já  0æ i¢¨£
+áô\·²ñ¿® ë­«¢­¡*¡o‘o )¯l­0æ q²2ç `@•Ä €BO0æ @¨4€¨ 42á À¢4`ž€00æ À¨pæ Ä B201æ B©!áÀ]Ã ‚Æ‰!á`mR ¦$DRMPxO‚ÎÂr±  ³±0½ñ½2¾ ã“ð²r¡³¡0­ñ­2®‹ Já  
+á ]`“Já  
+á]‘d“Já   Ì	Â*²  
+áì\“Iá  Já  @á   á  	áð\
+áô\Lá  	“á €1ç (æ[ (æW (æ\ (æX (æ] (æY (æ^ (æZ (æ_ (æ` (æa (æb  ÌÄ“   ÌÆi²   Ì6Ì)³  2ç é²)æO )æP )æQ )æR )æS )æT )æU )æV (æc (æg (æh (æd (æe (æj (æi (æf  `r²3æ hæÖ h Ì?Îö³  hT0 Ì-Ê´¾  \0h6æ `9/á €ñ²J0 áã Ã xMe0æ @©21ä0 €áD¬ø$B0BÖ#)`Ã yM2Há  áº34á 1áÃ’\B0‚Æ‚AR29á¨\P¨ h0æ °¿„0(á'‘¨0æ 0ç 0ä Á@€á €qMR±¢RMP0æ h³på  84v$C  K0æ 0ä M0æ 0ä- 6` `0å- ±æd °æ4 áD¬0ä0  °æ0 °£d0ç# ±£Há  á\}2á@ 0æ Id0ä °¾4ç  A6¢2H2Ó423á @6á €0áÿšá €1æ 3ç! 2ç"  40™6²à@Œ0)R0MÈ ò¢1œEQR M‰BÃPG092Ñ0×@‹0ÏQW0RMÇQ†0Ä8ˆ0Ä9NÄ8‚!	!Rl#²ä0 )`"h
+J@Q‡0 M#1ä 	B#2ä "	
+ò£l#úg`ò³°æd È0<#H0ˆC8á  2ä @2Z@0ø@xMØ@xMpRÓ0Ñ@Ò0yMŽQ•PÊ02æ iR0ñ°QT20R1ä QT‚ÆˆÊ@22ä 	4zMÂ@J0‘Pˆ0T‰0È@‹0PxMPñ 2‚ÆŽC0yMÂ@ñ@€0JP†TC0Â@ƒ0‚PzMQP2šZJ’°åd  H4å  3å! 2å" È2¨¾®°ì°o°o“+±­±ò£ê²³å4 H)¿Oá  á|~6ä 05ä. d‡d6>4#á €!áÿ'4:á @d04% ŒT‚Æˆ‚ÆŒÖ@Ç@TÐ@÷Qò00Pr¢ýaxM*	ÇQ
+dr²j²×@°®7MIá  Ä;	á\~Ä9NH?žË"s0?`±®2ä "R0M5ä Q5R0M 2¯0½T‚Î
+Œl±  &2ÃZë½Ì
+ª³  'ZÌ)J±¾  —2,áO 26æ 6ä àEZ “0d848T 2àEZ ‘§20æg¾UO&2
+446áýÿ'ZF•2iž6±0¾UOØo6p0¾U2`žà2 Zð¾2ðop0¾U2 Z0¿2Ðop0¾U2 Zp¿2øop0¾U2 Z°¿2Èop0þU'Zô®O÷³&á{(G•Ã¾'Z4ù0Ë¾F•  74>0&á¸ôÃ¾2jž¢22áÿ?Z4¯'[g•Ã¾'2&áš Zt¯'[g•Ã¾'2 Z´¯'[g•Ã¾'2&á3þ Zô¯'[g•Ã¾p0þQ&á3þõ@ïQwM(á ÿ7æ U•x0}Qs0õ@(á x0}M6ä }Qõ@ù0}M¾Bî@54h5ä FM®Qy0h0ïU2Ä3Ä1L9á¾ >0á2÷@¡E&2Mþ@$]l0~MµS7ä ®0ï@MÄ3MZÄ1L—GM6ä "2÷QÄ;Ä9N/0ý@e\'2}Mý@$]t0}M®SMÄ3Ä1LNæ¶ ©0p0µTù0:A241å M4„2%á3þiž[.b•¶Bà2`ZË• ô®  vO'á{(–Q"Ã— –QJ•Ã— `Z–QJ•4¯%á¸ôÃ• –Q`Zt¯J•Ã• –Q`Z´¯J•%ášÃ• `Zô¯–QJ•Ã• `Z–Q%á3þJ•Ã• –Q{0‚á €ºRÊU2zMÂ@{0ÏU÷²"2x0‚Æˆú@
+2ˆTú@[
+2Â2{0‚ÆŽMAZQ0zM
+2ï@ð®LZQ02öMx0þ@y0·QÍUh0ï@ê0ïQMþQºPÌ©  oåÄ ÄD‚ÆòÃ¾ oäÆ ºPoåÂ ýSOºPÊUoæÆ ‚ÎŠR©  oåÅ ÃºÄ3jäÇ Ä1L×QjåÃ –RzO×QTjæÇ MêB€Æ¤Ä;Ä9N*æa òB6€Æ¤oåÎ 6*æb ªjåÉ nåÈ Ë— ×©  Ã·úQjäÔ 4—Pð0WªË·–ª  úSjåÏ Ã– ×Sé0’©ê@²0×Q·TjæÔ wMjåÐ 2Ì;V«  jåË Ì9NÕ«  7³Ë– «  oåÊ Ã¾!²PnäÕ 4²Px0–«Ã¾!²RnåÑ Ëµ!5£  ²RÖªî@måÌ %2²Pº0ºUnæÕ nåÒ 2måÍ Vå Ã®Vå l0Ã.oQnäÖ õQVå i0Ã.ïSVå måÓ rMÃ.Ä¯SÄDUå Õ@º0nQýUoæÖ ù0ÿB70¹0€Æ¬ö²wä ö¢4.æd 70¸0€Æ¬ÒB.æe |020€Æ¬.æf ¹0ð0€Æ®uM/æg Ä+
+x0Ä)J€Æ¤*æh q0êB€Æ¤*æi Ò¨ê@(áÿRMÄC	ÄDB‚RPg- h4á !á®„0°¿Já  (á'1æ 0æ !áš1áÃ9á¨
+áä30ç 5,€á €ð²÷+`3å °æd ó¿	`±æ4 8á P0Ê0R1ä P²£P1ä @2ZÁ,a`²ä0 Zh
+J•,s0ONU‚R~MÖ@‚ÆŠŠTê@ï@ê0ªP÷QzM—PP-
+`²æ4 ›,3ä- 'á€ ûQ2``*á@ Ã2²à I”@”Ä‚Ä €ÉBÀBÄÄ0å 1å “
+“ ã$Já  
+át9‘“Já  
+á]‘	d“Já  
+áì\`“ EMá  áè\!á*‘0È@Há  á]X0P2)á ‹Z‘ +KÑ@KP2Lá   Ì À*“  áì\ “JZ‘  áÐ@2Já  
+á]‘)á˜ZJZ á	“23å0  `ŠZS“+á@    ‘ )á Ž[w'£ 	`1æ +Lá  áì\ ‘2+á@  ÙZÎ*áJ0Ñ@223ä- `ŠEZj0+VTk2lJgi7å# ²à8’)á Kc“Ë áÂ@@0P!á JP2`)á Ž[“(‘ K(“ ` “w'£ B0B&)`Ã ‚Æ‰ 24á 1á9áÔ \@0‚Æ‚AR2Há  áè2\P¨h0æ °¿„0(áN‘¨0æ 0ç 	+h4á !á®„0°¿Já  (áN1æ 0æ !áš1á9áÔ
+á30ç ï*6ä- ÷S27å# ño	E	l²àx”–”/ó(22 `g`¨æ5  `hæ €áD¬¨³ Ì À)²  è³(æ ¨°C Ì À©²  ¦o"2è±h²è²)³,Ä*0£R!áÿ	$!á 	'‚Æø00éc0 ãsxP á¼ÄBL‚Æ	„–RÏSÚg#]`l“n°é°/±j±¨æ4 fl'³  `¨æ4 fl'³ !á øPM2"á¥'áU!á«&á [Þ/  óg¦o(22p£!á"V"2€áD¬¨³ `¨æ5  `hæ  ` Ì	Âè³  (æ ¨°C Ì À)²  è±h²©²è²)³-Ä+L00£R!áÿ	$!á 	'‚Æø00éc0 ã	xP á¼ÄBL‚Æ	„–RÏSÚg#]`l“n°é°/±j±¨æ4 fl'³  `¨æ4 fl'³ !á øPM2"á¥'áU!á«&á [Þ/  ã(2 è	 !0¨å4 @C 6Ä g"è0-`"Iá  À2	á 4^R‘R m 4¯ &á€ wQ€0Ä(@‡6S2É0øCo‘P‰ZN×[O4/á| ºZ82‚ÎÀè­  d	d	l`+®l®«¢•Z?4¸²à1p‰2(B4J¨‘B—R´ª0MP10þM4Ã’ p0Ã  ±QPT0P‹2 2‡0ÙZM2%á>(A 4U4‡0	Mbžd2ËZÓP1Ÿ84iŸ"lî±+¾l¾«²É09R0/ä ÇQ
+	/æ ©°÷°0þMr±¶±ë­-¢p¡ö°±¡ ã|ð±1² Ì À1¢  ð°"áñ)ð¡ ãp82¨¢ð°j¢!2p¡±¡ ãg‚Î Ìñ±  õ°S00C0 ã]2FRó¡j0+RRt0
+¹#`¨° `è²`€Oüg`(æ`)³¨æ4 8á &mwÈ0ˆCøN'£ /ä   +¡¬¬#D0!á>A 4‚Æ€(á|ðgEZ 2U4bž``E
+l²à 1œ‰BH”RÀ@0ùMP iQEQßQë¢ÚP(£P2	2/æ ë²ŠZJ0V *¿}‚Æ²‚Æµ‚HVò¼‚Æ²€0 ã3±±L0p±ùMñ°T0p¡±¡ ãåÑO0NAVè¬*áD0dâEX0•Z	“¨°Rüg`¨æ4 Ç"@4%á"V4áÿÿ¨£(3`^``ž€0˜¨"22)á`2ÊE•ZJ2D²à@ áe&
+
+Rl20ûkøcD²à ‚	02	d0¨0	dÝSs0ùQ3	/æ    ^!ášYä
+ø³"``K0ùMC0xN‰OHVC0ˆOP†á €YP0PQPQPO€NV¨±üg `¨° `¨æ4 8á .//ä   ª­h­« B0èg@P2"2@0Oðg 2ñmM\]44á| #EQ4cž`hl²à0i08œ1œ‰B€BRÀ@0ùMP iPAP	2‚Æ€p0 20d,áD 1`Z Z÷Q	/æ “A¼¨°—(`¨æ4 8á ç      (ä )ä 
+*ä +ä ™0)ä 
+0`-ä ™v*00*ä 
++ä –f  .ä 1
+,ä –1X0øgO2 áD  20dMZ%0AZ‘J 10O2 áD  2€‚ÆÂMZ‚ÆÀaZ‘I¬KRRiP0Ra0 P€0P‚Æ	Ì‚ÆÀ ˆëRa0¢RŠRÎBð°  ƒO002½ ãÚ¹p±±±‚Î Æ2­  0!9kƒá €`l /ä è¬Ñ.ª­/ q `¨æ4 8á  X.8á üg’-&mwÈ0ˆCøN'£ üg8á „-ò/	`Oš.
+g`)ä 
+-ä i`*ä 
++ä l+0
+0'`.ä 1
+,ä l0`/`z/K0°0R2"á€2JAm0C	•P
+løcøOúoB©.
+2k0d"dH 	‘ˆ	¡2ó/
+hñ/ v``B0èg8P80ÿMÆB€OPQPYPñ°0 `©£ ãg p±±±00…è³øN ÿ`öÿg0y@üù`yR‚ÆÇÇO0g0ƒ`ˆ@‚Î8ƒö°  úa‘T2Iá  	áÐ4úcBáÿ^‘A aRT00` ãï‚Î9„ö°  <QÈNVUQ PÉNiPQPBá7çáÏøPùgQP"á° ãÒ`»O0XP P‚Æ@„ÁNJV$áôaPÀMP }!áÿ10e&ác 0
+‘h"áœÿP#ác 	
+lûR0’^’^B0OAR á ªæ6 ©æ7 hæ 	/%
+¨0`/`´.
+š+0
+0'`,/*
+Š`/%á €¨	T#á €úcP/€2X	÷-€ä`‚ÆÂå ‚ÆÀJR€CRZ0YP€P‚Æ	Æ‚ÆÀ Ij0ªR‚Î‚Šð°  ‰CÆB00 ã}±±p±‚Î Â°¡  ¸C8= Fá € `€‚Æ	Ä‚ÆÆ¸- €‚/†á €0
+ .%áÿ1)
+wt/G0
+à,”.`hî-``- ``|/ÇO``/ -´-00dZRP(æ y.&á €±	Æ!á €øcÂ/8á Ë, ½‚á €
+¹µ/  22ˆå5 AC›ˆå6 Šå7 É£Q°’æ æ  ``’æ æ Q°   2*á Å2Q
+J]hi	V2]h¢oj	k¢oj	L¢oj	~¢oj	Œ¢oj	‹*á¸ÿ‘Zj	ˆ*á¬ÿ‘Zj	…*á ÿ‘Zj	‚*á”ÿ‘Zj	*áˆÿ‘Z@`Iá  	áÄ4QZI™›Aá  á¸4	2‘ZQ™`
+h`€e	2Z› `Z ›…0  ` ›`0… aæ h``ê/ `Õ/Já  
+áÄ4ŠZP™Já  
+á¸4ŠZ ›P™ 'a€æ !`"`hhðc€C€e! Iá  	áÄ4QZH™ ›@á   á¸4(2•ZP™ a€æ !`"`hhøcå/` /`ah`	hHZka›«/``h	høcÔ/`/`/ `‹/(`‰/0`‡/8`…/  gG‚C€ŠC
+×Y ã	 C7'    i£à	 `‚ÆÀ‚ÆÆ‹R‹	‚ÆÀÀC   g@AÿãÙÿ21Â@R'   €ÈDó   ÈL4“  Ä?€!1ƒÀ ƒÀ€À1ƒÆ€QÀNÀX1ƒÆ€QÄ?€	1Æ "Ì‚4‘     ã è 2 290202æ 0ä `€€CíC¶CR .2d0?2g>
+–ƒáÿÿ
+	`ÁOŽ	€`Á`0A@2Iá  	áÔ5QZ	™PaR
+L0—@A@–@yVd0.292”@E0€NM02ÉB!20G0 ãÜ00K0G0ÿãsÿL0Á@80‚Æ„…‚Æ†€V
+
+]0P0
+úg
+½:0ˆS0K0 ã¿82K00äBÿãUÿT0Â@0G0€O V
+
+e0P0
+ûg
+š0‚Æ‡€V` 8
+` `¶C€C–S0Ælw'£ áÿÿ
+ `ÃO˜	‚`Á`0Q@2Iá  	áÔ5QZ	™QPaÊR
+;2á¸	]d0&
+ `Ô/EvJá  
+áÿÿU
+uJá 
+á  Õ	€`Á`M0A@2Iá  	áÔ5QZ	™PaRmE0M0ÇSÉB€N 22`L00 ãH82L00ÿãßþK0Á@80G0€O‚Æ„…V
+
+]0P0
+úg
+&:0ˆR‚ÎÀò°  L0 ã(82ò L00äBÿã½þK0Á@0G0€O V
+
+e0P0
+ûg
+0‚Æ‡€Vn/J0	R0¿C’C"2ÏSýcí. áÿ 
+  KOÿ.``ÿã“þ(2*áÿ U
+  KOŽ/"áÿ 
+KOa/]0“@+2'0D@t0<2—@F@ƒN¾W}0d0ÿB#220G0”@ ãÓ80L0G0ÿãjþK0Á@0‚Æ†‡‚Æ‡€V
+}08P0
+ûg­
+«òg8PR82L0ò°öB ã³80L0G0ÿãJþK0Á@‡O÷W9
+ò u0÷Q0>
+ûgŒ9
+Šðg÷Q‚OÏS‚WN/&0˜@L@WD00H@Ÿ@8V‚Æ„2J@(2‚ÎÂò°  0ž@ãBs± ãò 80K00ÿãþ0p¡Ð@M0‚Æ‡†NËV
+
+ãP
+0
+ùgY
+WògãPÃRK0‚ÎÀò°  3± ã_3¡80K00ÿãõý0p¡È@]0‡OÛBßW8
+ò 
+çQ0<
+ûg38
+1ñgçQÇS‚Æ‚€VÉBòB‚Æ€‡†N!0Ô@ñ@Ú@ó@QP‚Æ„ŽQ2
+	`OËP‚Æ†ƒYP	`ˆ.L00†OäB¹@¦Q±	÷øg`}.``z.0Ñ/0x/0«/0W/ñgg.ògý.÷gPÚ.÷gPC.ã è 0(20ä  90202æ *0#02i
+
+‘€áÿÿ
+î
+`ÂO–	€`Á`0A@	2Já  
+áÔ5ŠZ™PaR
+M0—@A@.0yVe0•@2”@‚Æ… 2éB)20C0 ãÊ00L0C0ÿãaýM0Á@80‚Æ„…‚Æ†€V
+	(P0
+úg
+¯:0ˆS0L0 ã®2L00ÿãEýU0Â@0C0€OäB V
+	P0
+ûg
+0‚Æ‡€hVO0¦lw'£ 
+	h `O0¦lw'£ áÿÿ
+‘`ÃO˜	‚`Á`0Q@	2Já  
+áÔ5ŠZ™QPaÊR
+#2Ð¸	RE0
+ hÛ/g‚áÿÿ
+h`ÀO†	Á`€`0A@	2Já  
+áÔ5ŠZ™PaRb‚Æ…éBïS(2!2hM00 ã?00M00ÿãÖü80\0ß@‚Æ†‚‚Æ„…QV
+2	iP0
+úg
+ 2ùS0M0 ã"00M00ÿã¹üL0Á@0äB‚Æ†€ V
+	P0
+ûg
+0C0€OVO0¦lw'£ !áÿ 
+
+  KO/``ÿã”ü(0#áÿ 
+  KO™/"áÿ 
+KOp/•@0M0C@—@A@‚Æ…2ùWe0éB(2!200”@ ãÖ 00M0C0ÿãmüL0Á@82‚Æ‡…‚Æ†€V
+
+(PW0
+úg´
+²÷o(PˆS0M0 ã¹ 2M00ÿãPüT0Â@0C0€OÿBøW:
+
+ïQ0=
+øg”:
+’ñgïQG0€OV×S82Z/0˜@J@‚V:20J@Ÿ@ž@G0€N2e0_0ÛBL@‚Î Â3±  ‚ÎÀò°   ã‚ ò (0K00ÿãü2¡<WÂ@…O‚Æ„ƒMW*
+800G0EQ(
+ùg\*
+Z÷gEQ•RK0‚ÎÀò°   ã` ò (0K00ÿãöû00¡È@…OäBeW(
+_0]Q0+
+úg8(
+6ñg]QES‚Æ‡€VÉBòB‚Æ€†N!0Ô@ñ@ú@÷@QP‚Æ„NP
+
+
+`‚O×Q‚Æ…ºP•	hO0¦lw'£ ]0T0OäB“@aP‹	òøghð/h`Œ.
+0Ì/0p/90¨/:2P/ñgt.ògþ.óoiPà.÷g(PQ.  gÿã›û0' 	á  Iá Q 	á Iá Q 	á Iá Q 	á Iá Q 	á Iá Q 	á Iá Q    ÿ       X   E   P  <  Œ	  œ2  D  ¬  \       ýü ýý üý   õõõÿeeyÿiŽÿÿ í•ÿÿ:]ÿ ¦®ÿiŽÿÿ í•ÿõõõÿÿRKÿ   ÍÊg»~Š9ï”2ó”+J”Ju©Ê&(Q(ÛÎÇ ®šƒ!_~-Å¬™&Ü”™+—.—¨™v0R¥
+RÁ½‰ Í  a#˜0~b-µªW(ò”|+8~”¬4wîwé·ô 3ö¯]­$ô½¸5”$,;v;˜H-éÓé ¬¦    Í,h"—_~©%¹¾!7•=+ú ôú ¡’²4©R©ÿ±¦   ÍIÎ~y}ç4Ã¤ù'Ó¤ï­
+[­
+(Ú—X±0X*8 ®š!þ~Â|Ë)!¹¥™¤÷††ß¼G&- õO Í  à"/g|b)\·¼ ¯¤Ë÷î÷1´’,¥J¥LêH 3Ë_»~Ý"zÇÜw£½={=Ò±Š /	^/	oÔL    Í,ø!.Â|:"ÐÃƒ¥o„„®U,X°Xrßî|7  „7  Œ7  ”7  œ7  r$  Ä  <!  ^$  Ò"  f$         ccddeffggaab    æ¹ j] 9ë ÷c BÈ ±! ÔU& 4€+ X˜0 ¼ž5 Ý“: -x? LD I “ÄM áiR i W ‡ˆ[ –` ênd ØÍh °m ¿dq Pu «Éy ê} Ôþ († PŠ ‰ù â‘ À• ã“™  ] „¡ ÂÓ¤ Œ€¨ $¬ €¾¯ P³ ËØ¶ ÿXº ÈÐ½ O@Á º§Ä 1È ×^Ë Ð®Î @÷Ñ H8Õ 	rØ ¤¤Û 9ÐÞ åôá Çå û)è Ÿ:ë ÍDî ¡Hñ 6Fô ¤=÷ /ú qý     dial0   dial1   dial2   dial3   input_wave  box_n   box_h   AMP TUNER    DB GAIN    -50 +50 CENTS   --  PLAY ONE NOTE   VOICE   VOL COMP    TONE    DRIVE   T2 TUNER    CLEAN   CRUNCH  LEAD    BASS    FUZZ    ÿÿÿÿb      Ô6      j      Ô6      p      Ü6      t      Ü6      z      ä6      ~      ä6      „      ì6      ˆ      ì6      Ž      `9      œ      `9      ¶      ô6      º      ô6      Â      \9      Æ      \9      Ê       7      Ð       7      Ø      X9      Ü      X9      à      7      æ      7      î      T9      ò      T9      ö      @9           @9      J     ¬7      T     ¬7      Ê     À2      Î     À2      Ú     7      Þ     7           7            7      „     À2      ˆ     À2      ª     !7      ®     !7      ö      7      ú      7      þ     È2           È2           ¬7      "     ¬7      &     Ð2      *     Ì2      2     Ð2      6     Ì2      Î     (7      Ò     (7      î     -7      ò     -7      2     ,7      6     ,7      P     ø\      T     ø\      Z      ]      ^      ]      j     ü\      n     ü\      t     ]      x     ]      À     ¨7      Ä     ¨7      þ     ¬2           Ä2           À2      
+     ¬2           Ä2           À2      f     97      j     97      ´     Ä2      ¸     Ä2      Ä     87      È     87      à     =7      ä     =7      ,     <7      0     <7      4     Ä2      :     Ä2            Ì2           Ì2      f     17      j     17      Â     x2      Æ     x2      î     À2      ö     À2           07            07      $     Ä2      *     Ä2      ^     ¨7      b     ¨7      Ö     À2      Ü     À2      	     ¤7      –	     ¤7      ¢	     x9      ¨	     x9      ¼	     ]      À	     ]      ä	     x9      è	     x9      ò	      ]      ö	      ]       
+     ]      
+     ]      
+
+     p9      
+     p9      *
+     ø\      4
+     ø\      <
+     ü\      @
+     ü\      N
+     m      R
+     m      j
+      ]      n
+      ]      x
+     ]      |
+     ]      ˜
+      ]      œ
+      ]      ¦
+     ]      ª
+     ]      â
+     p9      æ
+     p9      ü
+     x9           x9      \       €    `       €    š     `9            `9      R     \9      V     \9      `     ô\      d     ô\      Ê     X9      Î     X9      Þ     T9      â     T9      ö     @9      ú     @9      \     T7      `     T7      f     X7      j     X7      p     `7      t     `7      z     h7      ~     h7      „     Ø2           Ø2      Ò     Œ4      Ö     Œ4      ,     Ø2      0     Ø2      P     Ô2      T     Ô2      `     p7      d     p7      ú     L7      þ     L7      T      ]      Z      ]      `     ]      d     ]      n     ì\      t     ì\      z     ð\      ~     ð\      „     ô\      ˆ     ô\      Ž      }      ’      }      @      }      H      }      `     ð\      d     ð\      |     ô\      ˆ     ô\      .      ]      2      ]      :     ]      >     ]      H     ì\      T     ì\      Z     ð\      ^     ô\      j     ð\      n     ô\      z     º3      ~     º3      "     \}      &     \}      ¸     |~      ¼     |~           \~           \~      (     ä3      D     ä3           t9           t9           ]           ]      "     ì\      &     ì\      2     è\      6     è\      D     ]      H     ]      f     ì\      r     ì\      ˆ     ]      Œ     ]      Ð     ì\      Ô     ì\      €     è2      „     è2      ´     3      Ð     3      ¶      4      ¼      4      ¦%     Ð4      ª%     Ð4      H(     Ä4      L(     Ä4      V(     ¸4      Z(     ¸4       (     Ä4      ¤(     Ä4      ¬(     ¸4      °(     ¸4      Ô(     Ä4      Ø(     Ä4      â(     ¸4      æ(     ¸4      B*     Ô5      F*     Ô5      ,+     Ô5      0+     Ô5      x+     Ô5      |+     Ô5      h.     Ô5      l.     Ô5      H/     Ô5      L/     Ô5      Œ/     Ô5      /     Ô5      >2        €    B2        €    H2       €    L2       €    R2       €    V2       €    \2       €    `2       €    f2       €    j2       €    p2       €    t2       €    |2             €2            „2     X       Œ2     P      2     <      ”2     Œ	      ˜2     œ2      œ2     D       2     ¬      ¤2     \       ¨2           Œ4     |7      4     „7      ”4     Œ7      ˜4     ”7      œ4     œ7       4     r$      ¤4     Ä      ¨4     <!      ¬4     ^$      °4     Ò"      ´4     f$      op1_input_gain_db op1_input_tuner_active sq_cat sq_line sq_num sq_text op1_eng_page author=Hundekraft; input-engine workflow inspired by Teenage Engineering OP-1 Field
+OP1TèJ  <J  
+Òüö

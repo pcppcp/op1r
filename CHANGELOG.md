@@ -3,6 +3,26 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-08 19:22 — op1r 58
+
+Output `d58aa23813c0a7c1ed7913d2cc05b488b1e701cc20eebf42ef99290f5d51e4e0` (all plugins)
+
+### Added
+- **Master LFO** (after Hundekraft kennel 3.2.2): Shift + mixer, T4 shows it; T4 again switches it on / off. Shift +
+  T4 picks the type (quad or pond). It modulates the master FX knobs (and on quad the other LFOs). T3 on its page shows
+  the master FX, T4 leads back.
+- **Input engines** and **amp** (from kennel 3.2.2): a synth engine that plays the audio input (line / mic / FM radio)
+  through its own sound. T2 shows a tuner page with the input gain.
+- **FX groups:** in the FX list (Shift + T3), white picks a group (reverb, delay, granular, modulation, dynamics,
+  rhythm, character), the list shows only its FX. The group name is under the number on the left. The list opens on
+  "all". The list starts at a third of the screen, wider, full FX names (no longer cut at 13 letters), the scroll bar
+  at the right border.
+- **Instrument groups:** the same in the instrument list (Shift + T1): analog, digital, keys, pad, model, sample, weird.
+  Green moves the presets column (white did the same before).
+
+### Changed
+- Boot screen version: `op1r 58`.
+
 ## 2026-11-08 14:04 — op1r 57
 
 Output `36247ce8c758b2b6863b91599694aadca242e7d6a78bf7d66632b2e04499a2bc` (all plugins)
