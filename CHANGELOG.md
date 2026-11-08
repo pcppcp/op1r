@@ -15,7 +15,7 @@ Output `36247ce8c758b2b6863b91599694aadca242e7d6a78bf7d66632b2e04499a2bc` (all p
   different** (slower envelopes and modulation, darker filters), as they were designed to.
 - **quad LFO** rates were 2x too fast on per-voice and tempo-synced LFOs; they now match the screen (a synced 1/4 at
   120 BPM is 2 Hz). Smoothing no longer stops short of the target.
-- **Sequencers, drum mode:** sequenced drum pads played sharp (pad k k semitones up); they now play at the pad's own
+- **Sequencers, drum mode:** sequenced drum pads played sharp (pad k sounded k semitones up); they now play at the pad's own
   pitch (euclid, dots, oracle, peal, grids, chord).
 - **Sequencers, USB MIDI:** a USB MIDI note was recorded / played an octave off when the synth octave was not 0
   (dots, euclid, oracle, peal, grids, chord).

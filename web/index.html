@@ -44,6 +44,18 @@
   .tag { font-size: 11px; color: #AEB1DC; border: 1px solid #44465a; border-radius: 4px; padding: 0 4px; margin-left: 6px; }
   input[type=checkbox] { accent-color: #00ED95; width: 16px; height: 16px; margin: 0; vertical-align: middle; }
   .own { font-size: 13px; margin-top: 12px; }
+  /* changelog */
+  #news { background: #1b1b1d; color: #eee; border: 1px solid #2a2a2d; border-radius: 12px; padding: 0; width: min(760px, 92vw);
+    max-height: 82vh; }
+  #news::backdrop { background: #000a; }
+  #news header { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid #2a2a2d; }
+  #news header h2 { margin: 0; flex: 1; } #news header button { width: auto; margin: 0; padding: 6px 12px; }
+  #newsbody { padding: 4px 18px 18px; overflow-y: auto; max-height: calc(82vh - 64px); font-size: 14px; }
+  #newsbody h3 { font-size: 16px; margin: 18px 0 2px; } #newsbody h3 .dim { font-weight: 400; font-size: 13px; }
+  #newsbody h4 { font-size: 13px; margin: 10px 0 2px; color: #AEB1DC; text-transform: lowercase; }
+  #newsbody ul { margin: 2px 0; padding-left: 20px; } #newsbody li { margin: 2px 0; }
+  #newsbody .newer { border-left: 3px solid #00ED95; padding-left: 12px; }
+  #newsbody p { margin: 4px 0; } #newsbody .sum { color: #8a8c8e; font-size: 12px; word-break: break-all; }
 </style>
 </head>
 <body>
@@ -81,6 +93,7 @@ firmware file is <b>not uploaded</b> anywhere.</p>
   <button id="connect">Connect OP-1</button>
   <button id="engines" disabled>Update synths and effects</button>
   <button id="full" disabled>Update firmware + synths and effects</button>
+  <button id="whatsnew" class="grey">What's new</button>
   <p class="dim" style="font-size:13px">An OP-1 running op1r updates over USB MIDI without the bootloader: only what
   differs is sent, then the OP-1 asks – <b>T1</b> restarts and applies, <b>T2</b> cancels. Needs Web MIDI (Chrome,
   Edge).</p>
@@ -88,6 +101,10 @@ firmware file is <b>not uploaded</b> anywhere.</p>
 </div>
 
 <pre id="log"></pre>
+<dialog id="news">
+  <header><h2 id="newstitle">What's new</h2><button id="newsall" class="grey">All versions</button><button id="newsclose">Close</button></header>
+  <div id="newsbody"></div>
+</dialog>
 <p class="dim">The original firmware can always be flashed back. Use at your own risk.
 <a href="https://github.com/pcppcp/op1r">Source, changelog and command-line patcher</a>.
 Like it? <a href="https://ko-fi.com/pcppcp">Buy me a coffee on Ko-fi</a>.</p>
@@ -243,6 +260,8 @@ async function find(verbose) {
   dev = d;
   const rel = man && man.result.ident;
   setDev('on', dev.ident || 'op1r');
+  const hv = verOf(dev.ident), pv = verOf(rel);
+  $('whatsnew').textContent = hv && pv > hv ? `What's new since op1r ${hv}` : "What's new";
   $('devinfo').textContent = `update protocol ${dev.proto}` +
     (rel && dev.ident && !dev.ident.startsWith(rel) ? ` – this page installs ${rel}` : '');
   log(`OP-1 found: ${dev.ident || 'op1r'} (update protocol ${dev.proto})`, 'ok');
@@ -284,6 +303,7 @@ async function update(withFirmware) {
   busy = false;
   dev.link.close(); dev = null; installed = null; buttons(); render();
   setDev('off', ok ? 'restarting' : 'not connected');
+  $('whatsnew').textContent = "What's new";
   $('devinfo').textContent = ok ? 'The OP-1 restarts; connect again afterwards.' : '';
 }
 $('connect').onclick = connect;
@@ -294,6 +314,62 @@ fetch('../data/manifest.json', { cache: 'no-cache' }).then((r) => r.json()).then
   man = m;
   for (const p of man.plugins || []) addRow({ ...p });
 }).catch(() => log('cannot load the patch data (data/manifest.json)', 'err'));
+// ---- changelog (../CHANGELOG.md): entries "## date — op1r N"; with an OP-1 connected, the ones newer than its firmware
+let changelog = null, newsAll = false;
+const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const inline = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>')
+  .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+const verOf = (t) => { const m = /op1r (\d+)/.exec(t || ''); return m ? +m[1] : 0; };
+function parseChangelog(md) {                                       // -> [{ title, date, ver, lines }]
+  const out = [];
+  for (const l of md.split('\n')) {
+    if (l.startsWith('## ')) { const t = l.slice(3).trim(); out.push({ title: t, ver: verOf(t), lines: [] }); }
+    else if (out.length) out[out.length - 1].lines.push(l);
+  }
+  return out;
+}
+function mdBlock(lines) {                                           // ### headings, "- " bullets (indented continuation), text
+  let h = '', li = null, inList = false;
+  const flush = () => { if (li !== null) { h += `<li>${inline(li)}</li>`; li = null; } };
+  for (const l of lines) {
+    if (l.startsWith('- ')) { if (!inList) { h += '<ul>'; inList = true; } flush(); li = l.slice(2); continue; }
+    if (li !== null && /^\s+\S/.test(l)) { li += ' ' + l.trim(); continue; }
+    flush(); if (inList) { h += '</ul>'; inList = false; }
+    if (l.startsWith('### ')) h += `<h4>${inline(l.slice(4))}</h4>`;
+    else if (/^Output `/.test(l)) h += `<p class="sum">${inline(l)}</p>`;
+    else if (l.trim()) h += `<p>${inline(l)}</p>`;
+  }
+  flush(); if (inList) h += '</ul>';
+  return h;
+}
+function showNews() {
+  const have = dev ? verOf(dev.ident) : 0, page = verOf(man && man.result && man.result.ident);
+  const newer = (e) => have && e.ver > have;
+  let list = changelog, title = "What's new";
+  if (!newsAll) {
+    if (have && changelog.some(newer)) { list = changelog.filter(newer); title = `New since op1r ${have} (your OP-1)`; }
+    else if (have) { list = changelog.filter((e) => e.ver === have); title = `op1r ${have} – your OP-1 is up to date`; }
+    else { list = changelog.slice(0, 1); title = page ? `What's new in op1r ${page}` : "What's new"; }
+  } else title = 'All versions';
+  $('newstitle').textContent = title;
+  $('newsall').textContent = newsAll ? 'Only new' : 'All versions';
+  $('newsbody').innerHTML = list.map((e) => {
+    const [date, name] = e.title.split(' — ');
+    return `<div class="${newer(e) ? 'newer' : ''}"><h3>${esc(name || date)} <span class="dim">${name ? esc(date) : ''}</span></h3>${mdBlock(e.lines)}</div>`;
+  }).join('') || '<p class="dim">No entries.</p>';
+  if (!$('news').open) $('news').showModal();
+  $('newsbody').scrollTop = 0;
+}
+$('whatsnew').onclick = async () => {
+  if (!changelog) {
+    try { changelog = parseChangelog(await (await fetch('../CHANGELOG.md', { cache: 'no-cache' })).text()); }
+    catch { return log('cannot load the changelog (CHANGELOG.md)', 'err'); }
+  }
+  newsAll = false; showNews();
+};
+$('newsall').onclick = () => { newsAll = !newsAll; showNews(); };
+$('newsclose').onclick = () => $('news').close();
+$('news').onclick = (e) => { if (e.target === $('news')) $('news').close(); };   // click outside closes
 buttons();
 </script>
 </body>
