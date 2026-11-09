@@ -3,6 +3,21 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-09 14:56 — op1r 60
+
+Output `29fa5bb55942d3afe801edcb768cd278e68cbddc01a72e5c18367d8a092a5f55` (all plugins)
+
+### Changed
+- **granular 0.10.0** (thanks displayname808: the Opus 2 granular+ mod, ported back to op1r): six grain shapes
+  (Shift + green), pitch ±24 semitones (Shift + blue), sample gain (Shift + red), grain size synced to the tempo
+  (Shift + white press, saved with the sound), **freeze** (red press: released notes keep sounding), longer grain
+  lifetimes, a faster grain loop. Old granular sounds load as before. One plugin file, no extra tool plugin: if you
+  installed the separate `granular_ctl.op1p` from the port, it does nothing now and can be removed.
+- granular page: brighter waves, the sample shown as solid bars, a solid start marker.
+- For plugin developers: synth engines can get key events, a service call and Shift pages on all four knobs
+  (`op1_engine_ext_t`, plugin.json `"engine_ext"`; see the SDK).
+- Boot screen version: `op1r 60`.
+
 ## 2026-11-09 14:06 — op1r 59
 
 Output `ead28745e4f61d457acf11df272621bdaa09f3c0544d516cb7fe742ababdbd1b` (all plugins)
