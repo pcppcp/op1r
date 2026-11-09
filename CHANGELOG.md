@@ -5,7 +5,7 @@ Newest first. Each entry lists the changes since the previous push and the outpu
 
 ## 2026-11-09 14:56 — op1r 60
 
-Output `29fa5bb55942d3afe801edcb768cd278e68cbddc01a72e5c18367d8a092a5f55` (all plugins)
+Output `458d78c5b9bc2ffa232a47e3a6a9e4c0d2cf85db0ca92f39180b7a3f255c16bb` (all plugins)
 
 ### Changed
 - **granular 0.10.0** (thanks displayname808: the Opus 2 granular+ mod, ported back to op1r): six grain shapes
@@ -14,6 +14,8 @@ Output `29fa5bb55942d3afe801edcb768cd278e68cbddc01a72e5c18367d8a092a5f55` (all p
   lifetimes, a faster grain loop. Old granular sounds load as before. One plugin file, no extra tool plugin: if you
   installed the separate `granular_ctl.op1p` from the port, it does nothing now and can be removed.
 - granular page: brighter waves, the sample shown as solid bars, a solid start marker.
+- **OP-1s with the smaller screen (rev 2, FE):** the screen drawing of op1r 59 assumed the larger screen and could
+  write past the end of the picture memory on the resource monitor; the FX list text now lines up on every screen.
 - For plugin developers: synth engines can get key events, a service call and Shift pages on all four knobs
   (`op1_engine_ext_t`, plugin.json `"engine_ext"`; see the SDK).
 - Boot screen version: `op1r 60`.
