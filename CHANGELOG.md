@@ -3,6 +3,21 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-09 14:06 — op1r 59
+
+Output `ead28745e4f61d457acf11df272621bdaa09f3c0544d516cb7fe742ababdbd1b` (all plugins)
+
+### Changed
+- **The screen is no longer redrawn when nothing on it changes.** Each frame still runs every page's code (animations
+  keep their timing), but an unchanged picture is not drawn again. Idle pages need far less CPU: the synth (sampler)
+  page drops from about 59 % to 20 % of the CPU, tape / drum / mixer / lists to about half. Animated pages (tape
+  playing, a moving playhead) draw every frame as before. A change after an idle moment shows one frame (17 ms) later.
+- **Resource monitor:** draws its labels and frames once and only redraws the bars and values (about 3–9 % instead of
+  15 % on the OP-1). Its CPU value now jumps more, as it measures the cheaper frames too.
+- For plugin developers: screens can declare which areas change (`op1_screen_regions`, opt-in, see the SDK); existing
+  plugins are unaffected.
+- Boot screen version: `op1r 59`.
+
 ## 2026-11-08 19:22 — op1r 58
 
 Output `d58aa23813c0a7c1ed7913d2cc05b488b1e701cc20eebf42ef99290f5d51e4e0` (all plugins)
