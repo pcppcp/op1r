@@ -244,7 +244,8 @@ with:
 
 ## Screens
 
-Rendered on the PC from the same screen code that runs on the OP-1 (host harness in the synth SDK).
+Rendered on the PC from the same screen code that runs on the OP-1 (host harness in the synth SDK). Text that the
+OP-1 draws in its own font is shown in [Iosevka](https://github.com/be5invis/Iosevka) (SIL Open Font License 1.1).
 
 | Synth engines | |
 |---|---|
@@ -389,4 +390,5 @@ Releases from op1r 27 on are built from it.
 
 Not covered: the Teenage Engineering firmware (never included here) and the Oblique Strategies card texts (Brian Eno
 and Peter Schmidt). Third-party parts (MIT): Mutable Instruments Clouds / Elements reverb ports (Emilie Gillet),
-op1repacker's iter-lab.svg and LZMA settings (op1hacks), svgfont.py (Martin Mairinger). Details in [NOTICE](NOTICE).
+op1repacker's iter-lab.svg and LZMA settings (op1hacks), svgfont.py (Martin Mairinger). Screenshot text: Iosevka (Renzhi
+Li, SIL OFL 1.1). Details in [NOTICE](NOTICE).
