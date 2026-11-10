@@ -3,6 +3,26 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-10 14:45 — op1r 62
+
+Output `ca5f43be5bd62918f8a062d39e2c4b259efe5ff7ffb6c28e353f527976ca27c4` (all plugins)
+
+### Changed
+- **Faster boot**: about 9.8 s → 4.9 s (measured on an OP-1). Screens are prepared when first shown, or in the
+  background in the first seconds after boot, instead of all at boot; the preset lists load with fewer copies.
+  The first opening of a large page right after power-up can take a moment.
+- **Pulse sync page** (tempo page **T2**): the tempo from the pulses, a pulse lamp and beat dots, the pulse level
+  against the trigger, and the settings: rate (blue), start auto / manual (green), edge rise / fall (white), level
+  auto / 1–6 (red). The input is muted while following, only line in or USB audio in are listened to, and the tempo
+  page shows `midi` / `ppq N` while a clock comes in.
+- **Pulse sync on one channel**: **Shift + red** on the pulse sync page picks both / left / right. With one channel
+  the clock comes from it and the other channel stays the input's audio (heard, recorded, input engines).
+- **Help**: the screen under the help overlay fades out fully again (it stopped part-way on still screens).
+- Resource monitor: pages 7–10 show the boot times.
+- The still-artwork cache of the illustrated pages now works as in Hundekraft's kennel (the shared page is never
+  changed while drawing).
+- Boot screen version: `op1r 62`.
+
 ## 2026-11-10 09:13 — op1r 61
 
 Output `05e2692be2c5897290b11c9964699fc04fc0500ef39ea28a4161cc2d8e650e9b` (all plugins)

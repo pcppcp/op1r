@@ -99,7 +99,7 @@ with:
   audio processing load (both with a peak marker), RAM and disk usage and the MIDI in / out buffer fill; T1 again
   goes back to the clock. The audio bar is split into instruments (green), envelopes (blue), custom FX (white) and
   the rest (grey); the blue knob steps through detail pages (audio split, synth / sampler / drum voices, plugins,
-  disk)
+  disk, boot times)
 - **USB track outs**: the OP-1 shows up as a 6-channel USB audio input (24 bit, 44.1 kHz): main L/R on channels
   1–2, tape tracks 1–4 on channels 3–6 (pre-fader, following tape speed and reverse). Clock screen + **T2**: the blue
   knob switches between **MASTER** (track channels silent, saves 5–7 % CPU; default) and **MASTER + TRACKS**; the
@@ -212,7 +212,11 @@ with:
   PO SYNC with the link), **Shift + white** = PPQ 1 / 2 / 4 / 24 / 48 (one step from MIDI goes to 4; MIDI = stock).
   `PPQ 4` above the sync box and a dot per detected pulse; the first pulse starts the OP-1 like MIDI start, 2 beats
   without pulses stop it; MIDI clock is ignored meanwhile. Use an attenuator for 5–10 V modular clocks.
-  `tools/pulse_clock.py` (op1r-src) sends test pulses from a computer's headphone output
+  Tempo page **T2**: the pulse sync page (tempo from the pulses, pulse level against the trigger; blue rate, green
+  start auto / manual, white edge rise / fall, red level auto / 1–6; **Shift + red** channel both / left / right:
+  with one channel the other stays the input's audio). The input is muted while following on both channels.
+  `tools/pulse_clock.py` (op1r-src) sends test pulses from a computer's headphone output (`--tone` adds audio on the
+  other channel)
 - hidden **OP-Z controller mode** in COM → CTRL, switched on by the SysEx `F0 00 20 76 00 01 03 F7`
   from the host (any MIDI tool that can send SysEx; `F0 00 20 76 00 01 00 F7` switches it off)
 - **firmware update over USB MIDI SysEx**: `tools/op1push.py` (op1r-src) or the web patcher stage changed files
@@ -317,7 +321,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `05e2692be2c5897290b11c9964699fc04fc0500ef39ea28a4161cc2d8e650e9b` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `ca5f43be5bd62918f8a062d39e2c4b259efe5ff7ffb6c28e353f527976ca27c4` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
