@@ -3,6 +3,20 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-10 09:13 — op1r 61
+
+Output `05e2692be2c5897290b11c9964699fc04fc0500ef39ea28a4161cc2d8e650e9b` (all plugins)
+
+### Changed
+- **Less CPU for Hundekraft's illustrated pages** (mbira, wavetable, taffy, juni, juni chorus, pew, hail, stutter):
+  their still artwork is now drawn once and kept, only the moving parts are drawn each frame. mbira with a note
+  playing: about 42 % → 17 % of the CPU, wavetable 53 % → 30 %.
+- **in a room** (thanks ultralazr): a tempo-synced loop no longer goes silent at a slower tape speed or tempo (at 25 %
+  tape speed a 1 BAR loop restarts every beat); a free loop's level no longer dips at the seam; the LOOP page says
+  `LO-FI` (was `11K`) and `1 BAR AS 1/2` (was `LONG`). Free loops now go up to 7.6 s (above 3.8 s at the lower
+  11.025 kHz quality). **Saved sounds with a free length above the default 2.6 s now record longer loops.**
+- Boot screen version: `op1r 61`.
+
 ## 2026-11-09 14:56 — op1r 60
 
 Output `458d78c5b9bc2ffa232a47e3a6a9e4c0d2cf85db0ca92f39180b7a3f255c16bb` (all plugins)
