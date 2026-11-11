@@ -112,6 +112,7 @@ OP-1 crashed? <a href="crash.html">Decode the crash screen</a> for a bug report.
 Like it? <a href="https://ko-fi.com/pcppcp">Buy me a coffee on Ko-fi</a>.</p>
 <script type="module">
 import * as DU from './devupd.js';
+import { pluginInfo, checkSet } from './op1p.js';
 const $ = (id) => document.getElementById(id);
 const log = (t, cls) => { const s = document.createElement('span'); if (cls) s.className = cls; s.textContent = t + '\n'; $('log').append(s); };
 let man = null, busy = false, files = null, dev = null, midi = null, installed = null, detecting = false;
@@ -177,21 +178,6 @@ function setDev(state, text) {                                      // the statu
   $('devstate').textContent = text;
 }
 const selected = () => [...rows.values()].filter((r) => r.checked);
-function pluginInfo(d) {                    // { name, kind, author } from a .op1p (trailer -> header -> metadata)
-  if (d.length < 16 + 76) return null;
-  const v = new DataView(d.buffer, d.byteOffset, d.length), at = d.length - 16;
-  if (v.getUint32(at, true) !== 0x5431504F) return null;
-  const off = v.getUint32(at + 4, true), len = v.getUint32(at + 8, true);
-  if (off + 76 > d.length || off + len > at || v.getUint32(off, true) !== 0x5031504F) return null;
-  const nm = d.subarray(off + 16, off + 32), str = (b) => new TextDecoder().decode(b);
-  const info = { name: str(nm.subarray(0, nm.indexOf(0) < 0 ? 16 : nm.indexOf(0))),
-                 kind: ['synth', 'fx', 'seq', 'drum', 'sampler', 'tool'][v.getUint32(off + 12, true)] || '?', author: '' };
-  let p = off + 76 + v.getUint32(off + 32, true) + 16 * v.getUint32(off + 68, true);   // after image + relocations
-  for (let i = v.getUint32(off + 72, true); i > 0 && p < off + len; i--) { const z = d.indexOf(0, p); if (z < 0) return info; p = z + 1; }
-  for (const l of str(d.subarray(Math.min(p, off + len), off + len)).split('\n'))
-    if (l.startsWith('author=')) info.author = l.slice(7, 60);
-  return info;
-}
 async function sha256(d) { return [...new Uint8Array(await crypto.subtle.digest('SHA-256', d))].map((x) => x.toString(16).padStart(2, '0')).join(''); }
 async function pluginData(r) {              // bytes of a ticked plugin: own file, built image, or data/plugins/ (checked)
   if (r.data) return r.data;
@@ -203,10 +189,24 @@ async function pluginData(r) {              // bytes of a ticked plugin: own fil
   if (await sha256(d) !== r.sha256) throw new Error(`${r.file}: damaged download`);
   return (r.data = d);
 }
+async function fits(rs) {                   // refuse a selection the OP-1 would partly refuse at boot (op1p.js)
+  const list = [];
+  for (const r of rs) {
+    if (r.onlyDevice) { list.push({ file: r.file, name: r.name, kind: '', size: r.size }); continue; }
+    const info = pluginInfo(await pluginData(r));
+    if (!info || info.err) throw new Error(`${r.file}: ${info ? info.err : 'not a plugin file'}`);
+    list.push({ file: r.file, ...info });
+  }
+  const errs = checkSet(list);
+  for (const e of errs) log(e, 'err');
+  if (errs.length) throw new Error('the OP-1 would not load all ticked synths / effects: untick some');
+  return list;
+}
 $('own').onchange = async (e) => {
   for (const f of e.target.files) {
     const d = new Uint8Array(await f.arrayBuffer()), info = pluginInfo(d);
     if (!info || !/^[A-Za-z0-9_.-]+\.op1p$/.test(f.name)) { log(`${f.name}: not a plugin file`, 'err'); continue; }
+    if (info.err) { log(`${f.name}: the OP-1 would refuse it: ${info.err}`, 'err'); continue; }
     addRow({ file: f.name, ...info, size: d.length, data: d, own: true });
     log(`added ${f.name} (${info.kind} ${info.name})`);
   }
@@ -237,8 +237,9 @@ function run(file) {
   if (busy || !file || !man) return;
   busy = true; buttons(); $('dl').style.display = 'none'; files = null;
   log(`reading ${file.name} (${file.size.toLocaleString()} bytes) ...`);
-  const plugins = selected().filter((r) => !r.own && r.sha256).map((r) => r.name);
-  file.arrayBuffer().then((b) => worker.postMessage({ op1: b, plugins }, [b]));
+  const sel = selected().filter((r) => !r.own && r.sha256), plugins = sel.map((r) => r.name);
+  fits(sel).then(() => file.arrayBuffer()).then((b) => worker.postMessage({ op1: b, plugins }, [b]))
+    .catch((e) => { busy = false; buttons(); log('ERROR: ' + e.message, 'err'); });
 }
 $('drop').onclick = () => $('file').click();
 $('file').onchange = (e) => run(e.target.files[0]);
@@ -305,6 +306,14 @@ async function update(withFirmware) {
     }
     const devBuild = !!(dev.ident && dev.ident.trim().split(/\s+/).length > 2);   // 'op1r 63 <build time>': a local build
     if (devBuild) log(`the OP-1 runs a development build (${dev.ident}): the firmware ${dev.proto >= 4 ? 'and every changed file are' : 'and every file are'} sent`, 'warn');
+    const set = await fits(selected()), hv = verOf(dev.ident), pv = verOf(man && man.result.ident);
+    if (!withFirmware && !devBuild && hv && pv > hv) {             // plugin files can use what older firmware lacks
+      const old = set.filter((p) => p.needs > hv).map((p) => `${p.name} (needs op1r ${p.needs})`);
+      if (!confirm(`The OP-1 runs op1r ${hv}; these synths and effects are from op1r ${pv} and may need its firmware.` +
+                   (old.length ? `\nThese need a newer op1r: ${old.join(', ')}.` : '') +
+                   '\n\nOK sends them anyway. Cancel: update the firmware first ("Update firmware + synths and effects").'))
+        throw new Error('not sent: update the firmware first');
+    }
     let send = withFirmware || devBuild ? files.filter(([p]) => !p.startsWith('plugins/')) : [];
     if (dev.proto >= 3) send = send.concat(plug);
     const deletes = dev.proto >= 3 && installed
