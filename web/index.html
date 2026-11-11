@@ -93,6 +93,7 @@ firmware file is <b>not uploaded</b> anywhere.</p>
   <button id="connect">Connect OP-1</button>
   <button id="engines" disabled>Update synths and effects</button>
   <button id="full" disabled>Update firmware + synths and effects</button>
+  <label class="dim" style="font-size:13px" title="The OP-1 can only compare sizes and the firmware version: a changed file of the same size looks unchanged. Tick to send every file."><input type="checkbox" id="force"> send every file, also ones that look unchanged</label>
   <button id="whatsnew" class="grey">What's new</button>
   <p class="dim" style="font-size:13px">An OP-1 running op1r updates over USB MIDI without the bootloader: only what
   differs is sent, then the OP-1 asks – <b>T1</b> restarts and applies, <b>T2</b> cancels. Needs Web MIDI (Chrome,
@@ -112,7 +113,7 @@ Like it? <a href="https://ko-fi.com/pcppcp">Buy me a coffee on Ko-fi</a>.</p>
 import * as DU from './devupd.js';
 const $ = (id) => document.getElementById(id);
 const log = (t, cls) => { const s = document.createElement('span'); if (cls) s.className = cls; s.textContent = t + '\n'; $('log').append(s); };
-let man = null, busy = false, files = null, dev = null, midi = null, installed = null;
+let man = null, busy = false, files = null, dev = null, midi = null, installed = null, detecting = false;
 const rows = new Map();                    // file -> { name, kind, size, sha256?, data?, own?, box, state }
 
 // ---- plugin list ----
@@ -251,10 +252,15 @@ async function connect() {
   if (!navigator.requestMIDIAccess) return log('this browser has no Web MIDI (use Chrome or Edge)', 'err');
   try { midi = midi || await navigator.requestMIDIAccess({ sysex: true }); }
   catch { return log('MIDI access was not allowed', 'err'); }
-  midi.onstatechange = () => { if (!dev && !busy) find(); };
+  midi.onstatechange = () => { if (!dev && !busy) find().catch((e) => log('ERROR: ' + e.message, 'err')); };
   await find(true);
 }
-async function find(verbose) {
+async function find(verbose) {                                      // one at a time: a second one takes the input handler
+  if (detecting) return;
+  detecting = true;
+  try { await find1(verbose); } finally { detecting = false; }
+}
+async function find1(verbose) {
   const d = await DU.find(midi);
   if (!d) { if (verbose) log('no OP-1 with op1r found on USB MIDI (COM mode, op1r firmware?)', 'warn'); return; }
   dev = d;
@@ -296,15 +302,16 @@ async function update(withFirmware) {
     if (dev.proto >= 3) send = send.concat(plug);
     const deletes = dev.proto >= 3 && installed
       ? installed.filter((i) => !selected().some((r) => r.file === i.file)).map((i) => 'plugins/' + i.file) : [];
-    await DU.push(dev, send, log, deletes);
-    if (dev.proto < 3) log('After the restart: connect again and press "Update synths and effects" to install them.', 'warn');
-    ok = true;
+    const rel = man && man.result.ident, upgrade = !!(rel && dev.ident && !dev.ident.startsWith(rel));
+    ok = await DU.push(dev, send, log, deletes, { force: $('force').checked, upgrade });
+    if (ok && ok !== 'nothing' && dev.proto < 3) log('After the restart: connect again and press "Update synths and effects" to install them.', 'warn');
   } catch (e) { log('ERROR: ' + e.message, 'err'); }
   busy = false;
   dev.link.close(); dev = null; installed = null; buttons(); render();
-  setDev('off', ok ? 'restarting' : 'not connected');
+  setDev('off', ok && ok !== 'nothing' ? 'restarting' : 'not connected');
   $('whatsnew').textContent = "What's new";
-  $('devinfo').textContent = ok ? 'The OP-1 restarts; connect again afterwards.' : '';
+  $('devinfo').textContent = ok === 'restarting' ? 'The OP-1 is probably applying the update: do not switch it off; connect again in a minute.'
+    : ok === 'applied' ? 'The OP-1 restarts; connect again afterwards.' : '';
 }
 $('connect').onclick = connect;
 $('engines').onclick = () => update(false);
