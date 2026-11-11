@@ -32,7 +32,7 @@ async function setup() {
 
 onmessage = async (e) => {
   try {
-    ready = ready || setup();
+    ready = ready || setup().catch((err) => { ready = null; throw err; });   // a failed start is tried again
     const py = await ready;
     py.FS.writeFile('/in.op1', new Uint8Array(e.data.op1));
     py.globals.set('PLUGINS', py.toPy(e.data.plugins));

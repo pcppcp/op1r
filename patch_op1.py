@@ -208,11 +208,13 @@ def main():
              f'  expected sha256 {man["original"]["sha256"]}\n  got      sha256 {h}')
     print(f'input OK: {man["original"]["name"]} (sha256 {h[:16]}...)')
 
+    dst = a.output or os.path.splitext(a.firmware)[0] + '-custom.op1'
+    if os.path.exists(dst) and os.path.samefile(dst, a.firmware):
+        fail(f'{dst} is the input file: choose another output (-o)')
     every = [p['name'] for p in man.get('plugins', [])]
     sel = every if a.plugins == 'all' else [] if a.plugins == 'none' else \
-        [n.strip() for n in a.plugins.split(',') if n.strip()]
+        list(dict.fromkeys(n.strip() for n in a.plugins.split(',') if n.strip()))   # each once
     out, _ = patch(op1, man, plugins=sel)
-    dst = a.output or os.path.splitext(a.firmware)[0] + '-custom.op1'
     h = sha256(out)
     if sorted(sel) != sorted(every):
         open(dst, 'wb').write(out)
