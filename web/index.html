@@ -298,13 +298,15 @@ async function update(withFirmware) {
       if (r.onlyDevice) continue;                                  // already there, kept as it is
       plug.push(['plugins/' + r.file, await pluginData(r)]);
     }
-    let send = withFirmware ? files.filter(([p]) => !p.startsWith('plugins/')) : [];
+    const devBuild = !!(dev.ident && dev.ident.trim().split(/\s+/).length > 2);   // 'op1r 63 <build time>': a local build
+    if (devBuild) log(`the OP-1 runs a development build (${dev.ident}): the firmware and every file are sent`, 'warn');
+    let send = withFirmware || devBuild ? files.filter(([p]) => !p.startsWith('plugins/')) : [];
     if (dev.proto >= 3) send = send.concat(plug);
     const deletes = dev.proto >= 3 && installed
       ? installed.filter((i) => !selected().some((r) => r.file === i.file)).map((i) => 'plugins/' + i.file) : [];
     const ver = (id) => (id || '').split(' ')[1];                  // 'op1r 63 [build time]' -> '63'
     const rel = man && man.result.ident, upgrade = !!(rel && dev.ident && ver(dev.ident) !== ver(rel));
-    ok = await DU.push(dev, send, log, deletes, { force: $('force').checked, upgrade });
+    ok = await DU.push(dev, send, log, deletes, { force: $('force').checked || devBuild, upgrade: upgrade || devBuild });
     if (ok && ok !== 'nothing' && dev.proto < 3) log('After the restart: connect again and press "Update synths and effects" to install them.', 'warn');
   } catch (e) { log('ERROR: ' + e.message, 'err'); }
   busy = false;
