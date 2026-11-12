@@ -105,6 +105,14 @@ with:
   knob switches between **MASTER** (track channels silent, saves 5–7 % CPU; default) and **MASTER + TRACKS**; the
   setting is saved. Tested on Linux and macOS (Windows untested: if the OP-1 still shows 2 channels, remove the old
   OP-1 device entry once)
+- **second tape machine STEFAN** (settings page: clock / card + **T3**, white **TAPE**: **JESPER/OP1** = the stock
+  tape, **STEFAN** = four independent tracks). Each track has its own playhead, speed (white: ratios 1:4 … 4:1,
+  Shift: fine), direction (**Shift + s5**), loop (**s1** in, **s2** out, **s3** on / off, **Shift + s3** = the clip
+  under the playhead) and mute (**Shift + T**). **T1–T4** select the active track: it records, scrubs (◄ / ►, Shift:
+  bar jumps), takes markers (red; **Shift + red** turn jumps, wrapping) and lift / drop / scissors. Recording follows
+  the active track's speed and loop; STOP while stopped returns the active track to its loop in. The tracks feed
+  the mixer (levels, pan, meters), the FX2 aux sends and the USB track outputs. Positions, loops, speeds and mutes
+  are kept across power cycles. Same tape data as the stock machine: switch at any time
 - **easy bounce** (by Anthony Berg): lift all four tracks between the loop points (Shift + lift), select a track,
   **Shift + drop**: the four tracks are summed and dropped on that track at the playhead
 - **tape markers**: on the tape screen, press **red** to set a marker at the cursor, **Shift + red** press removes the
@@ -158,6 +166,8 @@ with:
   *I am sitting in a room* as a looping FX), **steve** (Steve Reich's phase process: capture a loop, 2–4 copies drift
   apart as in *It's Gonna Rain* / *Come Out* or move one unit at a time and lock as in *Piano Phase*; one rabbit per
   copy on the screen; stereo on the master, A left, B right)
+- from **hundekraft 3.2.3**: the **moai**, **reactor** and **bloodmoon** (by Nola Drift) synth plugins and the
+  **rackverb** FX
 - **ENTE** (FX plugin): sidechain compressor. Blue thresh, green ratio (up to inf = ducking), white release, red
   **source** (one entry per click, wraps): self (a plain compressor), t1–t4 (a tape track, before the fader: a muted
   "ghost kick" track still triggers), tape (all tracks), in (mic / line input), inst (master only: the live
@@ -322,7 +332,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `ca5f43be5bd62918f8a062d39e2c4b259efe5ff7ffb6c28e353f527976ca27c4` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `7e1a309fc677162e4d6b8795589cb9f476777bb637d60e0f8ad8a88bcc7b6982` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
@@ -338,9 +348,10 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
   MIDI sequencer idea; the Oblique Strategies cards ([ultralazr/op1-oblique-strategies](https://github.com/ultralazr/op1-oblique-strategies), Martin Mairinger)
 - **Lewis-Clayton**: the randomiser tool plugin, the nostromo reverb
 - **nvmsocool**: the brassophone synth plugin
-- **Hundekraft**: the patch-job / sampler-preset fixes (op1r 54, from kennel 3.1.4); the sample-exact clouds optimisation (op1r 43); the Blackfin kernels of clouds, nostromo,
+- **Hundekraft**: the moai and reactor synth plugins and the rackverb FX (from hundekraft 3.2.3); the patch-job / sampler-preset fixes (op1r 54, from kennel 3.1.4); the sample-exact clouds optimisation (op1r 43); the Blackfin kernels of clouds, nostromo,
   granular, brassophone, arc and mixtur and the reverb speed-up (op1r 47)
 - **AiAAAA**: the vapora synth plugin
+- **Nola Drift**: the bloodmoon synth plugin (via hundekraft 3.2.3)
 - **Anthony Berg**: the dots synth engine locks, tape easy bounce
 - **Serhii Tonkoshkuryk**: blot's TB-303 ladder (Open303 port)
 - **DAN76**: the reverb's Kali screen; **DAN76/Rackes**: the aether satellite-dish screen

@@ -3,6 +3,30 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-12 10:40 — op1r 63
+
+Output `7e1a309fc677162e4d6b8795589cb9f476777bb637d60e0f8ad8a88bcc7b6982` (all plugins)
+
+### Added
+- **Second tape machine STEFAN** (settings page, white **TAPE**: **JESPER/OP1** = stock, **STEFAN**): four tracks
+  with their own playhead, speed (1:4 … 4:1, fine with Shift), direction, loop and mute, its own tape screen
+  (active track, time, speed, a detail view around the playhead, all four tracks below, record meter). Records onto
+  the active track at its speed and loop; scrubbing, bar and marker jumps (wrapping), lift / drop / scissors on the
+  active track; loop crossfade at hard seams, click-free start / stop. Feeds the mixer (levels, pan, meters), FX2
+  aux and the USB track outputs; runs past the 6-minute tape end; positions, loops, speeds and mutes survive a
+  power cycle. Uses the same tape data as the stock machine.
+- Hundekraft 3.2.3 ports: **moai**, **reactor** and **bloodmoon** synths, **rackverb** FX; stepped FX knobs.
+
+### Changed
+- **Audio core**: the output stage, master EQ, instrument mix, decimator and master section run as op1r code in L1
+  (bit-exact with the original, checked per block during development), most of them faster (master EQ −5 %,
+  decimator −61 %).
+- The settings, USB out, scale and FX routing pages use the OP-1's own font.
+- Tape: incremental saves while recording (keys and screen stay responsive).
+- Resource monitor page 5 also shows the STEFAN engine (`fr`).
+- L1 changes are applied at boot instead of in the encrypted image.
+- Boot screen version: `op1r 63`.
+
 ## 2026-11-10 14:45 — op1r 62
 
 Output `ca5f43be5bd62918f8a062d39e2c4b259efe5ff7ffb6c28e353f527976ca27c4` (all plugins)
