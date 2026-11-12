@@ -3,6 +3,32 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-12 20:09 — op1r 67
+
+Output `9d246f6928d48faf1c921200edbeaf7973990962da846a84e08e3ccff4000ace` (all plugins)
+
+### Added
+- **Updates send changed files of the same size** (update protocol 4): the OP-1 now reports a file's checksum, and
+  the web updater and `op1push.py` compare it whenever the size matches. A rebuilt plugin or changed screen is no
+  longer skipped, and files that really are unchanged are still not sent. Works from the second update with this
+  version (the first one still runs on the old firmware's size check).
+- **Plugin kit** (in op1r-src, PR #51 by tencur): `pluginkit.py new <synth|fx|seq|tool> <name>` makes a working
+  plugin with a screen and a test, `pluginkit.py check` builds and tests it on the PC with previews.
+- **Crash screen decoding** (in op1r-src, PR #52 by tencur): every build writes a symbol map;
+  `tools/op1crash.py` turns the addresses on the crash screen into function names.
+
+### Fixed
+- **Shared presets** can no longer hang, lock or crash the OP-1 (PR #47 by tencur): sampler+ with a damaged
+  `"p"` or a start after the end, granular with size and overlap at -1, drum+ kits with negative pad words. A
+  preset made with a plugin you don't have opens as iter / filter instead of playing a different local plugin.
+- **MIDI sequencer** (PR #48 by tencur): no more hang at every boot after the OP-1 lost power while saving; LIFT of
+  more events than the clipboard holds now does nothing instead of losing the rest; quantize no longer deletes a
+  note it can't move.
+- **Sequencers** (PR #49 by tencur): notes that never stopped in euclid, dots, peal, oracle and chord; euclid
+  flooding notes after about 34 minutes; euclid's note label overwriting memory at very low octaves; grids drum
+  notes hanging with the drum octave not 0; output S of the MIDI sequencer leaving a key held after a scale or mode
+  change.
+
 ## 2026-11-12 19:07 — op1r 66
 
 Output `bbf57b8d87cdb4b93a85105c70329585e13c54c342bedb189ff1946c1ad0f24d` (all plugins)

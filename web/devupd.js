@@ -2,7 +2,7 @@
 // The OP-1 stages the files while it runs and asks before anything is applied: T1 restart + apply, T2 cancel.
 // Only a physical T1 press confirms (MIDI key events are ignored while the prompt is shown).
 const HDR = [0xF0, 0x00, 0x20, 0x76, 0x7D];
-export const HELLO = 1, BEGIN = 2, DATA = 3, END = 4, COMMIT = 5, ABORT = 6, STAT = 7, IDENT = 8, DELETE = 9, LIST = 10;
+export const HELLO = 1, BEGIN = 2, DATA = 3, END = 4, COMMIT = 5, ABORT = 6, STAT = 7, IDENT = 8, DELETE = 9, LIST = 10, CRC = 11;
 const MAX_DATA = 192, WINDOW = 8, TIMEOUT = 2000;
 const ST = { 0: 'ok', 1: 'format', 2: 'state', 3: 'path', 4: 'size', 5: 'offset', 6: 'crc', 7: 'io', 8: 'full',
              9: 'wait key', 10: 'no file' };
@@ -54,8 +54,8 @@ const u32 = (v) => { const b = new Uint8Array(4); new DataView(b.buffer).setUint
 const rd32 = (b) => new DataView(b.buffer, b.byteOffset, 4).getUint32(0, true);
 const cat = (...a) => { const o = new Uint8Array(a.reduce((n, x) => n + x.length, 0)); let k = 0; for (const x of a) { o.set(x, k); k += x.length; } return o; };
 const enc = (s) => new TextEncoder().encode(s + '\0');
-export function crc32(d) {
-  let c = ~0;
+export function crc32(d, prev = 0) {                 // prev: a CRC to continue (as zlib)
+  let c = ~prev;
   for (let i = 0; i < d.length; i++) { c ^= d[i]; for (let k = 0; k < 8; k++) c = c >>> 1 ^ (0xEDB88320 & -(c & 1)); }
   return ~c >>> 0;
 }
@@ -117,11 +117,23 @@ export async function list(dev) {
   return out;
 }
 
-// files: [[path, Uint8Array]]; only those that differ on the device are sent (protocol 2: STAT sizes, IDENT for the
-// LDR). The device has no content check, so a changed file of the same size looks equal: opt.upgrade (the OP-1 runs
-// another op1r than these files) sends every plugin file, opt.force sends every file. log(text).
+// files: [[path, Uint8Array]]; only those that differ on the device are sent (STAT sizes, IDENT for the LDR; protocol
+// 4: a file of the same size also by its CRC-32, asked with CRC in steps of up to 32 KB). Before protocol 4 a changed
+// file of the same size looks equal: opt.upgrade (the OP-1 runs another op1r than these files) sends every plugin
+// file. opt.force sends every file. log(text).
 // Resolves 'applied' when the OP-1 confirmed (it then restarts and applies), 'restarting' when the confirmation got
 // lost but the OP-1 stopped answering after T1 (most likely applying); rejects on refusal / cancel.
+async function sameCrc(L, p, d) {                   // protocol 4: the device's CRC-32 of p, continued per reply
+  let off = 0, crc = 0;
+  while (off < d.length) {
+    const r = await L.ask(CRC, cat(enc(p), u32(off), u32(crc)));
+    if (r.st) return false;                           // changed while read (E_IO / E_OFFSET): send it
+    const nxt = new DataView(r.pl.buffer, r.pl.byteOffset + 4, 4).getUint32(0, true);
+    if (nxt <= off) return false;                     // (no progress: send it)
+    crc = rd32(r.pl); off = nxt;
+  }
+  return crc === crc32(d);
+}
 export async function push(dev, files, log, deletes = [], opt = {}) {   // deletes: plugin paths (protocol 3)
   const L = dev.link;
   L.attach(); L.q = [];
@@ -132,12 +144,16 @@ export async function push(dev, files, log, deletes = [], opt = {}) {   // delet
     for (const [p, d] of files) {
       let same;
       if (p === 'OP1_vdk.ldr') same = ldrIdent(d) === dev.ident;
-      else if (opt.upgrade && pluginPath(p)) same = false;          // same size is no proof (op1r 57: 7 such plugins)
-      else { const r = await L.ask(STAT, enc(p)); same = r.st === 0 && rd32(r.pl) === d.length; }
+      else if (opt.upgrade && dev.proto < 4 && pluginPath(p)) same = false;   // same size is no proof (op1r 57: 7 such plugins)
+      else {
+        const r = await L.ask(STAT, enc(p));
+        same = r.st === 0 && rd32(r.pl) === d.length;
+        if (same && dev.proto >= 4) same = await sameCrc(L, p, d);
+      }
       if (!same) { keep.push([p, d]); log(`  differs: ${p}`); }
     }
     const db = files.find(([p]) => p === 'content/op1_factory.db');   // engine / FX rows: often the same size
-    if (keep.some(([p]) => p === 'OP1_vdk.ldr') && db && !keep.includes(db)) { keep.push(db); log(`  with the firmware: ${db[0]}`); }
+    if (dev.proto < 4 && keep.some(([p]) => p === 'OP1_vdk.ldr') && db && !keep.includes(db)) { keep.push(db); log(`  with the firmware: ${db[0]}`); }
     log(`${keep.length} of ${files.length} files differ on the OP-1`);
     files = keep;
   }

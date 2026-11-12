@@ -14,7 +14,7 @@ assert.equal(DU.ldrIdent(ldr), 'op1r 32 2026-10-15 09:00');
 
 // simulated OP-1: has a.svg (same size), b.svg (other size), no c.svg, runs "op1r 31"; drops every 7th DATA once
 const have = { 'content/a.svg': 10, 'content/b.svg': 5, 'plugins/x.op1p': 3, 'plugins/y.op1p': 4 }, staged = {}, dropped = new Set(), deleted = [];
-let proto = 2;
+let proto = 2, ncrc = 0; const content = {};      // content: the device's bytes (protocol 4 CRC)
 let open = null, wr = 0, buf = [], commits = 0, ndata = 0, onmsg;
 const reply = (m, st, pl = []) => onmsg({ data: DU.build(m[5] | 0x40, m[6] | m[7] << 7, Uint8Array.from([st, ...pl])) });
 const u32 = (x) => [x & 255, x >> 8 & 255, x >> 16 & 255, x >>> 24];
@@ -27,6 +27,12 @@ const out = { name: 'OP-1 MIDI', send(m) {
       return i < ps.length ? reply(m, 0, [...u32(have[ps[i]]), ...new TextEncoder().encode(ps[i].slice(8))]) : reply(m, 10); }
     if (cmd === DU.DELETE) { deleted.push(str(pl)); return reply(m, 0); }
     if (cmd === DU.IDENT) return reply(m, 0, [...new TextEncoder().encode('op1r 31')]);
+    if (cmd === DU.CRC) { const k = pl.indexOf(0), p = str(pl), c = content[p]; ncrc++;
+      if (c === undefined || proto < 4) return reply(m, proto < 4 ? 1 : 10);
+      const dv = new DataView(pl.buffer, pl.byteOffset + k + 1, 8), off = dv.getUint32(0, true), crc = dv.getUint32(4, true);
+      if (off > c.length) return reply(m, 5);
+      const end = Math.min(c.length, off + 32768);
+      return reply(m, 0, [...u32(DU.crc32(c.subarray(off, end), crc)), ...u32(end)]); }
     if (cmd === DU.STAT) { const s = have[str(pl)]; return s === undefined ? reply(m, 10) : reply(m, 0, u32(s)); }
     if (cmd === DU.ABORT) return reply(m, 0);
     if (cmd === DU.BEGIN) { open = str(pl.subarray(8)); wr = 0; buf = []; return reply(m, 0); }
@@ -59,4 +65,18 @@ await DU.push(dev3, [['plugins/x.op1p', new Uint8Array(3)], ['plugins/z.op1p', b
 assert.deepEqual(Object.keys(staged), ['plugins/z.op1p']); assert.deepEqual(deleted, ['plugins/y.op1p']);
 proto = 2; const dev2 = await DU.find(midi);
 await assert.rejects(DU.list(dev2)); await assert.rejects(DU.push(dev2, [], () => {}, ['plugins/y.op1p']));
+// crc32 continued in pieces = in one go
+const hb = Uint8Array.from({ length: 70000 }, (_, i) => i * 13 + (i >> 8));
+assert.equal(DU.crc32(hb.subarray(40000), DU.crc32(hb.subarray(0, 40000))), DU.crc32(hb));
+// protocol 4: a same-size file is compared by CRC (in 32 KB steps): equal -> skipped, one byte other -> sent
+proto = 4; commits = 0; ncrc = 0; for (const k in staged) delete staged[k];
+have['content/d.db'] = hb.length; content['content/d.db'] = hb; have['content/a.svg'] = 10; content['content/a.svg'] = new Uint8Array(10);
+const dev4 = await DU.find(midi);
+assert.equal(dev4.proto, 4);
+const hb2 = hb.slice(); hb2[50000] ^= 1;
+await DU.push(dev4, [['content/a.svg', new Uint8Array(10)], ['content/d.db', hb2], ['content/b.svg', new Uint8Array(6)]], () => {});
+assert.deepEqual(Object.keys(staged).sort(), ['content/b.svg', 'content/d.db']);
+assert.equal(ncrc, 1 + 3);                                        // a.svg one step, d.db three (70000 B); b.svg: size
+commits = 0; for (const k in staged) delete staged[k];
+assert.equal(await DU.push(dev4, [['content/a.svg', new Uint8Array(10)], ['content/d.db', hb]], () => {}), 'nothing');
 console.log('devupd.js: ok');
