@@ -3,6 +3,26 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-12 23:10 — op1r 68
+
+Output `78fc4b14ab9637e8b3a1c9e1feea1210086badec856a08f96a08f6905ba5bf71` (all plugins)
+
+### Added
+- **Crash screen**: after a crash the OP-1 now shows a report instead of freezing with a buzz ("Congratulations!
+  Report this.", the cause, registers and the call chain). Photograph it for a bug report, then press any key to
+  restart (it also restarts by itself after about 35 s).
+
+### Fixed
+- **Tape**: a recording could lose its newest audio after a restart when its clip left the cache while being saved
+  (PR #53 by tencur).
+- **STEFAN**: a recording over 6:00 (or back over 0:00) without an own loop became one clip over the whole track; it
+  now ends at the tape end, as the stock tape does. Heads and loops stay inside the tape (PR #55 by tencur).
+- **Master LFO**: pond with retrig on only pulled the FX knobs down (PR #57 by tencur).
+- Switching from the master FX page back to an instrument's custom FX briefly showed the master FX's page; pressing
+  DRUM from the synth page briefly showed the stock drum page instead of drum+ / perc.
+- Hang detector: it now hears every audio block, and a broken stack pointer no longer stops its reset; the output
+  stage self-test no longer writes 4 bytes past its buffer at boot (PR #54 by tencur).
+
 ## 2026-11-12 20:09 — op1r 67
 
 Output `9d246f6928d48faf1c921200edbeaf7973990962da846a84e08e3ccff4000ace` (all plugins)
