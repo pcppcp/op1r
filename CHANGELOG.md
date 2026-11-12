@@ -3,6 +3,37 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-12 14:00 — op1r 64
+
+Output `f0742ebf59c937da493a4199a68d4861461404fc65adf8184fbdad97cafd7627` (all plugins)
+
+### Added
+- **perc** (by Serhii Tonkoshkuryk, PR #46): a PO-32 / Microtonic style drum synth. **percsyn** synth engine (10
+  built-in sounds, 16 places for PO-32 transfers from the slot's sample) and **perc** drum type (a kit of 24 sounds, one per
+  key, pages that edit the sound itself, preset / transfer browser). More than one drum engine plugin can now be
+  installed next to drum+.
+- **Quad LFO mute** (by Hundekraft, PR #41): Shift + encoder press on the quad LFO page mutes / unmutes that LFO,
+  saved with the sound. A sound with a muted LFO needs op1r 64 or later.
+
+### Changed
+- **Clouds** (PR #40, by Hundekraft, dry end): MIX fully dry is now the level of FX off (it was 9 dB quieter); fully
+  wet is unchanged, the middle of MIX has a bit more dry signal.
+- **ENTE** (PR #39, by Hundekraft): a newly picked ENTE starts at threshold 0 dB (no ducking until you turn it down);
+  makeup goes up to +24 dB. **Saved sounds with makeup get twice the makeup** (an old +6 dB is now +12 dB): turn it
+  down if needed.
+- **FILTER** (PR #38, by Hundekraft): a newly picked FILTER starts at LP IV, fully open, drive 60.
+- Browser updater (PR #9, by tencur): files that may have changed are sent even at the same size when the OP-1 runs
+  another op1r (new box "send every file"); a lost confirmation after T1 is no longer reported as "cancelled";
+  development builds always get the firmware.
+
+### Fixed
+- **sampler+ crashed on synth keys 5–8** (PR #43, by Hundekraft).
+- **Sample editor** (PR #44, by tencur): trim then drop / cut no longer loses the kept audio on closing; undo after
+  moving markers is exact; a drum drop stops at the next pad; SEQ, REC and the input key close the editor.
+- **Tape saves** (PR #45, by tencur): a clip save that fails (full flash, I/O error) keeps the clip dirty and is tried
+  again instead of silently losing the take; failures show on the resource monitor page 4 ("tape fail N").
+- Boot screen version: `op1r 64`.
+
 ## 2026-11-12 10:40 — op1r 63
 
 Output `7e1a309fc677162e4d6b8795589cb9f476777bb637d60e0f8ad8a88bcc7b6982` (all plugins)

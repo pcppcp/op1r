@@ -38,7 +38,8 @@ with:
     knobs blue / green / white, shown with two dots `:`, right after the page-1 knobs), red type
   - types: **VOIC** (per voice), **FREE** (free-running), **GATE** (restarts at note-on), **MONO** (restarts at every
     note-on, shared), **SHOT** (one cycle after note-on, then holds), **RAND** (new random value per note)
-  - press an encoder to select LFO 1–4
+  - press an encoder to select LFO 1–4; **Shift + press** mutes / unmutes that LFO (a short fade, it keeps running;
+    saved with the sound, needs op1r 64 or later)
   - hold **Shift** for a table of all four LFOs: blue phase offset, green smoothing, white waveform (sine, triangle,
     ramp up/down, square, sample & hold, **lorenz x / z**: the Lorenz attractor, smooth and never repeating; blue
     then sets its chaos R28 … R14), red sync to the OP-1 tempo (4/1 … 1/32, triplets)
@@ -171,8 +172,8 @@ with:
 - **ENTE** (FX plugin): sidechain compressor. Blue thresh, green ratio (up to inf = ducking), white release, red
   **source** (one entry per click, wraps): self (a plain compressor), t1–t4 (a tape track, before the fader: a muted
   "ghost kick" track still triggers), tape (all tracks), in (mic / line input), inst (master only: the live
-  instrument), beat 1/1 … 1/16t (pumps on the tempo, no audio needed). Press blue / green / white: attack, makeup,
-  hipass (sidechain high-pass). Stereo on the master with one linked gain; with the master FX source (Shift + mixer
+  instrument), beat 1/1 … 1/16t (pumps on the tempo, no audio needed). Press blue / green / white: attack, makeup
+  (0 … +24 dB), hipass (sidechain high-pass). Stereo on the master with one linked gain; with the master FX source (Shift + mixer
   T2) on instrument, a kick on t1 ducks only your live playing. Its screen is a rubber duck squeezed flat by the gain
   reduction
 - **aether**: a tilt theremin. The key sets the note; tilting the OP-1 forward / back bends the pitch, raising the
@@ -236,6 +237,11 @@ with:
   the next boot. Euclid, dots, oracle and peal are sequencer plugins: without the file a sound that uses one loads with
   the pattern sequencer. drum+ (`drumplus`) is a drum plugin: without it drum+ kits play as normal kits. In both cases
   the saved data comes back when the plugin is installed again
+- **perc** (by Serhii Tonkoshkuryk): a PO-32 / Microtonic style drum synth, in two plugins. **percsyn** is a synth
+  engine (one sound across the keyboard, 10 built-in sounds and 16 places for PO-32 transfers recorded into the
+  slot's sample). **perc** is a drum type: a kit of 24 sounds, one per key; the pages edit the sound itself (T1 tone, T2
+  noise, T4 mix; Shift + turn the second layer), Shift + blue browses presets and transferred sounds. Patch model
+  after libpo32 (MIT, Eric Lewis)
 - **sampler+** (`samplerplus` plugin, by pcppcp): a synth type next to the stock sampler (Shift + T1, `sampler+`),
   the stock sampler's sound and presets plus loop crossfade, ping-pong, loop in release, pitch envelope, drive,
   random start, velocity → start, reverse, tempo sync (the region or loop lasts 1/4 … 8 bars, repitched) and a
@@ -332,7 +338,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `7e1a309fc677162e4d6b8795589cb9f476777bb637d60e0f8ad8a88bcc7b6982` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `f0742ebf59c937da493a4199a68d4861461404fc65adf8184fbdad97cafd7627` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
