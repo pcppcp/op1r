@@ -118,17 +118,21 @@ export async function list(dev) {
 }
 
 // files: [[path, Uint8Array]]; only those that differ on the device are sent (protocol 2: STAT sizes, IDENT for the
-// LDR). log(text). Resolves when the OP-1 confirmed (it then restarts and applies), rejects on refusal / cancel.
-export async function push(dev, files, log, deletes = []) {   // deletes: plugin paths (protocol 3)
+// LDR). The device has no content check, so a changed file of the same size looks equal: opt.upgrade (the OP-1 runs
+// another op1r than these files) sends every plugin file, opt.force sends every file. log(text).
+// Resolves 'applied' when the OP-1 confirmed (it then restarts and applies), 'restarting' when the confirmation got
+// lost but the OP-1 stopped answering after T1 (most likely applying); rejects on refusal / cancel.
+export async function push(dev, files, log, deletes = [], opt = {}) {   // deletes: plugin paths (protocol 3)
   const L = dev.link;
   L.attach(); L.q = [];
   log('asking the OP-1 which files it has ...');
   files = files.filter(([p]) => pathOk(p) && !userData(p));
-  if (dev.proto >= 2) {
+  if (dev.proto >= 2 && !opt.force) {
     const keep = [];
     for (const [p, d] of files) {
       let same;
       if (p === 'OP1_vdk.ldr') same = ldrIdent(d) === dev.ident;
+      else if (opt.upgrade && pluginPath(p)) same = false;          // same size is no proof (op1r 57: 7 such plugins)
       else { const r = await L.ask(STAT, enc(p)); same = r.st === 0 && rd32(r.pl) === d.length; }
       if (!same) { keep.push([p, d]); log(`  differs: ${p}`); }
     }
@@ -139,7 +143,7 @@ export async function push(dev, files, log, deletes = []) {   // deletes: plugin
   }
   deletes = deletes.filter(pluginPath);
   if (deletes.length && dev.proto < 3) throw new Error('this OP-1 firmware cannot delete plugin files (update the firmware first)');
-  if (!files.length && !deletes.length) return log('nothing to send: the OP-1 already has all of it');
+  if (!files.length && !deletes.length) { log('nothing to send: the OP-1 already has all of it (tick "send every file" to send anyway)'); return 'nothing'; }
   await L.ask(ABORT);
   const total = files.reduce((n, [, d]) => n + d.length, 0), t0 = performance.now();
   let done = 0;
@@ -175,14 +179,33 @@ export async function push(dev, files, log, deletes = []) {   // deletes: plugin
     log(`  delete: ${p}`);
   }
   log('confirm on the OP-1: T1 restart and apply, T2 cancel');
+  const sent = `sent ${files.length} files (${(total / 1e6).toFixed(2)} MB)` + (deletes.length ? `, ${deletes.length} deletes` : '');
   for (let asked = false; ;) {
-    const r = await L.ask(COMMIT);
-    if (r.st === 0) break;
-    if (r.st === 2 && asked) throw new Error('cancelled on the OP-1');
+    let r = null;
+    try { r = await L.ask(COMMIT, undefined, asked ? 2 : 8); }        // after the prompt: the OK may be lost (short
+    catch (e) { if (!asked) throw e; log('no reply: checking whether the OP-1 is restarting ...'); }   // then the HELLO check below)
+    if (r && r.st === 0) break;
+    // A COMMIT asked again after a lost OK reply gets "state" (the session is gone: the OP-1 restarts), and so does
+    // one after T2. Tell them apart by whether the OP-1 still answers.
+    if (asked && (!r || r.st === 2)) {
+      if (await answers(L)) throw new Error('cancelled on the OP-1');
+      log(`${sent}. The OP-1 no longer answers: it is most likely restarting and applying the update. ` +
+          'Do not switch it off; connect again in a minute and check its version.', 'warn');
+      return 'restarting';
+    }
     if (r.st !== 9) throw new Error(`commit refused (${ST[r.st] || r.st})`);
     asked = true;
     await new Promise((res) => setTimeout(res, 300));
   }
-  log(`sent ${files.length} files (${(total / 1e6).toFixed(2)} MB)` + (deletes.length ? `, ${deletes.length} deletes` : '') +
-      '; the OP-1 restarts and applies the update.');
+  log(`${sent}; the OP-1 restarts and applies the update.`);
+  return 'applied';
+}
+// still running (answers HELLO over ~3 s) rather than restarting
+async function answers(L) {
+  await new Promise((res) => setTimeout(res, 1500));
+  for (let i = 0; i < 3; i++) {
+    try { await L.ask(HELLO, undefined, 2, 600); } catch { return false; }
+    await new Promise((res) => setTimeout(res, 500));
+  }
+  return true;
 }
