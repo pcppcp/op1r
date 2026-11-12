@@ -80,7 +80,7 @@ with:
   last (exact to the sample; pressing a key selects and shows its pad). T1 `fit` trims the pad's silence, Shift + T3
   `auto` cuts the kit into pads (first 24 hits, or 1–24 equal slices; preview, blue sets the sensitivity (`hits 1`…`hits 7`) or the number of slices (equal),
   Shift + left undoes).
-  Cut zeroes, drop overwrites. A red line shows the play position (also in the synth editor). Tapping **synth** or
+  Cut zeroes, drop overwrites (up to the next pad). A red line shows the play position (also in the synth editor). Tapping **synth** or
   **drum** alone closes the editor and goes to that mode (synth: its T1 page)
 - **count-in**: with the tape stopped, hold **REC** and press **metronome**: 4 / 8 / 16 metronome clicks, then
   recording starts on the next beat and runs until STOP (REC can be released). STOP or REC + metronome again cancels.
