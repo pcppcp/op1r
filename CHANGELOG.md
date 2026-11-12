@@ -3,6 +3,23 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-12 19:07 — op1r 66
+
+Output `bbf57b8d87cdb4b93a85105c70329585e13c54c342bedb189ff1946c1ad0f24d` (all plugins)
+
+### Added
+- **USB out**: the blue knob on the USB out page steps MASTER → + TRACKS PRE → + TRACKS POST. PRE sends the four
+  tape tracks before the mixer, POST after each track's volume, level and mute (mono channels: no pan).
+- `tools/usb_vu.py` (in op1r-src): live console meters for the USB audio channels (level, held peak, max, clipping).
+
+### Changed
+- **USB track outs** are much cheaper: with them on, op1r now does the tape mix itself (one resampling per track,
+  Blackfin kernel) instead of a second pass beside the stock mix. On the device: about +1 % CPU over MASTER only
+  (before about +6–8 %). With track outs off, the stock tape mix runs unchanged.
+
+### Fixed
+- **STEFAN**: a short silence on all tracks after PLAY ends a recording (and after clip edits while playing).
+
 ## 2026-11-12 16:50 — op1r 65
 
 Output `15899b5f37db3edcd9bb57f421ef430f61f99ff29482d44b9bbe3bbf7bb93f28` (all plugins)
