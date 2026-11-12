@@ -182,7 +182,8 @@ export async function push(dev, files, log, deletes = [], opt = {}) {   // delet
   const sent = `sent ${files.length} files (${(total / 1e6).toFixed(2)} MB)` + (deletes.length ? `, ${deletes.length} deletes` : '');
   for (let asked = false; ;) {
     let r = null;
-    try { r = await L.ask(COMMIT); } catch (e) { if (!asked) throw e; }   // after the prompt: the OK may be lost
+    try { r = await L.ask(COMMIT, undefined, asked ? 2 : 8); }        // after the prompt: the OK may be lost (short
+    catch (e) { if (!asked) throw e; log('no reply: checking whether the OP-1 is restarting ...'); }   // then the HELLO check below)
     if (r && r.st === 0) break;
     // A COMMIT asked again after a lost OK reply gets "state" (the session is gone: the OP-1 restarts), and so does
     // one after T2. Tell them apart by whether the OP-1 still answers.
