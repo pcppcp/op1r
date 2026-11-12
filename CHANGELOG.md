@@ -3,6 +3,24 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-12 16:50 — op1r 65
+
+Output `15899b5f37db3edcd9bb57f421ef430f61f99ff29482d44b9bbe3bbf7bb93f28` (all plugins)
+
+### Added
+- **STEFAN**: **Shift + STOP** / **Shift + PLAY** stop and start the active track alone (its playhead stands, silent,
+  no recording; the other tracks play on). Kept across power cycles.
+- **Hang detector**: if the OP-1 freezes completely (audio and screen stopped), it restarts by itself after about
+  5 s, and the resource monitor (sysmon pages 11–15) shows where it hung. Costs about 20 cycles per audio block.
+
+### Changed
+- **STEFAN**: the time reads m:ss:ms, its digits in fixed places (no more jumping); a muted track's number is grey;
+  play icon green, stop icon white, both drawn bolder; the track number sits a little lower.
+
+### Fixed
+- A screen opened right after boot could be used before it was fully loaded (lazy screens).
+- Resource monitor: a crash in the heap view and an overflow in its bottom line.
+
 ## 2026-11-12 14:00 — op1r 64
 
 Output `f0742ebf59c937da493a4199a68d4861461404fc65adf8184fbdad97cafd7627` (all plugins)

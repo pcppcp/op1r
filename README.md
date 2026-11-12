@@ -109,11 +109,12 @@ with:
 - **second tape machine STEFAN** (settings page: clock / card + **T3**, white **TAPE**: **JESPER/OP1** = the stock
   tape, **STEFAN** = four independent tracks). Each track has its own playhead, speed (white: ratios 1:4 … 4:1,
   Shift: fine), direction (**Shift + s5**), loop (**s1** in, **s2** out, **s3** on / off, **Shift + s3** = the clip
-  under the playhead) and mute (**Shift + T**). **T1–T4** select the active track: it records, scrubs (◄ / ►, Shift:
+  under the playhead), mute (**Shift + T**) and its own stop / start (**Shift + STOP** / **Shift + PLAY**: the
+  track's playhead stands, the others play on). The time shows as m:ss:ms. **T1–T4** select the active track: it records, scrubs (◄ / ►, Shift:
   bar jumps), takes markers (red; **Shift + red** turn jumps, wrapping) and lift / drop / scissors. Recording follows
   the active track's speed and loop; STOP while stopped returns the active track to its loop in. The tracks feed
   the mixer (levels, pan, meters), the FX2 aux sends and the USB track outputs. Positions, loops, speeds and mutes
-  are kept across power cycles. Same tape data as the stock machine: switch at any time
+  and stopped tracks are kept across power cycles. Same tape data as the stock machine: switch at any time
 - **easy bounce** (by Anthony Berg): lift all four tracks between the loop points (Shift + lift), select a track,
   **Shift + drop**: the four tracks are summed and dropped on that track at the playhead
 - **tape markers**: on the tape screen, press **red** to set a marker at the cursor, **Shift + red** press removes the
@@ -338,7 +339,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `f0742ebf59c937da493a4199a68d4861461404fc65adf8184fbdad97cafd7627` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `15899b5f37db3edcd9bb57f421ef430f61f99ff29482d44b9bbe3bbf7bb93f28` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can always be flashed back. **Use at your own risk.**
