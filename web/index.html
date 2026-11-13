@@ -225,6 +225,10 @@ worker.onmessage = ({ data: m }) => {
   files = m.files; buttons();
   const own = selected().filter((r) => r.own).map((r) => r.file);
   if (m.exact) log(`OK: sha256 ${m.sha}\nmatches the reference build.`, 'ok');
+  else if (man.plugins.every((p) => m.plugins.includes(p.name)))     // the full set, only the compression differs
+    log(`sha256 ${m.sha} differs from the reference ${man.result.sha256}.\nThe firmware content is verified identical; ` +
+        'only the LZMA compression differs (another liblzma version). The command-line patcher writes this file only ' +
+        'with --accept-recompressed: install it only if you accept that.', 'warn');
   else log(`OK: sha256 ${m.sha}\nfirmware verified against the reference build; synths / effects: ` +
            (m.plugins.join(', ') || 'none'), 'ok');
   if (own.length) log(`own plugin files are not in the .op1, install them over USB: ${own.join(', ')}`, 'warn');
