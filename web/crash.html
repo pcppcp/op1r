@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>op1r – crash report decoder</title>
+<style>
+  body { font: 15px/1.5 system-ui, sans-serif; background: #111; color: #eee; max-width: 900px; margin: 32px auto; padding: 0 16px; }
+  h1 { font-weight: 600; margin: 0 0 4px; } a { color: #4D9EFF; } p { margin: 8px 0; } code { font-size: 13px; }
+  .dim { color: #8a8c8e; } .warn { color: #FFD24D; } .intro { color: #ccc; }
+  .panel { background: #1b1b1d; border: 1px solid #2a2a2d; border-radius: 12px; padding: 16px; margin-top: 16px; }
+  textarea { width: 100%; box-sizing: border-box; min-height: 9em; background: #000; color: #eee; border: 1px solid #2a2a2d;
+    border-radius: 8px; padding: 10px; font: 13px/1.4 monospace; }
+  table { width: 100%; border-collapse: collapse; font: 13px/1.4 monospace; margin-top: 8px; }
+  td { padding: 4px 8px; border-bottom: 1px solid #222225; vertical-align: top; word-break: break-word; }
+  td.w { white-space: nowrap; } .plugin { color: #00ED95; } .op1r { color: #4D9EFF; } .R246 { color: #8a8c8e; }
+  .btn { display: inline-block; margin-top: 12px; padding: 10px 14px; background: #00ED95; color: #000; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px; }
+  #own { font-size: 13px; }
+</style>
+</head>
+<body>
+<h1>Crash report decoder</h1>
+<p class="intro">After a crash the OP-1's error screen shows a line <code>op1r &lt;version&gt; sp 0x…</code> and the code
+addresses found on the crashed stack. Type them in from your photo: this page names the functions (op1r, plugin or the
+original R246 firmware) and prepares a GitHub issue. Nothing is sent anywhere.</p>
+
+<div class="panel">
+  <textarea id="screen" spellcheck="false" placeholder="op1r 64 sp 0x1fe3c40
+0x1a85c8e 0x1e04a10
+clouds+0x1c4 0x1919960"></textarea>
+  <p id="mapinfo" class="dim">Symbol maps: one per op1r release.</p>
+  <table id="out"></table>
+  <a id="issue" class="btn" target="_blank" rel="noopener" style="display:none">Open a pre-filled GitHub issue</a>
+  <p id="own" class="dim">Own build? Load its <code>op1_246_custom-symbols.json</code>: <input type="file" id="mapfile" accept=".json"></p>
+</div>
+<p class="dim"><a href="./">Back to the patcher</a></p>
+<script type="module">
+import { report, issueUrl } from './crash.js';
+const $ = (id) => document.getElementById(id);
+const maps = new Map();                     // version -> { map, note } (fetched once)
+let own = null;
+async function mapFor(v) {
+  if (own) return own;
+  const key = v || '?';
+  if (!maps.has(key)) maps.set(key, (async () => {
+    const get = async (f) => { const r = await fetch('../data/symbols/' + f, { cache: 'no-cache' }); if (!r.ok) throw 0; return r.json(); };
+    if (v) try { return { map: await get(`op1r-${v}.json`), note: `symbol map for op1r ${v}` }; } catch {}
+    try { return { map: await get('r246.json'), warn: true, note: `no symbol map for op1r ${key}: only R246 names, op1r and plugin addresses by region` }; }
+    catch { return { map: null, warn: true, note: 'no symbol maps found' }; }
+  })());
+  return maps.get(key);
+}
+async function show() {
+  const text = $('screen').value;
+  try { localStorage.setItem('op1r-crash', text); } catch {}
+  const m = await mapFor(report(text, null).parsed.version);
+  if (text !== $('screen').value) return;                            // typed on meanwhile
+  const rep = report(text, m.map);
+  $('mapinfo').textContent = rep.rows.length ? m.note : 'Symbol maps: one per op1r release.';
+  $('mapinfo').className = rep.rows.length && m.warn ? 'warn' : 'dim';
+  $('out').replaceChildren(...(rep.rows.length ? [[rep.head, '', ''], ...rep.rows.map((r) => [r.tok, r.where, r.text])] : []).map((c, i) => {
+    const tr = document.createElement('tr');
+    c.forEach((t, k) => { const td = document.createElement('td'); td.textContent = t; if (k < 2) td.className = 'w'; if (k === 1 && i) td.classList.add(t); tr.append(td); });
+    return tr;
+  }));
+  $('issue').style.display = rep.rows.length ? 'inline-block' : 'none';
+  if (rep.rows.length) $('issue').href = issueUrl(text, rep, m.note);
+}
+$('screen').oninput = show;
+$('mapfile').onchange = async () => {
+  const f = $('mapfile').files[0];
+  try { const map = JSON.parse(await f.text()); own = { map, note: `${f.name} (op1r ${map.op1r || '?'})` }; }
+  catch { own = null; $('mapinfo').textContent = 'not a symbol map: ' + f.name; $('mapinfo').className = 'warn'; return; }
+  show();
+};
+try { $('screen').value = localStorage.getItem('op1r-crash') || ''; } catch {}
+show();
+</script>
+</body>
+</html>
