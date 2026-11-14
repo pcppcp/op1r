@@ -1136,8 +1136,8 @@
    "kind": "synth",
    "author": "moai contributors",
    "file": "moai.op1p",
-   "size": 66080,
-   "sha256": "20ab34b4be0185aea217411252c9eb8f3bd5b63768db2042fdc9b527a5515328"
+   "size": 65783,
+   "sha256": "f6568dc18f66630e7af3db3f81b14afb9605a33848443b59cfef18d97a6cc874"
   },
   {
    "name": "monolit",
