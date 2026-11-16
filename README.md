@@ -193,6 +193,10 @@ with:
   or note, accent amount. Drum mode plays pads; synth mode plays the keys held on the grids page (or three stored notes); elsewhere the keys play as usual
 - **brassophone** (synth plugin, by nvmsocool): brass from a phase-warped sine whose timbre and pitch follow the
   envelope, with vibrato that fades in on held notes; a Dr. Seuss-style horn screen whose parts move with the knobs
+- **reedie** (synth plugin, by nvmsocool): a physical-model reed (a nonlinear reed driving a two-tap bore) that goes
+  from clarinet to oboe to pipes that were never built; knobs: air, chatter, lip pressure, bore
+- **windwood** (synth plugin, by nvmsocool): a physical-model clarinet (reed, air flow and bore simulated sample by
+  sample, fitted to recordings of a real clarinet), playable over the whole keyboard without a register break
 - **vapora** (synth plugin, by AiAAAA): six-voice PADsynth pads, two detuned playback heads per voice. Blue morph
   (press: 14 characters), green thickness (press: interval of the second head), white brightness, red motion (press:
   speed). Its screen is an ocean under a sky with seven suns; notes ripple the water, Shift shows the values. 15
@@ -339,7 +343,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `8241023caaf0e7a36baf5b448623101f72a5bf282575ad5e00e8eccf4910d835` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `7a56dfbc65db39e03fcb1e06b4453626ca66f2e6173ad5e9063ee130a194e649` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can be flashed back; restore the stock sounds with it, and don't go back to an op1r below 54
@@ -355,7 +359,7 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
 - **ultralazr**: the plugins arc, mixtur, palme, in a room, oracle and peal, the stroke font of their screens, the
   MIDI sequencer idea; the Oblique Strategies cards ([ultralazr/op1-oblique-strategies](https://github.com/ultralazr/op1-oblique-strategies), Martin Mairinger)
 - **Lewis-Clayton**: the randomiser tool plugin, the nostromo reverb
-- **nvmsocool**: the brassophone synth plugin
+- **nvmsocool**: the brassophone, reedie and windwood synth plugins
 - **Hundekraft**: the moai and reactor synth plugins and the rackverb FX (from hundekraft 3.2.3); the patch-job / sampler-preset fixes (op1r 54, from kennel 3.1.4); the sample-exact clouds optimisation (op1r 43); the Blackfin kernels of clouds, nostromo,
   granular, brassophone, arc and mixtur and the reverb speed-up (op1r 47)
 - **AiAAAA**: the vapora synth plugin

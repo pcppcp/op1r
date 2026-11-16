@@ -98,7 +98,10 @@ def main():
     orig = {m.name: d for m, d in members if m.isfile()}
     dirs = {m.name for m, _ in members if m.isdir()}
 
-    shutil.rmtree(P.DATA, ignore_errors=True)
+    for e in (os.listdir(P.DATA) if os.path.isdir(P.DATA) else []):   # regenerated; data/symbols (the crash decoder's
+        if e == 'symbols': continue                                     # maps, one per release) is kept
+        f = os.path.join(P.DATA, e)
+        shutil.rmtree(f) if os.path.isdir(f) else os.remove(f)
     blobdir = P.DATA
     os.makedirs(os.path.join(blobdir, 'files'))
     patched, added, plugins = [], [], []

@@ -3,6 +3,38 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-16 11:37 — op1r 70
+
+Output `7a56dfbc65db39e03fcb1e06b4453626ca66f2e6173ad5e9063ee130a194e649` (all plugins)
+
+### Added
+- **reedie** and **windwood**: two physical-model reed synth plugins by nvmsocool (a reed you can push from clarinet
+  to oboe and beyond; a clarinet fitted to recordings of a real one).
+
+### Improved
+- **Sequencers** (euclid, dots, oracle, peal, grids, chord): a running sequence follows the octave arrows (and a slot
+  change), as the stock sequencers do. Patterns recorded at octave 0 sound as before; others play shifted by the
+  octave they were recorded at (issue #42 by Hundekraft).
+- **moai** updated to op-moai v3.27: the CPU guard in two steps (four-note chords keep all their oscillators), drift
+  stays in tune, a retrigger on a sounding voice no longer clicks.
+- **stutter** (from hundekraft 3.2.6): a tape start is a beat, without a clock it keeps the clock's tempo, and picking
+  it no longer costs two audio blocks.
+- **hail**: MIX at 0 is the level of FX off (it was 2.5 dB quieter).
+
+### Fixed
+- **Sequencers**: an octave arrow while a sequence plays in POLY could leave a note hanging (issue #42).
+- **Tape**: lift, drop and erase right after STOP could miss the end of the recording, and a later save could undo
+  them (PR #61 by tencur).
+- **STEFAN / ELSE-MARIE**: reloading a chunk could play a short burst of erased audio (PR #62 by tencur); a reversed
+  or misaligned slot loop no longer drops a block of silence at its wrap.
+- **MIDI sequencer**: a read error at boot no longer erases the song; damaged or leaked slots are freed again (PR #63
+  by tencur).
+- **sampler+**: ping-pong keeps looping when the loop end is turned below the head, the note starts past the loop
+  end, or the loop is very short (PR #64 by tencur).
+- **dots**: cutting or pasting a running slot could leave a parameter lock in the knob (PR #66 by tencur).
+- **moai**: a read before its cutoff table at very low cutoffs.
+- Release builds refuse the test switches (PR #65 by tencur); the patch builder keeps the crash decoder's symbol maps.
+
 ## 2026-11-16 09:07 — op1r 69
 
 Output `8241023caaf0e7a36baf5b448623101f72a5bf282575ad5e00e8eccf4910d835` (all plugins)
