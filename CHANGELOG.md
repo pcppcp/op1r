@@ -3,6 +3,35 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-16 09:07 — op1r 69
+
+Output `8241023caaf0e7a36baf5b448623101f72a5bf282575ad5e00e8eccf4910d835` (all plugins)
+
+### Added
+- **ELSE-MARIE**, a third tape machine (settings: JESPER/OP1, STEFAN, ELSE-MARIE): 12 slots of up to 2:00 on the
+  tape (3 per track), each into one of the 4 mixer channels. Record (REC held + a key or PLAY, free or 1/4 .. 16 bars,
+  overdub on a playing slot), play / stop now or on the next bar, all slots with tape + PLAY / STOP. Per slot: level,
+  channel, pan, envelope (T2), pitch with tape or stretch mode, reverse, loop / once / ping-pong (T3), four LFOs
+  (T4), sync to the metronome tempo (the slot's speed follows it). Waveforms on the slot page, perform mode for
+  the keyboard, lift / drop through the stock clipboard. Tape erase also empties the slots.
+- **Safe mode**: hold help at power-on to start without plugin files and op1r's own data; help + metronome also
+  resets op1r's settings (PR #60 by tencur).
+- **USB OUT page**: OP-LAB option (R242's MIDI-only USB layout for OP-lab).
+- **Performance page** in the resource monitor: the audio callback's code / data stall cycles.
+- Web: crash report decoder page (`web/crash.html`) with a symbol map per release (PR #10 by tencur).
+
+### Improved
+- Faster stock DSP (rewritten loops from coop-fw by coldsoldr): DSynth, Phase, Voltage, phone, nitro and the master
+  cwo / punch / grid / spring / delay. Device: DSynth 6 voices 53 -> 37 %, with master cwo 71 -> 47 %.
+- R246's sine table is read from fast internal memory by the stock code too.
+- STEFAN: larger chunk cache (48 chunks).
+
+### Fixed
+- The tape machine setting (STEFAN) was applied only after the settings page had been opened once; now at boot.
+- drum+ core: a stock voice stays stock after a kit switch (PR #59 by tencur).
+- Patcher: each `--plugins` name once, `-o` never the input; web: a failed start is retried (PR #11 by tencur).
+- README: flashing back to stock needs the stock sounds; don't downgrade below op1r 54 (PR #58 by tencur).
+
 ## 2026-11-12 23:10 — op1r 68
 
 Output `78fc4b14ab9637e8b3a1c9e1feea1210086badec856a08f96a08f6905ba5bf71` (all plugins)
