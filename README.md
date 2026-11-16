@@ -163,6 +163,13 @@ with:
     synth engine the same way (sample start / end knobs are skipped); the info line shows `LK` on a lock trigger
   - mutes (**Shift + G A B C D E**, D# all), 4 patterns (**Shift + F G A B**), lift / drop / scissors copy / paste /
     cut the slot (Shift: whole pattern), all saved
+- **parameter-lock recording** (PLK) on the euclid, dots, chord and grids pages: **T2** opens it, **T1** goes back to
+  the sequencer. **REC** records every knob turn of the instrument's engine and FX (any page, MIDI CC) for one pass of
+  the clip and plays it back in a loop; only the turned knobs are replaced. Header: state, length (**green**, 1/4–16
+  bars), track lock (**white**: off, t1–t6 = restart with that slot's every loop, s1–s6 = restart when it starts),
+  value of the selected knob (**blue** selects, **red** turns it), **press red**: recording starts at the clip start
+  (sync) or at once (free). **CUT** clears the lane (Shift: all), **STOP** stops the locks and restores the knobs,
+  PLAY restarts them. Saved. Plugins can declare which knobs to record (`"plock"` in plugin.json)
 - more synth engines: **mixtur** (subharmonic organ after Oskar Sala's Mixtur-Trautonium), **arc** (Duddell's
   singing arc); more FX: **palme** (Ondes Martenot Palme / Métallique diffuseur), **in a room** (Alvin Lucier's
   *I am sitting in a room* as a looping FX), **steve** (Steve Reich's phase process: capture a loop, 2–4 copies drift
@@ -343,7 +350,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `7a56dfbc65db39e03fcb1e06b4453626ca66f2e6173ad5e9063ee130a194e649` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `720a488697a55c3fc7dbda4a741c9214bf1149f9593c6dccf4986f61bb701e10` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can be flashed back; restore the stock sounds with it, and don't go back to an op1r below 54

@@ -3,6 +3,24 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-16 16:15 — op1r 71
+
+Output `720a488697a55c3fc7dbda4a741c9214bf1149f9593c6dccf4986f61bb701e10` (all plugins)
+
+### Added
+- **Parameter-lock recording** (PLK) on the euclid, dots, chord and grids pages (**T2**): record knob turns of the
+  engine and FX over 1/4–16 bars and play them back in a loop, locked to a sequencer slot (every loop or its start)
+  or free; STOP halts and restores, clips are saved. Plugins can declare their recordable knobs (`"plock"`).
+
+### Fixed
+- **Tape**: a crash in the tape mix (misaligned access in the audio interrupt) that a different memory layout could
+  trigger.
+- **Pulse sync**: a sequencer following a pulse clock no longer stops and restarts now and then (PR #68 by tencur).
+- **Quad LFO**: holding Shift with pond words on the page no longer reads past a table (garbage glyphs); FX / synth
+  type lists no longer show garbled names for a frame when white is turned fast; grids shows notes below c0 as
+  `c-1` … `b-1` (PR #69 by tencur).
+- **Build**: the build stops if code and memory would run into R246's frame buffer (PR #67 by tencur).
+
 ## 2026-11-16 11:37 — op1r 70
 
 Output `7a56dfbc65db39e03fcb1e06b4453626ca66f2e6173ad5e9063ee130a194e649` (all plugins)
