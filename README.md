@@ -177,6 +177,15 @@ with:
   copy on the screen; stereo on the master, A left, B right)
 - from **hundekraft 3.2.3**: the **moai**, **reactor** and **bloodmoon** (by Nola Drift) synth plugins and the
   **rackverb** FX
+- **ESC_CODE's Delay Trio** (FX plugins, after Tom Erbe / SoundHack's +delay, +pitchdelay and +bubbler):
+  - **delayed**: delay up to 1 s, feedback to 200 % through a resonant filter. Press white: reso, press red: freeze.
+    Shift + turn: LFO rate, depth, shape (sine, tri, square, up, down, rand), phase; Shift + press: second layer
+    (smooth LFO)
+  - **pitch delay**: repeats pitch-shifted by 0 .. +12 semitones or just intervals; press white: octave -3 .. +3,
+    Shift + red: loop depth
+  - **bubbler**: granular delay, up to 8 grains. Press blue: size, green: pitch (-12 .. +12 or **key**: the last
+    played note), white: filter. Shift + turn: spread, jitter, size variation, reverse chance; Shift + press: second
+    layer (pitch variation, resonance)
 - **ENTE** (FX plugin): sidechain compressor. Blue thresh, green ratio (up to inf = ducking), white release, red
   **source** (one entry per click, wraps): self (a plain compressor), t1–t4 (a tape track, before the fader: a muted
   "ghost kick" track still triggers), tape (all tracks), in (mic / line input), inst (master only: the live
@@ -350,7 +359,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `720a488697a55c3fc7dbda4a741c9214bf1149f9593c6dccf4986f61bb701e10` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `17d63b5bac3519a094f925ea284a6706ed1e424de6572cb3f30d500b89ade32a` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can be flashed back; restore the stock sounds with it, and don't go back to an op1r below 54
@@ -367,6 +376,8 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.
   MIDI sequencer idea; the Oblique Strategies cards ([ultralazr/op1-oblique-strategies](https://github.com/ultralazr/op1-oblique-strategies), Martin Mairinger)
 - **Lewis-Clayton**: the randomiser tool plugin, the nostromo reverb
 - **nvmsocool**: the brassophone, reedie and windwood synth plugins
+- **ESC_CODE (Volker Junginger)**: the Delay Trio FX (delayed, pitch delay, bubbler; its DSP), after **Tom Erbe /
+  SoundHack**'s +delay, +pitchdelay and +bubbler (BSD license)
 - **Hundekraft**: the moai and reactor synth plugins and the rackverb FX (from hundekraft 3.2.3); the patch-job / sampler-preset fixes (op1r 54, from kennel 3.1.4); the sample-exact clouds optimisation (op1r 43); the Blackfin kernels of clouds, nostromo,
   granular, brassophone, arc and mixtur and the reverb speed-up (op1r 47)
 - **AiAAAA**: the vapora synth plugin

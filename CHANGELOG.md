@@ -3,6 +3,37 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-17 16:15 — op1r 72
+
+Output `17d63b5bac3519a094f925ea284a6706ed1e424de6572cb3f30d500b89ade32a` (all plugins)
+
+### Added
+- **delayed**, **pitch delay**, **bubbler**: ESC_CODE's Delay Trio (after Tom Erbe / SoundHack) as FX plugins, with
+  their Shift pages (two Shift layers) and bubbler's key pitch.
+- **FX Shift layers** for plugins: Shift + turn edits up to eight more saved values per FX, Shift + press switches
+  layers; plugins can also read the last played note (SDK, PLUGINS.md).
+- **Type lists**: every plugin now has its group (Shift + T1 / T3, white).
+
+### Improved
+- **FX list**: scrolling through effects no longer clicks (a short fade over the switch; from hundekraft 3.3).
+- **Lazy screens**: stock screens load in the background only while no key or knob is used (hundekraft 3.3), and
+  never wait on their own load (a display freeze of several seconds after boot, PR #74 by tencur).
+- **MIDI CCs** on sound parameters keep the delayed save: a DAW sweep writes op1.db once, not per batch (PR #73).
+- **Web patcher**: plugin files and the selection are checked against the OP-1's loader limits before anything is
+  built or sent; sending synths / FX to an older op1r asks first (PR #13 by tencur).
+
+### Fixed
+- **Sound saves**: a patch over ~5000 bytes or with a quote in a name no longer stops the OP-1 (from hundekraft 3.3).
+- **drum+**: a hit still sounding after a kit switch keeps its own kit's settings (from hundekraft 3.3).
+- **Crashes while editing**: knob edits, the sample editor and MIDI CCs wait for a running background save of the
+  same sound; patch loads on two threads no longer mix their LFO checks or drum+ data; stock FX knobs are no longer
+  clamped to the filter's ranges (PR #73 by tencur).
+- **Power-off**: the hang detector is off from the start of power-off, so a long save no longer resets the OP-1
+  instead of switching it off (PR #70 by tencur).
+- **Tape page**: FREE, the MIDI sequencer view and the update prompt no longer leave the wrong screen behind
+  (PR #71 by tencur).
+- **Full flash**: op1r no longer stops at boot when one of its tables can't be created (PR #72 by tencur).
+
 ## 2026-11-16 16:15 — op1r 71
 
 Output `720a488697a55c3fc7dbda4a741c9214bf1149f9593c6dccf4986f61bb701e10` (all plugins)
