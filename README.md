@@ -262,7 +262,7 @@ with:
   engine (one sound across the keyboard, 10 built-in sounds and 16 places for PO-32 transfers recorded into the
   slot's sample). **perc** is a drum type: a kit of 24 sounds, one per key; the pages edit the sound itself (T1 tone, T2
   noise, T4 mix; Shift + turn the second layer), Shift + blue browses presets and transferred sounds. Patch model
-  after libpo32 (MIT, Eric Lewis)
+  after libpo32 (MIT, Eric Lewis). How the sounds, the kit and a PO-32 transfer work: [perc](#perc-the-po-32-drum-kit)
 - **sampler+** (`samplerplus` plugin, by pcppcp): a synth type next to the stock sampler (Shift + T1, `sampler+`),
   the stock sampler's sound and presets plus loop crossfade, ping-pong, loop in release, pitch envelope, drive,
   random start, velocity → start, reverse, tempo sync (the region or loop lasts 1/4 … 8 bars, repitched) and a
@@ -278,6 +278,63 @@ with:
   are kept per synth slot. A panel shows `random` (forward) or `modnar` (back)
 - the hidden **Lander** game is gone (synth + drum + tape + mixer does nothing): frees about 190 KB of memory and
   shortens the start-up
+
+## perc: the PO-32 drum kit
+
+perc is the sound engine of the Teenage Engineering PO-32 tonic (Microtonic) on the OP-1, by Serhii Tonkoshkuryk
+(tonkoshkurik); the patch model, parameter maps and the transfer reader follow libpo32 (MIT, Eric Lewis). It is two
+plugin files: **perc**, a drum type (in drum mode press Shift + T1 and pick PERC, next to DRUM, DBOX and DRUM+), and
+**percsyn**, a synth engine with one sound across the keyboard.
+
+### The sound
+
+Every sound is one PO-32 patch of 21 values: an oscillator (sine, triangle or sawtooth; pitch, attack, decay) with a
+pitch bend (decay, sine or noise modulation; rate and amount), a noise generator (low-pass, band-pass or high-pass
+filter with frequency and resonance, and an envelope that is exponential, linear or modulated, with attack and
+decay), the mix between oscillator and noise, distortion, one EQ band, the level, and three velocity amounts
+(oscillator, noise and bend). A sound has two sides, **a** and **b**; the morph (T4, Shift) moves between them.
+The sounds are synthesised, not played from a sample.
+
+### The kit
+
+A perc kit has 24 sounds, one per key. A new kit starts as 24 library presets (kick, snare, hats, toms, cymbals,
+bells, shakers, percussion). The pages edit the sound itself: **T1** tone, **T2** noise, **T4** mix (T3 is the stock
+FX page). Turn a knob to change a value, Shift + turn for the second layer, press an encoder to change a mode (wave,
+modulation mode, filter type, envelope shape). On the Shift layer of T1, blue is **sound**: it browses the library
+presets and the sounds of a transfer. Shift + blue press brings the key's own preset back (factory), Shift + red
+press undoes the last place, factory or browse, and again steps forward.
+
+A kit is saved as a normal drum patch with an extra `op1r` entry, so it shows in the OP-1's preset browser and saves
+like any kit. Its sample is not played: it only holds a transfer recording.
+
+### PO-32 transfers
+
+A PO-32 transfer is sound. Microtonic and the PO-32 exchange patches as an audio signal: the sounds are encoded in
+small packets with a CRC behind a preamble and sent as a phase-shift-keyed tone, which can be played, recorded or
+saved like any audio. The "PO-32 Data" files that sound designers share are that signal. One packet is one side of
+one sound (the instrument, left for side a and right for side b, and the 21 values), so a whole Microtonic kit is 16
+instruments with both sides.
+
+perc reads it like this:
+
+1. **Record the transfer into the kit's sample.** Record it from the OP-1's input on a perc slot, or load the audio
+   file as the sample with the sample browser. A drum kit's sample holds 12 s, enough for a whole kit; a synth slot's
+   holds 6 s (the preamble and about 13 patch packets).
+2. **perc decodes it in the background.** The page shows `reading..` while it works. Only the sounds are used: the
+   pattern, state and knob packets of a transfer are read for the framing and then skipped.
+3. **The new sounds are offered.** The page says `4 NEW > F#2-A2`: the new sounds are previewed on the keys from
+   the selected one forward, so you can play them. Turn blue to choose the key they start on, press blue to **place**
+   them, press red to **skip**. A place is one undo.
+4. **The kit remembers the recording.** Loading the kit again does not offer the same sounds again. A placed sound is
+   edited like any other.
+
+In **percsyn** the decoded sounds become the po-32 types of the synth, in Shift + blue after the 10 built-in sounds.
+
+| perc drum | |
+|---|---|
+| ![perc T1](docs/images/perc_drum_t1.png) **T1 tone**: the oscillator and its bend (a kick) | ![perc T2](docs/images/perc_drum_t2.png) **T2 noise**: filter and noise envelope (a snare) |
+| ![perc T4](docs/images/perc_drum_t4.png) **T4 mix**: mix, drive, EQ and EQ gain (Shift: morph between side a and b, level) | ![perc Shift T1](docs/images/perc_drum_t1_shift.png) **Shift + T1**: sound browser, velocity, bend velocity and bend rate |
+| ![perc transfer](docs/images/perc_drum_transfer.png) **a transfer waiting**: 4 new sounds from F#2; blue turn the key, blue press place, red press skip | ![perc placed](docs/images/perc_drum_placed.png) **placed**: the first of them, on F#2 (text in the OP-1 font on the device) |
 
 ## Screens
 
