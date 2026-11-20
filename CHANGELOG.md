@@ -3,6 +3,31 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-20 21:10 — op1r 73
+
+Output `7f06d37be377e8a9c399dcec4d27e275c90fd479006e09f35f9a14ae62d86868` (all plugins)
+
+### Added
+- **perc drum**: hold a key and press Lift to copy its sound, hold another and press Drop to paste it, also between
+  kits (PR #81 by tonkoshkurik).
+
+### Improved
+- **Sharper screens**: text and straight lines of op1r's screens land on whole pixels of the OP-1's panel, whichever
+  panel it has (after hundekraft 3.3.1; the idea u/Infamous_Call_6492's).
+- **reedie** and **windwood** run at the OP-1's voice rate: starts, releases and filters as their authors designed
+  them, in tune at low notes, and half the CPU per voice (PR #83 by Hundekraft; windwood from hundekraft 3.3.1).
+
+### Fixed
+- **granular**: clock sync stays on after a restart or a preset reload (PR #80 by tencur).
+- **Development updates**: a nearly full flash or a firmware that can't be loaded no longer leaves a truncated
+  database or a boot loop; a failing update is given up after two tries (PR #78 by tencur).
+- **perc**: a kit loading while another kit is saved can no longer mix their sounds (PR #79 by tencur).
+- **Keys**: a key release follows its press, also when the page changed while the key was held (PR #75 by tencur).
+- **Tape**: punch-in can no longer start after punch mode was turned off; the saved markers survive a key press during
+  their first load; Shift + Drop keeps a four-track lift when the Drop can't happen (PR #76 by tencur).
+- **Plugin loader**: no small memory leaks per boot, drum plugins don't rewrite their database row every boot, a
+  refused file no longer takes the FX fast memory (PR #77 by tencur).
+
 ## 2026-11-17 16:15 — op1r 72
 
 Output `17d63b5bac3519a094f925ea284a6706ed1e424de6572cb3f30d500b89ade32a` (all plugins)

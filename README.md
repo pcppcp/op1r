@@ -261,7 +261,8 @@ with:
 - **perc** (by Serhii Tonkoshkuryk): a PO-32 / Microtonic style drum synth, in two plugins. **percsyn** is a synth
   engine (one sound across the keyboard, 10 built-in sounds and 16 places for PO-32 transfers recorded into the
   slot's sample). **perc** is a drum type: a kit of 24 sounds, one per key; the pages edit the sound itself (T1 tone, T2
-  noise, T4 mix; Shift + turn the second layer), Shift + blue browses presets and transferred sounds. Patch model
+  noise, T4 mix; Shift + turn the second layer), Shift + blue browses presets and transferred sounds; hold a key and
+  press Lift to copy its sound, hold another and press Drop to paste it (also between kits). Patch model
   after libpo32 (MIT, Eric Lewis)
 - **sampler+** (`samplerplus` plugin, by pcppcp): a synth type next to the stock sampler (Shift + T1, `sampler+`),
   the stock sampler's sound and presets plus loop crossfade, ping-pong, loop in release, pitch envelope, drive,
@@ -359,7 +360,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `17d63b5bac3519a094f925ea284a6706ed1e424de6572cb3f30d500b89ade32a` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `7f06d37be377e8a9c399dcec4d27e275c90fd479006e09f35f9a14ae62d86868` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can be flashed back; restore the stock sounds with it, and don't go back to an op1r below 54
