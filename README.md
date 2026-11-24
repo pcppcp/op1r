@@ -277,6 +277,13 @@ with:
   variation of the current sound (engine knobs, envelope, FX type and settings, LFO type and settings; the engine
   stays), **Shift + lift** steps back, Shift + drop again steps forward; the original and the 6 newest variations
   are kept per synth slot. A panel shows `random` (forward) or `modnar` (back)
+- **engine+**: hold Shift on the page of fm, digital, string, cluster, phase, dna, voltage or pulse and turn the four
+  knobs: drive (blue), a 4-pole low-pass (green), its resonance (white) and bit-crush (red), per sound, saved with it.
+  The labels show while Shift is held (beside the graphics on fm and digital, over the dimmed page elsewhere); sounds
+  that never used it play as before. About 1.5 % CPU per playing voice with all four on. Stages after
+  [op1-sdk](https://github.com/BertBrandstifter/op1-sdk)'s engine_plus (MIT)
+- **factory drum kits without silent tails**: the 14 kits take 1.43 MB less flash; every hit sounds the same. The
+  patcher trims your own firmware's kits (no TE audio in the patch data); after op1-sdk's drumtrim (MIT)
 - the hidden **Lander** game is gone (synth + drum + tape + mixer does nothing): frees about 190 KB of memory and
   shortens the start-up
 
@@ -419,7 +426,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `f62c28d8e729cd6c98c0f7c9e40b98da21ec2a219ad66796d70e074159d8bc8c` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `ac4f1ba1e4d2dcf7420390f2c3fbbd09d61ba1c49e07f0a22a912c1b428a2287` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can be flashed back; restore the stock sounds with it, and don't go back to an op1r below 54

@@ -3,6 +3,23 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-24 14:00 — op1r 75
+
+Output `ac4f1ba1e4d2dcf7420390f2c3fbbd09d61ba1c49e07f0a22a912c1b428a2287` (all plugins)
+
+### Added
+- **engine+**: Shift + turn on the fm, digital, string, cluster, phase, dna, voltage and pulse pages sets drive,
+  filter, resonance and bit-crush per sound (after op1-sdk's engine_plus, MIT).
+- **Factory drum kits without silent tails**: 1.43 MB less flash, the same sound (after op1-sdk's drumtrim, MIT).
+
+### Fixed
+- **STEFAN**: lifting a clip over 90 s no longer crashes the OP-1; it shows the stock "max. lift: 90 secs!" note.
+- **ELSE-MARIE**: a slot over 90 s is no longer emptied when lifted; the same note shows.
+- **STEFAN**: markers, bar ticks and clips keep their spacing while the tape moves.
+- **Metronome**: its level no longer drops to 0 after a count-in (found by hundekraft 3.3.2).
+- **Disk mode**: a kit or preset with an apostrophe in its name or folder no longer crashes the OP-1 when copied in
+  (found by hundekraft 3.3.2).
+
 ## 2026-11-24 09:40 — op1r 74
 
 Output `f62c28d8e729cd6c98c0f7c9e40b98da21ec2a219ad66796d70e074159d8bc8c` (all plugins)
