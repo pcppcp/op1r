@@ -3,6 +3,23 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-24 15:30 — op1r 76 (bugfix)
+
+Output `1bfdcca1fcda1d2e32788971a04a4bd6ede6bf5c2787c9f8ece9ba7cb906a3c3` (all plugins)
+
+**Please update from op1r 75.**
+
+### Fixed
+- **Disk mode**: op1r 75 could crash the OP-1 when presets or kits copied in disk mode were added to its database (a
+  wrongly linked fix for apostrophes in names). Fixed, and the build now refuses a hook that is not in place.
+- **STEFAN**: erasing the tape puts all four tracks back to 0:00 with the loop points cleared; the track lines and bar
+  ticks stop at 0:00 and 6:00.
+- **ELSE-MARIE**: a dropped slot shows its waveform right away, not only once it plays.
+
+### Improved
+- **Lighter screens**: a page that isn't changing is drawn every fourth frame until you press a key or turn a knob
+  (after Opus 2): the GUI's share of the processor on an idle page drops by about half (synth 18 -> 8 %, drum 12 -> 8 %).
+
 ## 2026-11-24 14:00 — op1r 75
 
 Output `ac4f1ba1e4d2dcf7420390f2c3fbbd09d61ba1c49e07f0a22a912c1b428a2287` (all plugins)
