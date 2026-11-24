@@ -111,6 +111,8 @@ def main():
     if re.search(rb'op1r \d+ \d{4}-\d\d-\d\d \d\d:\d\d', ldr):
         sys.exit('ERROR: the custom tree is a local build (build time on the boot screen); '
                  'rebuild with make_firmware.py --opz --release')
+    trim_path = os.path.normpath(a.custom) + '-drumtrim.json'      # make_firmware.py: the kits' kept ranges
+    trims = json.load(open(trim_path)) if os.path.exists(trim_path) else {}
     for root, _, files in os.walk(a.custom):
         for fn in sorted(files):
             full = os.path.join(root, fn)
@@ -126,7 +128,14 @@ def main():
                 print(f'plugin  {rel} ({kind} {name})')
                 continue
             if rel in orig:
-                if data != orig[rel]:
+                if data != orig[rel] and rel.startswith('content/audio/'):   # never ship TE audio as patch bytes
+                    segs = trims.get(rel)
+                    if segs is None or P.drumtrim(orig[rel], segs) != data:
+                        sys.exit(f'{rel}: changed audio without a matching drumtrim plan ({trim_path})')
+                    patched.append({'path': rel, 'orig_sha256': P.sha256(orig[rel]),
+                                    'result_sha256': P.sha256(data), 'ops': [{'op': 'drumtrim', 'segs': segs}]})
+                    print(f'patched {rel}: drumtrim')
+                elif data != orig[rel]:
                     ops = file_ops(rel, orig[rel], data, blobdir)
                     patched.append({'path': rel, 'orig_sha256': P.sha256(orig[rel]),
                                     'result_sha256': P.sha256(data), 'ops': ops})

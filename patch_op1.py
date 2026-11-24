@@ -75,7 +75,7 @@ def pack_op1(tar_bytes):
 def apply_ops(name, data, ops):
     buf = bytearray(data)
     for op in ops:
-        off = op['offset']
+        off = op.get('offset')
         if op['op'] == 'replace':
             old, new = bytes.fromhex(op['old']), bytes.fromhex(op['new'])
             if bytes(buf[off:off + len(old)]) != old:
@@ -88,9 +88,27 @@ def apply_ops(name, data, ops):
             buf[off:off] = blob
         elif op['op'] == 'truncate':
             del buf[off:]
+        elif op['op'] == 'drumtrim':                            # factory drum kit without its silent tails
+            buf = bytearray(drumtrim(bytes(buf), op['segs']))
         else:
             fail(f'{name}: unknown patch operation {op["op"]}')
     return bytes(buf)
+
+
+def drumtrim(raw, segs):
+    """kept frame ranges [f0, f1, cut] of a kit's int16 audio, the last 64 frames of a cut range faded out
+    (synth_sdk/drumtrim.py apply(), after op1-sdk's drumtrim, MIT, BertBrandstifter)"""
+    out, pad = bytearray(), 64
+    for f0, f1, cut in segs:
+        seg = bytearray(raw[2 * f0:2 * f1 + 2])
+        if cut and len(seg) > 2 * pad:
+            n = len(seg) // 2 - pad
+            for i in range(pad):
+                v = int.from_bytes(seg[2 * (n + i):2 * (n + i) + 2], 'little', signed=True) * (pad - 1 - i)
+                v = (abs(v) + (pad - 1) // 2) // (pad - 1) * (1 if v >= 0 else -1)
+                seg[2 * (n + i):2 * (n + i) + 2] = v.to_bytes(2, 'little', signed=True)
+        out += seg
+    return bytes(out)
 
 
 def load_manifest():

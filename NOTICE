@@ -33,6 +33,9 @@ THIRD-PARTY CODE (MIT or GPL-3.0, compatible with op1r's GPL-3.0-or-later; their
   J. Dattorro, "Effect Design, Part 1" (1997); fixed-point helpers from the Elements reverb port.
 - blot (synth plugin): the filter's coefficient fits, stage updates, feedback high-pass and gain follow the TB-303
   mode of Open303's TeeBeeFilter (rosic_TeeBeeFilter), (c) 2009 Robin Schmidt (rs-met.com), MIT License.
+- drumtrim (synth_sdk/drumtrim.py, the patcher's drumtrim step): the method (cut each factory drum hit 64 frames
+  after its last sample above -60 dB of its own peak, fade those frames, move the key points) and the self-check
+  after op1-sdk's features/drumtrim, (c) 2026 BertBrandstifter, MIT License (https://github.com/BertBrandstifter/op1-sdk).
 - iter-lab.svg and the LZMA settings of op1repacker: (c) 2016 op1hacks, MIT License
   (https://github.com/op1hacks/op1repacker).
 - svgfont.py and the Oblique Strategies idea: (c) 2026 Martin Mairinger, MIT License
