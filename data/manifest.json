@@ -13,7 +13,7 @@
   {
    "path": "OP1_vdk.ldr",
    "orig_sha256": "f79d299f6f9019c998013a4176223a6a1bc999a2d8c54451346861f6ea455c74",
-   "result_sha256": "4d6652e70a343635a2a51bc2392e1820830cd9a05f1bad5ec804367c1cb62ab2",
+   "result_sha256": "ccc1147c6c144c67f1e9c8802a2fde46a650ddf68e4c3157f42069b0e6509ba9",
    "ops": [
     {
      "op": "replace",
@@ -37,7 +37,7 @@
      "op": "replace",
      "offset": 313970,
      "old": "522e203030323436",
-     "new": "206f703172203733"
+     "new": "206f703172203734"
     },
     {
      "op": "replace",
@@ -1380,8 +1380,8 @@
    "kind": "synth",
    "author": "nvmsocool",
    "file": "brassophone.op1p",
-   "size": 50944,
-   "sha256": "d4357cd93e36915a528d11fda0bd2681e0345a2d878e9e74f1f171eaa1f00ad1"
+   "size": 51044,
+   "sha256": "b052b5f1a8205a3ac251bc3dd2104c33bd61ea44dada26d86bcbd0632c958bce"
   },
   {
    "name": "dddd",
@@ -1692,8 +1692,8 @@
    "kind": "fx",
    "author": "pcppcp",
    "file": "tape.op1p",
-   "size": 15391,
-   "sha256": "df46f8d5974908ccc9fb32c0caa8b696a2de3825295b40bbc7764385ca886554"
+   "size": 15483,
+   "sha256": "ee7c6ebbead04ace23ee302cd86aa3952f20200688ab0e6346120de1bc6046db"
   },
   {
    "name": "washer",
@@ -1787,9 +1787,9 @@
  "plugin_dir_template": "content",
  "plugin_file_template": "content/op1_factory.db",
  "result": {
-  "tar_sha256": "80b9a6511ba4a36ca61f2543c1105e2eda8057b9ad68ddb11c641be6beea767b",
-  "sha256": "7f06d37be377e8a9c399dcec4d27e275c90fd479006e09f35f9a14ae62d86868",
-  "size": 14097308,
-  "ident": "op1r 73"
+  "tar_sha256": "8272dc11327a06ae21a9e3642ddf8fc2e461a91b16d515a4693b8e5401f16e16",
+  "sha256": "f62c28d8e729cd6c98c0f7c9e40b98da21ec2a219ad66796d70e074159d8bc8c",
+  "size": 14094075,
+  "ident": "op1r 74"
  }
 }

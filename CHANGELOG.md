@@ -3,6 +3,21 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-24 09:40 — op1r 74
+
+Output `f62c28d8e729cd6c98c0f7c9e40b98da21ec2a219ad66796d70e074159d8bc8c` (all plugins)
+
+### Changed
+- **tape FX**: feedback now means what the knob says, also with age turned up (age used to multiply it up to 3x,
+  so echoes at 33 % never died out). Sounds saved with age above 0 have shorter echoes. No more DC offset after long
+  feedback runs (PR #85 by tencur).
+
+### Fixed
+- **brassophone**: no more full-scale clicks on low notes (PR #84 by tencur).
+
+### Docs
+- README: a perc section on the PO-32 drum kit, transfers and its screens (PR #14 by tonkoshkurik).
+
 ## 2026-11-20 21:10 — op1r 73
 
 Output `7f06d37be377e8a9c399dcec4d27e275c90fd479006e09f35f9a14ae62d86868` (all plugins)

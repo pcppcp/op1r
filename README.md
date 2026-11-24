@@ -419,7 +419,7 @@ version. The firmware content is still verified identical, and `--accept-recompr
 | | SHA-256 |
 |---|---|
 | input `op1_246.op1` (original R246) | `c5315218f825f143b415ca554516541898abee843d3a236df0b54c04e1fb13a9` |
-| output (reference build, all plugins) | `7f06d37be377e8a9c399dcec4d27e275c90fd479006e09f35f9a14ae62d86868` (also `python3 patch_op1.py --info`) |
+| output (reference build, all plugins) | `f62c28d8e729cd6c98c0f7c9e40b98da21ec2a219ad66796d70e074159d8bc8c` (also `python3 patch_op1.py --info`) |
 
 Install the result like any OP-1 update (bootloader update mode). The bootloader is not modified, so the
 original `op1_246.op1` can be flashed back; restore the stock sounds with it, and don't go back to an op1r below 54
