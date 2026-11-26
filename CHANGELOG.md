@@ -3,6 +3,23 @@
 Newest first. Each entry lists the changes since the previous push and the output checksum of
 `patch_op1.py` for that version. The input is always the original R246 image.
 
+## 2026-11-26 12:30 — op1r 77
+
+Output `025831b1cbf35b0a7f4a72d3c1b55753f6b3c12ae1fb3a912230291faf5f6c24` (all plugins)
+
+### Improved
+- **Faster screens**: text and shapes that don't change between frames are now drawn from a stored copy instead of
+  being rasterised again (checked pixel for pixel against the original drawing). Pages with moving parts and pages
+  you are turning knobs on use noticeably less CPU, e.g. the synth LFO page about 70 % -> 55 %, effect pages with an
+  animated picture up to ~14 % less.
+- **Label backdrops** (the dark box behind e.g. "FX OFF" over an animated picture) are drawn as one black box: about
+  11 % less CPU on those pages; the edge is crisp instead of slightly soft.
+- **Lighter screens**: after a key press or a knob turn a still page keeps the full frame rate for half a second, and
+  while a key is held (STEFAN's wind no longer lags).
+
+### Changed
+- **STEFAN**: S3 while recording arms the loop; it is set to the recorded clip when the recording stops.
+
 ## 2026-11-24 15:30 — op1r 76 (bugfix)
 
 Output `1bfdcca1fcda1d2e32788971a04a4bd6ede6bf5c2787c9f8ece9ba7cb906a3c3` (all plugins)
